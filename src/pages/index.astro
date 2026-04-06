@@ -58,7 +58,7 @@ const deckCount = Object.keys(decks).length;
       function noise(v) { return (Math.sin(v * 127.1 + Math.cos(v * 311.7) * 43758.5) * 0.5 + 0.5); }
 
       for (var i = 0; i < 80; i++) {
-        pts.push({ x: rnd(0, W), y: rnd(0, H), vx: rnd(-0.3, 0.3), vy: rnd(-0.3, 0.3), r: rnd(1.5, 3), n: rnd(0, 1000) });
+        pts.push({ x: rnd(0, W), y: rnd(0, H), vx: rnd(-0.3, 0.3), vy: rnd(-0.3, 0.3), r: rnd(2, 5), n: rnd(0, 1000) });
       }
 
       c.parentElement.addEventListener('mousemove', function(e) {
@@ -80,7 +80,7 @@ const deckCount = Object.keys(decks).length;
           if (mx > 0 && my > 0) {
             var dx = mx - a.x, dy = my - a.y;
             var d = Math.sqrt(dx * dx + dy * dy);
-            if (d < 180) { a.x -= dx * 0.002; a.y -= dy * 0.002; }
+            if (d < 300) { var force = (1 - d / 300) * 0.08; a.x -= dx * force; a.y -= dy * force; }
           }
 
           if (a.x < -20) a.x = W + 20;
@@ -88,16 +88,17 @@ const deckCount = Object.keys(decks).length;
           if (a.y < -20) a.y = H + 20;
           if (a.y > H + 20) a.y = -20;
 
-          ctx.fillStyle = 'rgba(10,10,8,0.35)';
+          ctx.strokeStyle = 'rgba(10,10,8,0.4)';
+          ctx.lineWidth = 0.8;
           ctx.beginPath();
           ctx.arc(a.x, a.y, a.r, 0, Math.PI * 2);
-          ctx.fill();
+          ctx.stroke();
 
           for (var j = i + 1; j < pts.length; j++) {
             var b = pts[j];
             var dd = Math.hypot(a.x - b.x, a.y - b.y);
-            if (dd < 120) {
-              var al = Math.max(0, (1 - dd / 120) * 0.15);
+            if (dd < 130) {
+              var al = Math.max(0, (1 - dd / 130) * 0.18);
               ctx.strokeStyle = 'rgba(10,10,8,' + al + ')';
               ctx.lineWidth = 0.5;
               ctx.beginPath();
