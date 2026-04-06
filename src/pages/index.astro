@@ -8,15 +8,15 @@ const deckCount = Object.keys(decks).length;
 ---
 <Base>
   <!-- Nav -->
-  <nav class="fixed top-0 left-0 w-full z-50 mix-blend-difference">
-    <div class="flex items-center justify-between px-6 md:px-12 py-6">
-      <a href="/"><img src="/logo.png" alt="ioon" class="h-5 invert" /></a>
-      <a href="#contacto" class="text-white text-xs tracking-[0.2em] uppercase opacity-60 hover:opacity-100 transition-opacity">Contacto</a>
+  <nav class="fixed top-0 left-0 w-full z-50 bg-[--color-paper]/90 backdrop-blur-sm">
+    <div class="flex items-center justify-between px-6 md:px-12 py-5">
+      <a href="/"><img src="/logo.png" alt="ioon" class="h-5" /></a>
+      <a href="#contacto" class="text-[--color-muted] text-xs tracking-[0.2em] uppercase hover:text-[--color-ink] transition-colors">Contacto</a>
     </div>
   </nav>
 
   <!-- Hero -->
-  <section class="h-screen flex flex-col justify-end px-6 md:px-12 pb-12 md:pb-20">
+  <section class="h-screen flex flex-col justify-end px-6 md:px-12 pb-24 md:pb-32 relative">
     <div class="stagger">
       <img src="/logo.png" alt="ioon" class="w-[150px] mb-10" />
       <p class="text-[--color-muted] text-xs tracking-[0.3em] uppercase mb-4">Estudio de diseño — Oaxaca, México</p>
@@ -26,6 +26,12 @@ const deckCount = Object.keys(decks).length;
         Automatizada
       </h1>
       <div class="mt-8 w-12 h-px bg-[--color-ink]"></div>
+    </div>
+    <!-- Scroll arrow -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 scroll-arrow">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" class="text-[--color-muted]">
+        <path d="M12 5L12 19M12 19L5 12M12 19L19 12" />
+      </svg>
     </div>
   </section>
 
