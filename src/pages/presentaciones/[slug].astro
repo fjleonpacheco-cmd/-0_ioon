@@ -53,8 +53,8 @@ const isSections = layout === 'sections' && sections;
       </div>
     </nav>
 
-    <!-- Left: vertical section nav with labels -->
-    <div class="fixed left-4 md:left-6 bottom-24 md:top-1/2 md:-translate-y-1/2 md:bottom-auto z-40 flex flex-col gap-1" id="sec-nav">
+    <!-- Left: vertical section nav -->
+    <div class="fixed left-4 md:left-6 bottom-16 z-40 flex flex-col gap-1" id="sec-nav">
       {sections.map((sec: any, i: number) => (
         <button
           class={`sec-dot flex items-center gap-3 py-2 px-1 group cursor-pointer transition-all`}
@@ -89,7 +89,7 @@ const isSections = layout === 'sections' && sections;
                       <div>
                         {slide.heading && <h3 class="text-2xl md:text-3xl font-light mb-6">{slide.heading}</h3>}
                         {slide.body && <p class="text-base md:text-lg text-[--color-muted] leading-relaxed max-w-2xl">{slide.body}</p>}
-                        {slide.bullets && (<ul class="mt-6 space-y-3">{slide.bullets.map((b: string) => (<li class="flex items-start gap-2 text-base text-[--color-muted]"><span class="w-1.5 h-1.5 rounded-full bg-[--color-ink] mt-2 shrink-0"></span>{b}</li>))}</ul>)}
+                        {slide.bullets && (<ul class="mt-6 space-y-3 list-disc pl-5 marker:text-[--color-ink]">{slide.bullets.map((b: string) => (<li class="text-base text-[--color-muted] pl-1">{b}</li>))}</ul>)}
                       </div>
                     )}
                     {slide.type === 'image' && (
@@ -120,7 +120,7 @@ const isSections = layout === 'sections' && sections;
           </div>
 
           <!-- Bottom nav: vertical arrows + horizontal dots -->
-          <div class="flex items-center justify-center gap-4 pb-20 md:pb-10">
+          <div class="flex items-center justify-center gap-4 mb-16">
             <div class="flex flex-col gap-0">
               <button class="varrow-up p-1.5 text-[--color-muted] hover:text-[--color-ink] transition-colors cursor-pointer">
                 <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12L10 6L16 12"/></svg>
@@ -168,7 +168,7 @@ const isSections = layout === 'sections' && sections;
         <section class="slide min-h-screen flex items-center justify-center px-6 md:px-12 py-20" data-index={i} style={i > 0 ? 'display:none' : ''}>
           <div class="max-w-4xl w-full slide-enter">
             {slide.type === 'title' && (<div class="text-center">{slide.overline && <p class="text-xs tracking-[0.3em] uppercase text-[--color-muted] mb-6">{slide.overline}</p>}<h1 class="text-[clamp(2rem,5vw,5rem)] font-light leading-[0.95] tracking-tight">{slide.heading}</h1>{slide.subheading && <p class="mt-6 text-lg text-[--color-muted] font-light">{slide.subheading}</p>}</div>)}
-            {slide.type === 'text' && (<div>{slide.heading && <h2 class="text-3xl md:text-4xl font-light mb-8">{slide.heading}</h2>}{slide.body && <p class="text-base md:text-lg text-[--color-muted] leading-relaxed max-w-2xl">{slide.body}</p>}{slide.bullets && (<ul class="mt-6 space-y-3">{slide.bullets.map((b: string) => (<li class="flex items-start gap-2 text-base text-[--color-muted]"><span class="w-1.5 h-1.5 rounded-full bg-[--color-ink] mt-2 shrink-0"></span>{b}</li>))}</ul>)}</div>)}
+            {slide.type === 'text' && (<div>{slide.heading && <h2 class="text-3xl md:text-4xl font-light mb-8">{slide.heading}</h2>}{slide.body && <p class="text-base md:text-lg text-[--color-muted] leading-relaxed max-w-2xl">{slide.body}</p>}{slide.bullets && (<ul class="mt-6 space-y-3 list-disc pl-5 marker:text-[--color-ink]">{slide.bullets.map((b: string) => (<li class="text-base text-[--color-muted] pl-1">{b}</li>))}</ul>)}</div>)}
             {slide.type === 'image' && (<div><img src={slide.src.startsWith('http') ? slide.src : `/presentaciones/${slug}/${slide.src}`} alt={slide.alt || ''} class="w-full max-h-[70vh] object-contain" />{slide.caption && <p class="mt-4 text-xs text-[--color-muted] text-center">{slide.caption}</p>}</div>)}
             {slide.type === 'split' && (<div class="grid md:grid-cols-2 gap-12 items-center"><img src={slide.src.startsWith('http') ? slide.src : `/presentaciones/${slug}/${slide.src}`} alt={slide.alt || ''} class="w-full object-cover" /><div>{slide.heading && <h2 class="text-2xl font-light mb-4">{slide.heading}</h2>}{slide.body && <p class="text-base text-[--color-muted] leading-relaxed">{slide.body}</p>}</div></div>)}
             {slide.type === 'quote' && (<div class="text-center max-w-2xl mx-auto"><blockquote class="text-2xl md:text-3xl font-light leading-relaxed italic">&ldquo;{slide.text}&rdquo;</blockquote>{slide.attribution && <p class="mt-6 text-sm text-[--color-muted]">— {slide.attribution}</p>}</div>)}
