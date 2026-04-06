@@ -1,0 +1,75 @@
+{
+  "title": "Propuesta de Identidad Visual",
+  "client": "Casa Monte",
+  "date": "2026-04-05",
+  "password": "",
+  "slides": [
+    {
+      "type": "title",
+      "overline": "ioon × Casa Monte",
+      "heading": "Identidad Visual",
+      "subheading": "Propuesta de dirección creativa — Abril 2026"
+    },
+    {
+      "type": "image",
+      "src": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=80",
+      "alt": "Interior de restaurante contemporáneo",
+      "caption": "Referencia de atmósfera — espacio gastronómico contemporáneo"
+    },
+    {
+      "type": "text",
+      "heading": "Contexto",
+      "body": "Casa Monte es un espacio gastronómico en el corazón de Oaxaca que busca conectar la tradición culinaria con una experiencia contemporánea. La identidad debe reflejar raíz y sofisticación."
+    },
+    {
+      "type": "split",
+      "src": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80",
+      "alt": "Plato gastronómico",
+      "heading": "Dirección visual",
+      "body": "Fotografía cenital y de detalle con luz natural. Paleta terrosa que conecta con los materiales y la tierra oaxaqueña. Cada imagen debe sentirse como una pieza editorial."
+    },
+    {
+      "type": "text",
+      "heading": "Principios de diseño",
+      "bullets": [
+        "Tipografía editorial con personalidad propia",
+        "Paleta terrosa inspirada en materiales locales",
+        "Fotografía de autor como eje central de comunicación",
+        "Sistema modular adaptable a menú, señalética y digital"
+      ]
+    },
+    {
+      "type": "image",
+      "src": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80",
+      "alt": "Espacio de trabajo minimalista",
+      "caption": "Referencia de sistema tipográfico — claridad y carácter"
+    },
+    {
+      "type": "split",
+      "src": "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=800&q=80",
+      "alt": "Texturas naturales",
+      "heading": "Paleta material",
+      "body": "Barro, madera, piedra, lino. Los materiales de Oaxaca traducidos a un lenguaje visual contemporáneo. La paleta cromática nace de la tierra, no de una pantalla."
+    },
+    {
+      "type": "quote",
+      "text": "El diseño no es cómo se ve, sino cómo funciona en su contexto.",
+      "attribution": "Dirección creativa ioon"
+    },
+    {
+      "type": "text",
+      "heading": "Próximos pasos",
+      "bullets": [
+        "Revisión y feedback de esta dirección",
+        "Desarrollo de logotipo y sistema tipográfico",
+        "Aplicaciones: menú, tarjetas, señalética",
+        "Sesión fotográfica de producto"
+      ]
+    },
+    {
+      "type": "title",
+      "heading": "Gracias",
+      "subheading": "hola@ioon.mx"
+    }
+  ]
+}

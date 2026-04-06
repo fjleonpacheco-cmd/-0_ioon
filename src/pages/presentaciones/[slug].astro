@@ -1,0 +1,226 @@
+---
+import Base from '../../layouts/Base.astro';
+import fs from 'node:fs';
+import path from 'node:path';
+
+export function getStaticPaths() {
+  const presDir = path.resolve('src/content/presentaciones');
+  if (!fs.existsSync(presDir)) return [];
+  
+  const slugs = fs.readdirSync(presDir).filter(f => {
+    const full = path.join(presDir, f);
+    return fs.statSync(full).isDirectory() && fs.existsSync(path.join(full, 'config.json'));
+  });
+
+  return slugs.map(slug => {
+    const config = JSON.parse(fs.readFileSync(path.join(presDir, slug, 'config.json'), 'utf-8'));
+    return { params: { slug }, props: { config, slug } };
+  });
+}
+
+const { config, slug } = Astro.props;
+const { title, client, date, password, slides } = config;
+const hasPassword = !!password;
+---
+<Base title={`${title} — ioon`} description={`Presentación para ${client || 'cliente'}`}>
+
+  {/* Password gate (client-side) */}
+  {hasPassword && (
+    <div id="pw-gate" class="fixed inset-0 z-50 bg-[--color-paper] flex items-center justify-center">
+      <div class="text-center stagger">
+        <p class="text-xs tracking-[0.3em] uppercase text-[--color-muted] mb-6">Acceso protegido</p>
+        <h2 class="text-2xl font-light mb-8">{title}</h2>
+        <div class="flex gap-3">
+          <input 
+            type="password" 
+            id="pw-input" 
+            class="pw-input w-48"
+            placeholder="Contraseña"
+            autocomplete="off"
+          />
+          <button id="pw-btn" class="px-5 py-3 bg-[--color-ink] text-[--color-paper] text-sm tracking-[0.1em] uppercase hover:opacity-80 transition-opacity cursor-pointer">
+            Entrar
+          </button>
+        </div>
+        <p id="pw-error" class="mt-4 text-xs text-red-500 hidden">Contraseña incorrecta</p>
+      </div>
+    </div>
+  )}
+
+  <!-- Slide viewer -->
+  <div id="deck" class={hasPassword ? 'hidden' : ''}>
+    <!-- Top bar -->
+    <nav class="fixed top-0 left-0 w-full z-40 bg-[--color-paper]/90 backdrop-blur-sm border-b border-[--color-border]">
+      <div class="flex items-center justify-between px-6 md:px-12 py-4">
+        <a href="/" class="hover:opacity-70 transition-opacity"><img src="/logo.png" alt="ioon" class="h-4" /></a>
+        <div class="text-center">
+          <span class="text-sm font-medium">{title}</span>
+          {client && <span class="text-xs text-[--color-muted] ml-3">{client}</span>}
+        </div>
+        <div class="text-xs text-[--color-muted]">
+          <span id="current-slide">1</span>/<span id="total-slides">{slides.length}</span>
+        </div>
+      </div>
+      <!-- Progress bar -->
+      <div class="h-px bg-[--color-border] relative">
+        <div id="progress" class="h-px bg-[--color-ink] transition-all duration-300" style="width: 0%"></div>
+      </div>
+    </nav>
+
+    <!-- Slides container -->
+    <main class="pt-16">
+      {slides.map((slide: any, i: number) => (
+        <section 
+          class="slide min-h-screen flex items-center justify-center px-6 md:px-12 py-20"
+          data-index={i}
+          style={i > 0 ? 'display:none' : ''}
+        >
+          <div class="max-w-4xl w-full slide-enter">
+            {/* Slide type: title */}
+            {slide.type === 'title' && (
+              <div class="text-center">
+                {slide.overline && <p class="text-xs tracking-[0.3em] uppercase text-[--color-muted] mb-6">{slide.overline}</p>}
+                <h1 class="text-[clamp(2rem,5vw,5rem)] font-light leading-[0.95] tracking-tight">{slide.heading}</h1>
+                {slide.subheading && <p class="mt-6 text-lg text-[--color-muted] font-light">{slide.subheading}</p>}
+              </div>
+            )}
+
+            {/* Slide type: text */}
+            {slide.type === 'text' && (
+              <div>
+                {slide.heading && <h2 class="text-3xl md:text-4xl font-light mb-8">{slide.heading}</h2>}
+                {slide.body && <p class="text-base md:text-lg text-[--color-muted] leading-relaxed max-w-2xl">{slide.body}</p>}
+                {slide.bullets && (
+                  <ul class="mt-6 space-y-3">
+                    {slide.bullets.map((b: string) => (
+                      <li class="flex items-start gap-3 text-base text-[--color-muted]">
+                        <span class="w-1 h-1 rounded-full bg-[--color-ink] mt-2.5 shrink-0"></span>
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            )}
+
+            {/* Slide type: image */}
+            {slide.type === 'image' && (
+              <div>
+                <img 
+                  src={slide.src.startsWith('http') ? slide.src : `/presentaciones/${slug}/${slide.src}`} 
+                  alt={slide.alt || ''} 
+                  class="w-full max-h-[70vh] object-contain"
+                />
+                {slide.caption && <p class="mt-4 text-xs text-[--color-muted] text-center">{slide.caption}</p>}
+              </div>
+            )}
+
+            {/* Slide type: split (image + text) */}
+            {slide.type === 'split' && (
+              <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                  <img 
+                    src={slide.src.startsWith('http') ? slide.src : `/presentaciones/${slug}/${slide.src}`} 
+                    alt={slide.alt || ''} 
+                    class="w-full object-cover"
+                  />
+                </div>
+                <div>
+                  {slide.heading && <h2 class="text-2xl font-light mb-4">{slide.heading}</h2>}
+                  {slide.body && <p class="text-base text-[--color-muted] leading-relaxed">{slide.body}</p>}
+                </div>
+              </div>
+            )}
+
+            {/* Slide type: quote */}
+            {slide.type === 'quote' && (
+              <div class="text-center max-w-2xl mx-auto">
+                <blockquote class="text-2xl md:text-3xl font-light leading-relaxed italic">
+                  &ldquo;{slide.text}&rdquo;
+                </blockquote>
+                {slide.attribution && <p class="mt-6 text-sm text-[--color-muted]">— {slide.attribution}</p>}
+              </div>
+            )}
+          </div>
+        </section>
+      ))}
+    </main>
+
+    <!-- Navigation -->
+    <div class="fixed bottom-8 left-1/2 -translate-x-1/2 z-40 flex gap-1">
+      <button id="prev" class="p-3 text-[--color-muted] hover:text-[--color-ink] transition-colors cursor-pointer" aria-label="Anterior">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 4L6 10L12 16"/></svg>
+      </button>
+      <button id="next" class="p-3 text-[--color-muted] hover:text-[--color-ink] transition-colors cursor-pointer" aria-label="Siguiente">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 4L14 10L8 16"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script define:vars={{ hasPassword, password: password || '' }}>
+    // Password gate
+    if (hasPassword) {
+      const gate = document.getElementById('pw-gate');
+      const deck = document.getElementById('deck');
+      const input = document.getElementById('pw-input');
+      const btn = document.getElementById('pw-btn');
+      const err = document.getElementById('pw-error');
+
+      function tryUnlock() {
+        if (input.value === password) {
+          gate.classList.add('hidden');
+          deck.classList.remove('hidden');
+        } else {
+          err.classList.remove('hidden');
+          input.value = '';
+          input.focus();
+        }
+      }
+      btn.addEventListener('click', tryUnlock);
+      input.addEventListener('keydown', (e) => { if (e.key === 'Enter') tryUnlock(); });
+    }
+
+    // Slide navigation
+    let current = 0;
+    const slides = document.querySelectorAll('.slide');
+    const total = slides.length;
+    const counter = document.getElementById('current-slide');
+    const progress = document.getElementById('progress');
+
+    function goTo(n) {
+      if (n < 0 || n >= total) return;
+      slides[current].style.display = 'none';
+      current = n;
+      const s = slides[current];
+      s.style.display = '';
+      // Re-trigger animation
+      const inner = s.querySelector('.slide-enter');
+      if (inner) {
+        inner.style.animation = 'none';
+        inner.offsetHeight;
+        inner.style.animation = '';
+      }
+      counter.textContent = current + 1;
+      progress.style.width = ((current + 1) / total * 100) + '%';
+    }
+
+    document.getElementById('prev').addEventListener('click', () => goTo(current - 1));
+    document.getElementById('next').addEventListener('click', () => goTo(current + 1));
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); goTo(current + 1); }
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); goTo(current - 1); }
+    });
+
+    // Touch support
+    let touchStart = 0;
+    document.addEventListener('touchstart', (e) => { touchStart = e.touches[0].clientX; });
+    document.addEventListener('touchend', (e) => {
+      const diff = touchStart - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) diff > 0 ? goTo(current + 1) : goTo(current - 1);
+    });
+
+    // Init progress
+    progress.style.width = (1 / total * 100) + '%';
+  </script>
+</Base>
