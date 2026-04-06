@@ -119,22 +119,33 @@ const isSections = layout === 'sections' && sections;
             </div>
           </div>
 
-          <!-- Horizontal dots + arrows (only if >1 sub-slide) -->
-          {sec.slides.length > 1 && (
-            <div class="flex items-center justify-center gap-4 pb-6 hdots" data-section={si}>
-              <button class="harrow-left p-2 text-[--color-muted] hover:text-[--color-ink] transition-colors cursor-pointer">
-                <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 4L6 10L12 16"/></svg>
+          <!-- Bottom nav: vertical arrows + horizontal dots -->
+          <div class="flex items-center justify-center gap-4 pb-6">
+            <div class="flex flex-col gap-0">
+              <button class="varrow-up p-1.5 text-[--color-muted] hover:text-[--color-ink] transition-colors cursor-pointer">
+                <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12L10 6L16 12"/></svg>
               </button>
-              <div class="flex gap-2">
-                {sec.slides.map((_: any, hi: number) => (
-                  <button class={`hdot w-8 h-1.5 rounded-full transition-all cursor-pointer ${hi === 0 ? 'bg-[--color-ink]' : 'bg-[--color-border]'}`} data-hi={hi} />
-                ))}
-              </div>
-              <button class="harrow-right p-2 text-[--color-muted] hover:text-[--color-ink] transition-colors cursor-pointer">
-                <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 4L14 10L8 16"/></svg>
+              <button class="varrow-down p-1.5 text-[--color-muted] hover:text-[--color-ink] transition-colors cursor-pointer">
+                <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 8L10 14L16 8"/></svg>
               </button>
             </div>
-          )}
+            {sec.slides.length > 1 && (
+              <div class="flex items-center gap-3 hdots" data-section={si}>
+                <div class="w-px h-5 bg-[--color-border]"></div>
+                <button class="harrow-left p-2 text-[--color-muted] hover:text-[--color-ink] transition-colors cursor-pointer">
+                  <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 4L6 10L12 16"/></svg>
+                </button>
+                <div class="flex gap-2">
+                  {sec.slides.map((_: any, hi: number) => (
+                    <button class={`hdot w-8 h-1.5 rounded-full transition-all cursor-pointer ${hi === 0 ? 'bg-[--color-ink]' : 'bg-[--color-border]'}`} data-hi={hi} />
+                  ))}
+                </div>
+                <button class="harrow-right p-2 text-[--color-muted] hover:text-[--color-ink] transition-colors cursor-pointer">
+                  <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 4L14 10L8 16"/></svg>
+                </button>
+              </div>
+            )}
+          </div>
         </section>
       ))}
     </main>
@@ -233,6 +244,9 @@ const isSections = layout === 'sections' && sections;
       // Horizontal arrow clicks
       document.querySelectorAll('.harrow-left').forEach(function(b) { b.addEventListener('click', goLeft); });
       document.querySelectorAll('.harrow-right').forEach(function(b) { b.addEventListener('click', goRight); });
+      // Vertical arrow clicks
+      document.querySelectorAll('.varrow-up').forEach(function(b) { b.addEventListener('click', goUp); });
+      document.querySelectorAll('.varrow-down').forEach(function(b) { b.addEventListener('click', goDown); });
 
       // Keyboard
       document.addEventListener('keydown', function(e) {
