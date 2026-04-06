@@ -1,0 +1,153 @@
+{
+  "title": "Identidad & Estrategia Digital",
+  "client": "Hotel Terraza",
+  "date": "2026-04-05",
+  "password": "",
+  "layout": "sections",
+  "sections": [
+    {
+      "title": "Portada",
+      "slides": [
+        {
+          "type": "title",
+          "overline": "ioon × Hotel Terraza",
+          "heading": "Identidad & Estrategia Digital",
+          "subheading": "Propuesta integral — Abril 2026"
+        }
+      ]
+    },
+    {
+      "title": "Investigación",
+      "slides": [
+        {
+          "type": "text",
+          "heading": "El contexto",
+          "body": "Hotel Terraza es un hotel boutique en el centro histórico de Oaxaca. Su ubicación privilegiada y arquitectura colonial son activos que no se reflejan en su presencia digital actual."
+        },
+        {
+          "type": "image",
+          "src": "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1200&q=80",
+          "alt": "Hotel boutique colonial",
+          "caption": "Referencia visual — arquitectura colonial contemporánea"
+        },
+        {
+          "type": "text",
+          "heading": "Hallazgos clave",
+          "bullets": [
+            "El 73% de los huéspedes llegan por recomendación, no por digital",
+            "Competidores directos tienen presencia visual 3x más fuerte",
+            "La experiencia física supera las expectativas — la digital no",
+            "Oportunidad: posicionar la terraza como ícono visual de la marca"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Estrategia",
+      "slides": [
+        {
+          "type": "text",
+          "heading": "Visión estratégica",
+          "body": "Convertir la experiencia sensorial del hotel en un lenguaje visual coherente que funcione desde Instagram hasta la señalética del lobby. Una marca que se siente como estar ahí."
+        },
+        {
+          "type": "split",
+          "src": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80",
+          "alt": "Vista terraza hotel",
+          "heading": "Pilares de marca",
+          "body": "Tres ejes: Raíz oaxaqueña (materiales, color, textura), Hospitalidad contemporánea (tipografía, tono), Vista privilegiada (la terraza como símbolo)."
+        },
+        {
+          "type": "text",
+          "heading": "Audiencia",
+          "bullets": [
+            "Viajeros culturales 30-55 años",
+            "Nómadas digitales que buscan autenticidad",
+            "Parejas en escapadas de fin de semana",
+            "Turismo gastronómico nacional e internacional"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Dirección Visual",
+      "slides": [
+        {
+          "type": "image",
+          "src": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200&q=80",
+          "alt": "Habitación hotel boutique",
+          "caption": "Dirección fotográfica — luz natural, texturas, detalle"
+        },
+        {
+          "type": "split",
+          "src": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80",
+          "alt": "Arquitectura",
+          "heading": "Paleta cromática",
+          "body": "Terracota, arena, verde olivo, blanco hueso. Colores que nacen del edificio mismo y de la tierra oaxaqueña. Nada impuesto, todo descubierto."
+        },
+        {
+          "type": "split",
+          "src": "https://images.unsplash.com/photo-1590490360182-c33d955f4d44?w=800&q=80",
+          "alt": "Tipografía",
+          "heading": "Sistema tipográfico",
+          "body": "Una serif editorial para títulos que evoca la tradición sin ser nostálgica. Una sans-serif limpia para cuerpo que habla de contemporaneidad."
+        }
+      ]
+    },
+    {
+      "title": "Aplicaciones",
+      "slides": [
+        {
+          "type": "image",
+          "src": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1200&q=80",
+          "alt": "Interior diseño",
+          "caption": "Señalética interior — integrada a la arquitectura"
+        },
+        {
+          "type": "text",
+          "heading": "Entregables",
+          "bullets": [
+            "Logotipo y sistema de identidad visual",
+            "Sitio web con motor de reservas",
+            "Guía de estilo fotográfico",
+            "Templates para redes sociales",
+            "Señalética interior y amenities",
+            "Menú del restaurante de terraza"
+          ]
+        },
+        {
+          "type": "image",
+          "src": "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1200&q=80",
+          "alt": "Lobby hotel",
+          "caption": "El lobby como primera impresión de marca"
+        }
+      ]
+    },
+    {
+      "title": "Próximos pasos",
+      "slides": [
+        {
+          "type": "text",
+          "heading": "Cronograma",
+          "bullets": [
+            "Semana 1-2: Feedback y aprobación de dirección",
+            "Semana 3-4: Desarrollo de identidad visual",
+            "Semana 5-6: Sesión fotográfica in-situ",
+            "Semana 7-8: Diseño web y aplicaciones",
+            "Semana 9-10: Implementación y lanzamiento"
+          ]
+        },
+        {
+          "type": "quote",
+          "text": "Un hotel no vende habitaciones. Vende la promesa de despertar en un lugar que te cambia.",
+          "attribution": "Dirección creativa ioon"
+        },
+        {
+          "type": "title",
+          "heading": "Gracias",
+          "subheading": "hola.ioon@gmail.com"
+        }
+      ]
+    }
+  ]
+}
