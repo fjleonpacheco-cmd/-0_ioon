@@ -1,0 +1,108 @@
+---
+import Base from '../layouts/Base.astro';
+import fs from 'node:fs';
+import path from 'node:path';
+
+export function getStaticPaths() {
+  const clientsDir = path.resolve('src/content/clientes');
+  if (!fs.existsSync(clientsDir)) return [];
+
+  const files = fs.readdirSync(clientsDir).filter(f => f.endsWith('.json'));
+
+  return files.map(file => {
+    const config = JSON.parse(fs.readFileSync(path.join(clientsDir, file), 'utf-8'));
+    const slug = config.slug || file.replace('.json', '');
+
+    // Auto-discover presentations for this client
+    const presDir = path.resolve('src/content/presentaciones');
+    let presentations = config.presentations || [];
+
+    if (fs.existsSync(presDir)) {
+      const allDecks = fs.readdirSync(presDir).filter(d => {
+        const full = path.join(presDir, d);
+        return fs.statSync(full).isDirectory() && fs.existsSync(path.join(full, 'config.json'));
+      });
+
+      // Add presentations that start with the client slug
+      allDecks.forEach(deck => {
+        if (deck.startsWith(slug + '-') || deck === slug) {
+          const deckConfig = JSON.parse(fs.readFileSync(path.join(presDir, deck, 'config.json'), 'utf-8'));
+          const alreadyListed = presentations.some((p: any) => p.slug === deck);
+          if (!alreadyListed) {
+            presentations.push({
+              slug: deck,
+              title: deckConfig.title,
+              date: deckConfig.date || ''
+            });
+          }
+        }
+      });
+    }
+
+    return { params: { client: slug }, props: { config: { ...config, presentations }, slug } };
+  });
+}
+
+const { config, slug } = Astro.props;
+const { name, headline, tagline, presentations } = config;
+---
+<Base title={`${name} — ioon`} description={headline}>
+
+  <!-- Nav -->
+  <nav class="fixed top-0 left-0 w-full z-50 bg-[--color-paper]/90 backdrop-blur-sm border-b border-[--color-border]">
+    <div class="flex items-center justify-between px-6 md:px-12 py-5">
+      <a href="/" class="hover:opacity-70 transition-opacity"><img src="/logo.png" alt="ioon" class="h-6" /></a>
+      <span class="text-xs tracking-[0.2em] uppercase text-[--color-muted]">{name}</span>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="min-h-[70vh] flex flex-col justify-end px-6 md:px-12 pb-16 pt-24">
+    <div class="stagger max-w-3xl">
+      <p class="text-xs tracking-[0.3em] uppercase text-[--color-muted] mb-4">ioon × {name}</p>
+      <h1 class="text-3xl md:text-5xl font-light leading-[1] tracking-tight">
+        {headline}
+      </h1>
+      <p class="mt-6 text-lg md:text-xl text-[--color-muted] font-light italic">
+        {tagline}
+      </p>
+      <div class="mt-8 w-12 h-px bg-[--color-ink]"></div>
+    </div>
+  </section>
+
+  <!-- Presentations list -->
+  <section class="px-6 md:px-12 py-16 md:py-24 border-t border-[--color-border]">
+    <div class="max-w-3xl">
+      <p class="text-xs tracking-[0.3em] uppercase text-[--color-muted] mb-8">Presentaciones</p>
+
+      {presentations.length > 0 ? (
+        <div class="space-y-0">
+          {presentations.map((p: any, i: number) => (
+            <a
+              href={`/presentaciones/${p.slug}/`}
+              class="flex items-center justify-between py-6 border-b border-[--color-border] group hover:pl-2 transition-all"
+            >
+              <div>
+                <h3 class="text-lg md:text-xl font-light group-hover:text-[--color-muted] transition-colors">{p.title}</h3>
+                {p.date && <p class="text-xs text-[--color-muted] mt-1">{p.date}</p>}
+              </div>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1" class="text-[--color-muted] group-hover:text-[--color-ink] group-hover:translate-x-1 transition-all shrink-0 ml-4">
+                <path d="M8 4L14 10L8 16"/>
+              </svg>
+            </a>
+          ))}
+        </div>
+      ) : (
+        <p class="text-base text-[--color-muted]">Las presentaciones de este proyecto aparecerán aquí conforme avancemos.</p>
+      )}
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="px-6 md:px-12 py-8 border-t border-[--color-border]">
+    <div class="flex items-center justify-between text-xs text-[--color-muted]">
+      <span>&copy; {new Date().getFullYear()} ioon</span>
+      <span class="tracking-[0.2em] uppercase">Diseño para la gente</span>
+    </div>
+  </footer>
+</Base>
