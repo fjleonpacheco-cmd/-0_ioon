@@ -54,7 +54,7 @@ const isSections = layout === 'sections' && sections;
     </nav>
 
     <!-- Left: vertical section nav -->
-    <div class="fixed right-4 md:right-auto md:left-6 bottom-16 z-40 flex flex-col gap-1" id="sec-nav">
+    <div class="hidden md:flex fixed left-6 bottom-16 z-40 flex-col gap-1" id="sec-nav">
       {sections.map((sec: any, i: number) => (
         <button
           class={`sec-dot flex items-center gap-3 py-2 px-1 group cursor-pointer transition-all`}
