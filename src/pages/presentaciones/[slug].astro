@@ -41,6 +41,7 @@ const isSections = layout === 'sections' && sections;
 
   {isSections ? (
     <div>
+    <!-- Top bar -->
     <nav class="fixed top-0 left-0 w-full z-40 bg-[--color-paper]/90 backdrop-blur-sm border-b border-[--color-border]">
       <div class="flex items-center justify-between px-6 md:px-12 py-4">
         <a href="/" class="hover:opacity-70 transition-opacity"><img src="/logo.png" alt="ioon" class="h-4" /></a>
@@ -52,23 +53,30 @@ const isSections = layout === 'sections' && sections;
       </div>
     </nav>
 
-    <div class="fixed right-6 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-3" id="sec-dots">
-      {sections.map((_: any, i: number) => (
-        <button class={`sec-dot w-2 h-2 rounded-full border border-[--color-ink] transition-all cursor-pointer ${i === 0 ? 'bg-[--color-ink]' : 'bg-transparent'}`} data-sec={i} />
+    <!-- Left: vertical section nav with labels -->
+    <div class="fixed left-6 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-1" id="sec-nav">
+      {sections.map((sec: any, i: number) => (
+        <button
+          class={`sec-dot flex items-center gap-3 py-2 px-1 group cursor-pointer transition-all`}
+          data-sec={i}
+        >
+          <span class={`block w-2 h-2 rounded-full border border-[--color-ink] transition-all ${i === 0 ? 'bg-[--color-ink] scale-125' : 'bg-transparent'}`} />
+          <span class="text-[10px] tracking-[0.15em] uppercase text-[--color-muted] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">{sec.title}</span>
+        </button>
       ))}
     </div>
 
     <main class="pt-16">
       {sections.map((sec: any, si: number) => (
         <section class="vsection min-h-screen flex flex-col justify-center" data-section={si} style={si > 0 ? 'display:none' : ''}>
-          <div class="px-6 md:px-12 pt-8 pb-4">
+          <div class="px-12 md:px-20 pt-8 pb-4">
             <p class="text-xs tracking-[0.3em] uppercase text-[--color-muted]">{String(si + 1).padStart(2, '0')}</p>
             <h2 class="text-2xl md:text-3xl font-light mt-1">{sec.title}</h2>
           </div>
           <div class="flex-1 flex items-center overflow-hidden">
             <div class="hslides-wrap w-full" data-section={si}>
               {sec.slides.map((slide: any, hi: number) => (
-                <div class={`hslide w-full px-6 md:px-12 py-8 ${hi > 0 ? 'hidden' : ''}`} data-hindex={hi}>
+                <div class={`hslide w-full px-12 md:px-20 py-8 ${hi > 0 ? 'hidden' : ''}`} data-hindex={hi}>
                   <div class="max-w-4xl mx-auto slide-enter">
                     {slide.type === 'title' && (
                       <div class="text-center py-12">
@@ -110,28 +118,26 @@ const isSections = layout === 'sections' && sections;
               ))}
             </div>
           </div>
+
+          <!-- Horizontal dots + arrows (only if >1 sub-slide) -->
           {sec.slides.length > 1 && (
-            <div class="flex justify-center gap-2 pb-6 hdots" data-section={si}>
-              {sec.slides.map((_: any, hi: number) => (
-                <button class={`hdot w-6 h-1 rounded-full transition-all cursor-pointer ${hi === 0 ? 'bg-[--color-ink]' : 'bg-[--color-border]'}`} data-hi={hi} />
-              ))}
+            <div class="flex items-center justify-center gap-4 pb-6 hdots" data-section={si}>
+              <button class="harrow-left p-2 text-[--color-muted] hover:text-[--color-ink] transition-colors cursor-pointer">
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 4L6 10L12 16"/></svg>
+              </button>
+              <div class="flex gap-2">
+                {sec.slides.map((_: any, hi: number) => (
+                  <button class={`hdot w-8 h-1.5 rounded-full transition-all cursor-pointer ${hi === 0 ? 'bg-[--color-ink]' : 'bg-[--color-border]'}`} data-hi={hi} />
+                ))}
+              </div>
+              <button class="harrow-right p-2 text-[--color-muted] hover:text-[--color-ink] transition-colors cursor-pointer">
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 4L14 10L8 16"/></svg>
+              </button>
             </div>
           )}
         </section>
       ))}
     </main>
-
-    <div class="fixed bottom-8 left-1/2 -translate-x-1/2 z-40 flex items-center gap-6">
-      <div class="flex gap-1">
-        <button id="sec-left" class="p-3 text-[--color-muted] hover:text-[--color-ink] transition-colors cursor-pointer"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 4L6 10L12 16"/></svg></button>
-        <button id="sec-right" class="p-3 text-[--color-muted] hover:text-[--color-ink] transition-colors cursor-pointer"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 4L14 10L8 16"/></svg></button>
-      </div>
-      <div class="w-px h-5 bg-[--color-border]"></div>
-      <div class="flex gap-1">
-        <button id="sec-up" class="p-3 text-[--color-muted] hover:text-[--color-ink] transition-colors cursor-pointer"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12L10 6L16 12"/></svg></button>
-        <button id="sec-down" class="p-3 text-[--color-muted] hover:text-[--color-ink] transition-colors cursor-pointer"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 8L10 14L16 8"/></svg></button>
-      </div>
-    </div>
     </div>
   ) : (
     <div>
@@ -184,38 +190,67 @@ const isSections = layout === 'sections' && sections;
       var secCounter = document.getElementById('sec-counter');
       vsections.forEach(function() { curH.push(0); });
 
+      function updateDots() {
+        secDots.forEach(function(d, i) {
+          var circle = d.querySelector('span');
+          if (i === curSec) { circle.style.background = 'var(--color-ink)'; circle.style.transform = 'scale(1.25)'; }
+          else { circle.style.background = 'transparent'; circle.style.transform = 'scale(1)'; }
+        });
+        secCounter.textContent = (curSec + 1) + '/' + vsections.length;
+      }
+
       function showSection(si) {
         vsections[curSec].style.display = 'none'; curSec = si; vsections[curSec].style.display = '';
-        secDots.forEach(function(d, i) { d.style.background = i === curSec ? 'var(--color-ink)' : 'transparent'; });
-        secCounter.textContent = (curSec + 1) + '/' + vsections.length;
+        updateDots();
         showHSlide(curSec, curH[curSec]);
       }
+
       function showHSlide(si, hi) {
         var wrap = document.querySelector('.hslides-wrap[data-section="' + si + '"]');
         var hs = wrap.querySelectorAll('.hslide');
-        var dots = document.querySelector('.hdots[data-section="' + si + '"]');
-        hs.forEach(function(s, i) { if (i === hi) { s.classList.remove('hidden'); var inner = s.querySelector('.slide-enter'); if (inner) { inner.style.animation = 'none'; inner.offsetHeight; inner.style.animation = ''; } } else { s.classList.add('hidden'); } });
-        if (dots) { dots.querySelectorAll('.hdot').forEach(function(d, i) { d.style.background = i === hi ? 'var(--color-ink)' : 'var(--color-border)'; }); }
+        var dotsWrap = document.querySelector('.hdots[data-section="' + si + '"]');
+        hs.forEach(function(s, i) {
+          if (i === hi) { s.classList.remove('hidden'); var inner = s.querySelector('.slide-enter'); if (inner) { inner.style.animation = 'none'; inner.offsetHeight; inner.style.animation = ''; } }
+          else { s.classList.add('hidden'); }
+        });
+        if (dotsWrap) {
+          dotsWrap.querySelectorAll('.hdot').forEach(function(d, i) {
+            d.style.background = i === hi ? 'var(--color-ink)' : 'var(--color-border)';
+          });
+        }
         curH[si] = hi;
       }
+
       function goUp() { if (curSec > 0) showSection(curSec - 1); }
       function goDown() { if (curSec < vsections.length - 1) showSection(curSec + 1); }
       function goLeft() { if (curH[curSec] > 0) showHSlide(curSec, curH[curSec] - 1); }
       function goRight() { var wrap = document.querySelector('.hslides-wrap[data-section="' + curSec + '"]'); var t = wrap.querySelectorAll('.hslide').length; if (curH[curSec] < t - 1) showHSlide(curSec, curH[curSec] + 1); }
 
-      document.getElementById('sec-up').addEventListener('click', goUp);
-      document.getElementById('sec-down').addEventListener('click', goDown);
-      document.getElementById('sec-left').addEventListener('click', goLeft);
-      document.getElementById('sec-right').addEventListener('click', goRight);
+      // Section dot clicks
       secDots.forEach(function(d) { d.addEventListener('click', function() { showSection(Number(d.dataset.sec)); }); });
+      // Horizontal dot clicks
       document.querySelectorAll('.hdot').forEach(function(d) { d.addEventListener('click', function() { showHSlide(curSec, Number(d.dataset.hi)); }); });
+      // Horizontal arrow clicks
+      document.querySelectorAll('.harrow-left').forEach(function(b) { b.addEventListener('click', goLeft); });
+      document.querySelectorAll('.harrow-right').forEach(function(b) { b.addEventListener('click', goRight); });
+
+      // Keyboard
       document.addEventListener('keydown', function(e) {
-        if (e.key === 'ArrowUp') { e.preventDefault(); goUp(); } if (e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); goDown(); }
-        if (e.key === 'ArrowLeft') { e.preventDefault(); goLeft(); } if (e.key === 'ArrowRight') { e.preventDefault(); goRight(); }
+        if (e.key === 'ArrowUp') { e.preventDefault(); goUp(); }
+        if (e.key === 'ArrowDown') { e.preventDefault(); goDown(); }
+        if (e.key === 'ArrowLeft') { e.preventDefault(); goLeft(); }
+        if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); goRight(); }
       });
+
+      // Touch
       var tx = 0, ty = 0;
       document.addEventListener('touchstart', function(e) { tx = e.touches[0].clientX; ty = e.touches[0].clientY; });
-      document.addEventListener('touchend', function(e) { var dx = tx - e.changedTouches[0].clientX, dy = ty - e.changedTouches[0].clientY; if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) { dx > 0 ? goRight() : goLeft(); } else if (Math.abs(dy) > 50) { dy > 0 ? goDown() : goUp(); } });
+      document.addEventListener('touchend', function(e) {
+        var dx = tx - e.changedTouches[0].clientX, dy = ty - e.changedTouches[0].clientY;
+        if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) { dx > 0 ? goRight() : goLeft(); }
+        else if (Math.abs(dy) > 50) { dy > 0 ? goDown() : goUp(); }
+      });
+
     } else {
       var current = 0, slides2 = document.querySelectorAll('.slide'), total = slides2.length;
       var counter = document.getElementById('current-slide'), progress = document.getElementById('progress');
