@@ -45,15 +45,11 @@
           ]
         },
         {
-          "type": "text",
+          "type": "split",
+          "src": "https://assets.cdn.filesafe.space/3v8O3h7VXqe6LIFzrg2O/media/69cd2f2287c93b0a82729a3e.png",
+          "alt": "Ficha de Rodrigo",
           "heading": "Su gran miedo",
           "bodyHtml": "Que la cadena donde trabaja pierda su prestigio porque un proveedor de nivel básico cometió un error infantil que dañó instalaciones o pausó operaciones.<br/><br/>Teme a un escándalo que afecte la imagen de una marca de lujo."
-        },
-        {
-          "type": "image",
-          "src": "https://assets.cdn.filesafe.space/3v8O3h7VXqe6LIFzrg2O/media/69cd2f2287c93b0a82729a3e.png",
-          "alt": "Perfil completo de Rodrigo",
-          "caption": "Ficha de Rodrigo — Buyer Persona de SERCLIN"
         }
       ]
     },
