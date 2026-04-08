@@ -12,7 +12,7 @@
           "type": "title",
           "overline": "ioon × SERCLIN",
           "heading": "Estudio de Mercado",
-          "subheading": "El Mercado del Facility Management en México"
+          "subheadingHtml": "El Mercado del <b><i>Facility Management</i></b> en México"
         }
       ]
     },
@@ -27,7 +27,7 @@
         {
           "type": "text",
           "heading": "Resultado",
-          "bodyHtml": "Lo que arroja este estudio es que la estrategia es no competir por limpiar mejor y al mejor precio, <b>Serclin</b> debe entrar al mercado de <b>proteger el prestigio</b>. En esta presentación analizaremos lo que pensamos que las grandes marcas departamentales están buscando realmente cuando contratan este servicio."
+          "bodyHtml": "Lo que arroja este estudio es que la estrategia es no competir por limpiar mejor y más barato, <b>Serclin</b> debe entrar al mercado de <b>proteger el prestigio</b>. En esta presentación analizaremos lo que pensamos que las grandes marcas departamentales están buscando realmente cuando contratan el servicio de limpieza."
         }
       ]
     },
@@ -79,9 +79,8 @@
               "label": "Institucionales",
               "heading": "Institucionales",
               "bodyHtml": "<a href='https://www.eulen.com/mx/' target='_blank' class='font-bold hover:underline'>Grupo EULEN</a> — Centrados en rigor y certificaciones. Especializados en industria. Protocolarios pero fríos.",
-              "imgLayout": "2x",
+              "imgLayout": "a",
               "images": [
-                "https://s.wordpress.com/mshots/v1/https://www.eulen.com/mx/?w=800",
                 "https://s.wordpress.com/mshots/v1/https://www.eulen.com/mx/?w=800"
               ]
             },
@@ -113,6 +112,10 @@
           "bullets": [
             "Competir vendiendo manos y \"simplemente\" higiene es entrar en una guerra de precios",
             "Las marcas de retail de lujo necesitan Escenografía: la tienda es el teatro, mantener la magia sin romper el encanto"
+          ],
+          "bulletsHtml": [
+            "Competir vendiendo manos y \"simplemente\" higiene es entrar en una guerra de precios",
+            "Las marcas de retail de lujo necesitan Escenografía: la tienda es el teatro, <b>mantener la magia sin romper el encanto</b>"
           ]
         }
       ]
@@ -128,17 +131,17 @@
             {
               "label": "Rigor",
               "heading": "Rigor técnico",
-              "body": "Especialización tecnológica, normativa. La exactitud de un gigante europeo."
+              "body": "Especializarse tecnológicamente y cumplir cabalmente con la normativa. Igualar la exactitud de un gigante europeo. Pero también..."
             },
             {
               "label": "Cultura",
               "heading": "Cultura auténtica",
-              "body": "Cercanía humana profunda. La calidez y resiliencia de las raíces oaxaqueñas."
+              "body": "... agregar cercanía humana profunda. La calidez y resiliencia de las raíces oaxaqueñas."
             },
             {
               "label": "SERCLIN",
-              "heading": "SERCLIN: Lujo Silencioso",
-              "bodyHtml": "<b>Proveer exactitud y calidez al mismo tiempo</b>. Ese es el espacio que nadie ocupa — y que SERCLIN puede definir."
+              "heading": "Serclin: Lujo silencioso",
+              "bodyHtml": "<b>Proveer exactitud y calidez al mismo tiempo</b>. Ese es el espacio que nadie ocupa — y que <b>Serclin</b> puede definir."
             }
           ]
         }

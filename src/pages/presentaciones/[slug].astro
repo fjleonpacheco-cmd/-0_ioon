@@ -93,7 +93,8 @@ function imgSrc(s: string) {
                         {slide.headingHtml && <h3 class="text-2xl md:text-3xl font-light mb-6" set:html={slide.headingHtml} />}
                         {slide.body && <p class="text-base md:text-lg text-[--color-muted] leading-relaxed max-w-2xl">{slide.body}</p>}
                         {slide.bodyHtml && <p class="text-base md:text-lg text-[--color-muted] leading-relaxed max-w-2xl" set:html={slide.bodyHtml} />}
-                        {slide.bullets && (<ul class="mt-6 space-y-3 list-disc pl-5 marker:text-[--color-ink]">{slide.bullets.map((b: string) => (<li class="text-base text-[--color-muted] pl-1">{b}</li>))}</ul>)}
+                        {slide.bullets && !slide.bulletsHtml && (<ul class="mt-6 space-y-3 list-disc pl-5 marker:text-[--color-ink]">{slide.bullets.map((b: string) => (<li class="text-base text-[--color-muted] pl-1">{b}</li>))}</ul>)}
+                        {slide.bulletsHtml && (<ul class="mt-6 space-y-3 list-disc pl-5 marker:text-[--color-ink]">{slide.bulletsHtml.map((b: string) => (<li class="text-base text-[--color-muted] pl-1" set:html={b} />))}</ul>)}
                         {slide.imgLayout && slide.images && (
                           <div class={`mt-8 ${slide.imgLayout === '2x' ? 'grid grid-cols-2 gap-4' : slide.imgLayout === '4p' ? 'grid grid-cols-2 md:grid-cols-4 gap-4' : ''}`}>
                             {slide.images.map((img: string) => (
