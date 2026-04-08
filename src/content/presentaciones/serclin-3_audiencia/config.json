@@ -1,0 +1,104 @@
+{
+  "title": "Audiencia",
+  "client": "SERCLIN",
+  "date": "2026-04-06",
+  "password": "",
+  "layout": "sections",
+  "sections": [
+    {
+      "title": "Portada",
+      "slides": [
+        {
+          "type": "title",
+          "overline": "ioon × SERCLIN",
+          "heading": "Análisis de la Audiencia",
+          "subheadingHtml": "El cliente de SERCLIN<br/><span style='font-style:italic;font-size:0.7em'>Entendiendo a quién le vendemos realmente la \"Hospitalidad Silenciosa\".</span>"
+        }
+      ]
+    },
+    {
+      "title": "¿Qué es el Buyer persona?",
+      "slides": [
+        {
+          "type": "text",
+          "heading": "¿Qué es y para qué sirve esta herramienta?",
+          "bodyHtml": "<h4 style='font-size:1.1em;font-weight:300;margin-bottom:10px'>Es nuestra brújula de comunicación</h4><p>Un \"Buyer Persona\" no es una ocurrencia. Es una representación humana y psicológica de nuestro cliente ideal.</p><p style='margin-top:10px'>Nos sirve para dejar de comunicarle \"características de limpieza\" a una pared, y empezar a hablarle a los miedos, presiones y deseos profundos de una persona real con poder de decisión.</p>"
+        }
+      ]
+    },
+    {
+      "title": "Rodrigo",
+      "slides": [
+        {
+          "type": "text",
+          "heading": "Presentando a Rodrigo",
+          "imgLayout": "a",
+          "images": [
+            "https://assets.cdn.filesafe.space/3v8O3h7VXqe6LIFzrg2O/media/69cd27f045ec94f848ef65f1.png"
+          ]
+        },
+        {
+          "type": "text",
+          "heading": "El perfil de Rodrigo",
+          "bulletsHtml": [
+            "Hombre, 38 a 55 años",
+            "<b>Rol:</b> Facility Manager, Director de Operaciones o Administrador corporativo",
+            "Vive con alto estrés, presionado por inquilinos exigentes y por dueños"
+          ]
+        },
+        {
+          "type": "text",
+          "heading": "Su gran miedo",
+          "bodyHtml": "Que la cadena donde trabaja pierda su prestigio porque un proveedor de nivel básico cometió un error infantil que dañó instalaciones o pausó operaciones.<br/><br/>Teme a un escándalo que afecte la imagen de una marca de lujo."
+        }
+      ]
+    },
+    {
+      "title": "Psicología de compra",
+      "slides": [
+        {
+          "type": "text",
+          "heading": "La psicología de compra",
+          "body": "Por qué Rodrigo contrataría a Serclin.",
+          "l3": [
+            {
+              "label": "Fricción",
+              "heading": "Fricción actual",
+              "bodyHtml": "\"Tengo que ser la niñera de los gerentes de las tiendas. Los proveedores prometen lo mismo, pero en la práctica <b>rotan personal constantemente</b>\"."
+            },
+            {
+              "label": "Necesidad",
+              "heading": "Necesidad real",
+              "bodyHtml": "\"Necesito un <b>aliado invisible</b>. Alguien que resuelva antes de que yo me entere. Necesito garantizar paz mental\"."
+            },
+            {
+              "label": "Detonante",
+              "heading": "El detonante",
+              "body": "Rodrigo buscará a Serclin tras experimentar una crisis operativa con algún proveedor actual o al inaugurar un espacio insignia."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El mensaje",
+      "slides": [
+        {
+          "type": "quote",
+          "textHtml": "Rodrigo, sabemos que tu activo más importante es tu reputación. No te ofrecemos cuadrillas, <b>somos los guardianes del valor de tus instalaciones</b>.",
+          "attribution": "El mensaje hacia Rodrigo"
+        }
+      ]
+    },
+    {
+      "title": "Cierre",
+      "slides": [
+        {
+          "type": "title",
+          "heading": "SERCLIN",
+          "subheadingHtml": "<i>Hospitalidad Silenciosa para Rodrigo.</i>"
+        }
+      ]
+    }
+  ]
+}

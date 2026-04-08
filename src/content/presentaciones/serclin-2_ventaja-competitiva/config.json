@@ -1,0 +1,97 @@
+{
+  "title": "Ventaja Competitiva",
+  "client": "SERCLIN",
+  "date": "2026-04-06",
+  "password": "",
+  "layout": "sections",
+  "sections": [
+    {
+      "title": "Portada",
+      "slides": [
+        {
+          "type": "title",
+          "overline": "ioon × SERCLIN",
+          "heading": "Ventaja Competitiva",
+          "subheadingHtml": "El giro estratégico de Serclin<br/><span style='font-style:italic;font-size:0.7em'>Dejando atrás el servicio, abrazando el prestigio.</span>"
+        }
+      ]
+    },
+    {
+      "title": "Nuestra gran ventaja",
+      "slides": [
+        {
+          "type": "text",
+          "heading": "El cambio de paradigma",
+          "l3": [
+            {
+              "label": "Antes",
+              "heading": "Vender limpieza",
+              "body": "Gasto mensual. Enfoque en cloro, guantes amarillos y aspiradoras. Guerra de precios."
+            },
+            {
+              "label": "Ahora",
+              "heading": "Vender prestigio",
+              "bodyHtml": "Continuidad operativa, Estética y preservación de valor. <b>Eres el teatro, nosotros la escenografía invisible</b>."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El ADN de la marca",
+      "slides": [
+        {
+          "type": "text",
+          "headingHtml": "El <i>Brand Key</i>",
+          "bulletsHtml": [
+            "<b>Rol:</b> Ya no somos cuadrillas, somos los guardianes de la experiencia que tu marca ofrece.",
+            "<b>Diferenciador (USP):</b> Hospitalidad Técnica. La unión entre la precisión de la ingeniería y la calidez del servicio premium.",
+            "<b>Promesa (Claim):</b> <i>\"La quietud de lo impecable\".</i>"
+          ]
+        },
+        {
+          "type": "text",
+          "heading": "El reconocimiento de Oaxaca",
+          "bodyHtml": "No esconder el origen provincial corporativizándolo, sino convertirlo en nuestra <b>Ventaja competitiva</b>.",
+          "bulletsHtml": [
+            "<b>Resiliencia</b> — Desde 1980",
+            "<b>Comunidad</b> — Responsabilidad Social Real",
+            "<b>Rigor</b> — Sistematizado con IoT y REPSE"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Dirección visual",
+      "slides": [
+        {
+          "type": "text",
+          "heading": "Dirección Visual y Operativa",
+          "bodyHtml": "Abrazando la \"Hospitalidad silenciosa\" y la \"Estética de la profesionalización\".",
+          "l3": [
+            {
+              "label": "Paleta",
+              "heading": "Paleta cromática sobria",
+              "body": "Una combinación de colores que remitan a tecnología, legalidad e ingeniería; y también a contacto humano y raíz."
+            },
+            {
+              "label": "Investidura",
+              "heading": "\"La Investidura\"",
+              "body": "Uniformes tipo sastrería técnica, más cercanos al recepcionista de un hotel. Transformar psicológicamente al empleado de \"limpiador\" a \"custodio de una experiencia\"."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Cierre",
+      "slides": [
+        {
+          "type": "title",
+          "heading": "SERCLIN",
+          "subheadingHtml": "<i>La quietud de lo impecable.</i>"
+        }
+      ]
+    }
+  ]
+}
