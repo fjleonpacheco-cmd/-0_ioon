@@ -3,5 +3,7 @@
   "slug": "serclin",
   "headline": "Desarrollo de Marca para SERCLIN",
   "tagline": "Dejando atrás el servicio, abrazando el prestigio.",
-  "presentations": []
+  "presentations": [
+    { "slug": "serclin-1_estudio-de-mercado", "title": "Estudio de Mercado", "date": "2026-04-06" }
+  ]
 }
