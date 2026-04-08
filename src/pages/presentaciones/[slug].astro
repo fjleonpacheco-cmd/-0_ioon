@@ -96,9 +96,9 @@ function imgSrc(s: string) {
                         {slide.bullets && !slide.bulletsHtml && (<ul class="mt-6 space-y-3 list-disc pl-5 marker:text-[--color-ink]">{slide.bullets.map((b: string) => (<li class="text-base text-[--color-muted] pl-1">{b}</li>))}</ul>)}
                         {slide.bulletsHtml && (<ul class="mt-6 space-y-3 list-disc pl-5 marker:text-[--color-ink]">{slide.bulletsHtml.map((b: string) => (<li class="text-base text-[--color-muted] pl-1" set:html={b} />))}</ul>)}
                         {slide.imgLayout && slide.images && (
-                          <div class={`mt-8 ${slide.imgLayout === '2x' ? 'grid grid-cols-2 gap-4' : slide.imgLayout === '4p' ? 'grid grid-cols-2 md:grid-cols-4 gap-4' : ''}`}>
+                          <div class={`mt-8 ${slide.imgLayout === '2x' ? 'grid grid-cols-2 gap-4' : slide.imgLayout === '1of2' ? 'grid grid-cols-2 gap-4' : slide.imgLayout === '4p' ? 'grid grid-cols-2 md:grid-cols-4 gap-4' : ''}`}>
                             {slide.images.map((img: string) => (
-                              <img src={imgSrc(img)} alt="" class={`w-full object-cover rounded-sm ${slide.imgLayout === 'a' ? 'aspect-[4/3]' : slide.imgLayout === '2x' ? 'aspect-[4/3]' : slide.imgLayout === '4p' ? 'aspect-[3/4]' : 'aspect-video'}`} loading="lazy" />
+                              <img src={imgSrc(img)} alt="" class={`w-full object-cover rounded-sm ${slide.imgLayout === 'a' ? 'aspect-[4/3]' : slide.imgLayout === '2x' ? 'aspect-[4/3]' : slide.imgLayout === '1of2' ? 'aspect-[4/3]' : slide.imgLayout === '4p' ? 'aspect-[3/4]' : 'aspect-video'}`} loading="lazy" />
                             ))}
                           </div>
                         )}
@@ -127,9 +127,9 @@ function imgSrc(s: string) {
                             {tab.bodyHtml && <p class="text-base text-[--color-muted] leading-relaxed max-w-2xl" set:html={tab.bodyHtml} />}
                             {tab.bullets && (<ul class="mt-4 space-y-2 list-disc pl-5 marker:text-[--color-ink]">{tab.bullets.map((b: string) => (<li class="text-sm text-[--color-muted] pl-1">{b}</li>))}</ul>)}
                             {tab.imgLayout && tab.images && (
-                              <div class={`mt-6 ${tab.imgLayout === '2x' ? 'grid grid-cols-2 gap-4' : tab.imgLayout === '4p' ? 'grid grid-cols-2 md:grid-cols-4 gap-4' : ''}`}>
+                              <div class={`mt-6 ${tab.imgLayout === '2x' ? 'grid grid-cols-2 gap-4' : tab.imgLayout === '1of2' ? 'grid grid-cols-2 gap-4' : tab.imgLayout === '4p' ? 'grid grid-cols-2 md:grid-cols-4 gap-4' : ''}`}>
                                 {tab.images.map((img: string) => (
-                                  <img src={imgSrc(img)} alt="" class={`w-full object-cover rounded-sm ${tab.imgLayout === 'a' ? 'aspect-[4/3]' : tab.imgLayout === '2x' ? 'aspect-[4/3]' : tab.imgLayout === '4p' ? 'aspect-[3/4]' : 'aspect-video'}`} loading="lazy" />
+                                  <img src={imgSrc(img)} alt="" class={`w-full object-cover rounded-sm ${tab.imgLayout === 'a' ? 'aspect-[4/3]' : tab.imgLayout === '2x' ? 'aspect-[4/3]' : tab.imgLayout === '1of2' ? 'aspect-[4/3]' : tab.imgLayout === '4p' ? 'aspect-[3/4]' : 'aspect-video'}`} loading="lazy" />
                                 ))}
                               </div>
                             )}
