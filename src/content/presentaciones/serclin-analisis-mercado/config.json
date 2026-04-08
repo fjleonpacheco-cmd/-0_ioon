@@ -1,0 +1,157 @@
+{
+  "title": "El Paradigma Invisible",
+  "client": "SERCLIN",
+  "date": "2026-04-06",
+  "password": "",
+  "layout": "sections",
+  "sections": [
+    {
+      "title": "Portada",
+      "slides": [
+        {
+          "type": "title",
+          "overline": "ioon × SERCLIN",
+          "heading": "El Paradigma Invisible",
+          "subheading": "Diagnóstico del Mercado de Facility Management en México"
+        }
+      ]
+    },
+    {
+      "title": "Introducción",
+      "slides": [
+        {
+          "type": "quote",
+          "text": "De Cuadrillas de Higiene a la Estética de la Profesionalización.",
+          "attribution": "Dirección estratégica ioon"
+        },
+        {
+          "type": "text",
+          "heading": "Buenos días",
+          "body": "Hoy no hablaremos de limpiar. Hablaremos del mercado de proteger el prestigio y de lo que las grandes marcas departamentales están buscando realmente cuando contratan este servicio."
+        }
+      ]
+    },
+    {
+      "title": "El mercado tradicional",
+      "slides": [
+        {
+          "type": "text",
+          "heading": "¿Cómo funciona el mercado tradicional?",
+          "l3": [
+            {
+              "label": "Commodity",
+              "heading": "Commodity de costo",
+              "body": "La limpieza se vende como un mal necesario, un gasto a reducir, no como una herramienta de retención de clientes."
+            },
+            {
+              "label": "Hilos invisibles",
+              "heading": "El mito de los hilos invisibles",
+              "body": "Creen ser invisibles, pero cuando algo falla, el daño al prestigio de la marca que contrata es catastrófico."
+            },
+            {
+              "label": "El vacío",
+              "heading": "El vacío existencial",
+              "body": "Sobran empresas enormes, pero todas carecen de esencia, propósito y de una cara humana auténtica."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Cuadrante de competencia",
+      "slides": [
+        {
+          "type": "text",
+          "heading": "¿Quién domina los espacios premium?",
+          "body": "Tres categorías de competidores ocupan el mercado. Ninguno combina rigor técnico con calidez humana.",
+          "l3": [
+            {
+              "label": "Gigantes",
+              "heading": "Gigantes abstractos",
+              "body": "Sodexo, ISS Group — Enfocados en servicios corporativos, lejanos y rígidos. Mucho volumen, cero empatía real.",
+              "imgLayout": "2x",
+              "images": [
+                "https://s.wordpress.com/mshots/v1/https://mx.sodexo.com?w=800",
+                "https://s.wordpress.com/mshots/v1/https://www.issworld.com/es-mx?w=800"
+              ]
+            },
+            {
+              "label": "Institucionales",
+              "heading": "Institucionales",
+              "body": "Grupo EULEN — Centrados en rigor y certificaciones. Especializados en industria. Protocolarios pero fríos.",
+              "imgLayout": "a",
+              "images": [
+                "https://s.wordpress.com/mshots/v1/https://www.eulen.com/mx/?w=800"
+              ]
+            },
+            {
+              "label": "Lujo",
+              "heading": "Especialistas de lujo",
+              "body": "Stesso, Limpro — Excelente ejecución técnica, fallan en crear narrativa profunda. Proveedores transaccionales.",
+              "imgLayout": "2x",
+              "images": [
+                "https://s.wordpress.com/mshots/v1/https://stesso.com.mx/?w=800",
+                "https://s.wordpress.com/mshots/v1/https://limpro.com.mx/?w=800"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El gran error",
+      "slides": [
+        {
+          "type": "quote",
+          "text": "El mercado premium no compra limpieza. Compra Continuidad Operativa y Preservación de Valor.",
+          "attribution": "Insight estratégico"
+        },
+        {
+          "type": "text",
+          "heading": "Vender limpieza es el error",
+          "bullets": [
+            "Competir vendiendo manos e insumos de higiene es entrar en una guerra de precios",
+            "Las marcas de retail de lujo necesitan Escenografía: la tienda es el teatro, mantener la magia sin romper el encanto"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La oportunidad",
+      "slides": [
+        {
+          "type": "text",
+          "heading": "El hueco en el mercado",
+          "body": "Existe un espacio que ningún competidor ocupa: la intersección entre exactitud técnica y calidez humana.",
+          "l3": [
+            {
+              "label": "Rigor",
+              "heading": "Rigor técnico",
+              "body": "Especialización tecnológica, normativa. La exactitud de un gigante europeo."
+            },
+            {
+              "label": "Cultura",
+              "heading": "Cultura auténtica",
+              "body": "Cercanía humana profunda. La calidez y resiliencia de las raíces oaxaqueñas."
+            },
+            {
+              "label": "SERCLIN",
+              "heading": "SERCLIN: Lujo Silencioso",
+              "body": "Proveer exactitud y calidez al mismo tiempo. Ese es el espacio que nadie ocupa — y que SERCLIN puede definir."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Cierre",
+      "slides": [
+        {
+          "type": "title",
+          "heading": "SERCLIN",
+          "subheading": "El Lujo Silencioso: exactitud y calidez al mismo tiempo."
+        }
+      ]
+    }
+  ]
+}

@@ -20,6 +20,10 @@ const { config, slug } = Astro.props;
 const { title, client, date, password, slides, sections, layout } = config;
 const hasPassword = !!password;
 const isSections = layout === 'sections' && sections;
+
+function imgSrc(s: string) {
+  return s.startsWith('http') ? s : `/presentaciones/${slug}/${s}`;
+}
 ---
 <Base title={`${title} — ioon`} description={`Presentación para ${client || 'cliente'}`}>
 
@@ -41,7 +45,6 @@ const isSections = layout === 'sections' && sections;
 
   {isSections ? (
     <div>
-    <!-- Top bar -->
     <nav class="fixed top-0 left-0 w-full z-40 bg-[--color-paper]/90 backdrop-blur-sm border-b border-[--color-border]">
       <div class="flex items-center justify-between px-6 md:px-12 py-4">
         <a href="/" class="hover:opacity-70 transition-opacity"><img src="/logo.png" alt="ioon" class="h-6" /></a>
@@ -53,13 +56,9 @@ const isSections = layout === 'sections' && sections;
       </div>
     </nav>
 
-    <!-- Left: vertical section nav -->
     <div class="fixed right-3 md:right-auto md:left-6 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-1" id="sec-nav">
       {sections.map((sec: any, i: number) => (
-        <button
-          class={`sec-dot flex items-center gap-3 py-1.5 md:py-2 px-1 group cursor-pointer transition-all`}
-          data-sec={i}
-        >
+        <button class={`sec-dot flex items-center gap-3 py-1.5 md:py-2 px-1 group cursor-pointer transition-all`} data-sec={i}>
           <span class={`block w-1.5 h-1.5 md:w-2 md:h-2 rounded-full border border-[--color-ink] transition-all ${i === 0 ? 'bg-[--color-ink] scale-125' : 'bg-transparent'}`} />
           <span class="hidden md:block text-[10px] tracking-[0.15em] uppercase text-[--color-muted] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">{sec.title}</span>
         </button>
@@ -78,6 +77,7 @@ const isSections = layout === 'sections' && sections;
               {sec.slides.map((slide: any, hi: number) => (
                 <div class={`hslide w-full px-12 md:px-20 py-8 ${hi > 0 ? 'hidden' : ''}`} data-hindex={hi}>
                   <div class="max-w-4xl mx-auto slide-enter">
+
                     {slide.type === 'title' && (
                       <div class="text-center py-12">
                         {slide.overline && <p class="text-xs tracking-[0.3em] uppercase text-[--color-muted] mb-6">{slide.overline}</p>}
@@ -85,41 +85,82 @@ const isSections = layout === 'sections' && sections;
                         {slide.subheading && <p class="mt-6 text-lg text-[--color-muted] font-light">{slide.subheading}</p>}
                       </div>
                     )}
-                    {slide.type === 'text' && (
+
+                    {slide.type === 'text' && !slide.l3 && (
                       <div>
                         {slide.heading && <h3 class="text-2xl md:text-3xl font-light mb-6">{slide.heading}</h3>}
                         {slide.body && <p class="text-base md:text-lg text-[--color-muted] leading-relaxed max-w-2xl">{slide.body}</p>}
                         {slide.bullets && (<ul class="mt-6 space-y-3 list-disc pl-5 marker:text-[--color-ink]">{slide.bullets.map((b: string) => (<li class="text-base text-[--color-muted] pl-1">{b}</li>))}</ul>)}
+                        {slide.imgLayout && slide.images && (
+                          <div class={`mt-8 ${slide.imgLayout === '2x' ? 'grid grid-cols-2 gap-4' : slide.imgLayout === '4p' ? 'grid grid-cols-2 md:grid-cols-4 gap-4' : ''}`}>
+                            {slide.images.map((img: string) => (
+                              <img src={imgSrc(img)} alt="" class={`w-full object-cover rounded-sm ${slide.imgLayout === 'a' ? 'aspect-[4/3]' : slide.imgLayout === '2x' ? 'aspect-[4/3]' : slide.imgLayout === '4p' ? 'aspect-[3/4]' : 'aspect-video'}`} />
+                            ))}
+                          </div>
+                        )}
                       </div>
                     )}
+
+                    {slide.type === 'text' && slide.l3 && (
+                      <div>
+                        {slide.heading && <h3 class="text-2xl md:text-3xl font-light mb-4">{slide.heading}</h3>}
+                        {slide.body && <p class="text-base md:text-lg text-[--color-muted] leading-relaxed max-w-2xl mb-2">{slide.body}</p>}
+                        <div class="flex gap-0 border-b border-[--color-border] mt-4 mb-4 l3-tabs" data-l3={`${si}-${hi}`}>
+                          {slide.l3.map((tab: any, ti: number) => (
+                            <button
+                              class={`l3-btn px-4 py-2 text-xs tracking-[0.08em] uppercase border-b-2 transition-all cursor-pointer ${ti === 0 ? 'text-[--color-ink] border-[--color-ink]' : 'text-[--color-muted] border-transparent hover:text-[--color-ink]'}`}
+                              data-l3={`${si}-${hi}`}
+                              data-ti={ti}
+                            >{tab.label}</button>
+                          ))}
+                        </div>
+                        {slide.l3.map((tab: any, ti: number) => (
+                          <div class={`l3-content ${ti === 0 ? '' : 'hidden'}`} data-l3c={`${si}-${hi}-${ti}`}>
+                            {tab.heading && <h4 class="text-xl md:text-2xl font-light mb-4">{tab.heading}</h4>}
+                            {tab.body && <p class="text-base text-[--color-muted] leading-relaxed max-w-2xl">{tab.body}</p>}
+                            {tab.bullets && (<ul class="mt-4 space-y-2 list-disc pl-5 marker:text-[--color-ink]">{tab.bullets.map((b: string) => (<li class="text-sm text-[--color-muted] pl-1">{b}</li>))}</ul>)}
+                            {tab.imgLayout && tab.images && (
+                              <div class={`mt-6 ${tab.imgLayout === '2x' ? 'grid grid-cols-2 gap-4' : tab.imgLayout === '4p' ? 'grid grid-cols-2 md:grid-cols-4 gap-4' : ''}`}>
+                                {tab.images.map((img: string) => (
+                                  <img src={imgSrc(img)} alt="" class={`w-full object-cover rounded-sm ${tab.imgLayout === 'a' ? 'aspect-[4/3]' : tab.imgLayout === '2x' ? 'aspect-[4/3]' : tab.imgLayout === '4p' ? 'aspect-[3/4]' : 'aspect-video'}`} loading="lazy" />
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
                     {slide.type === 'image' && (
                       <div>
-                        <img src={slide.src.startsWith('http') ? slide.src : `/presentaciones/${slug}/${slide.src}`} alt={slide.alt || ''} class="w-full max-h-[60vh] object-contain" />
+                        <img src={imgSrc(slide.src)} alt={slide.alt || ''} class="w-full max-h-[60vh] object-contain" />
                         {slide.caption && <p class="mt-4 text-xs text-[--color-muted] text-center">{slide.caption}</p>}
                       </div>
                     )}
+
                     {slide.type === 'split' && (
                       <div class="grid md:grid-cols-2 gap-12 items-center">
-                        <img src={slide.src.startsWith('http') ? slide.src : `/presentaciones/${slug}/${slide.src}`} alt={slide.alt || ''} class="w-full object-cover max-h-[55vh]" />
+                        <img src={imgSrc(slide.src)} alt={slide.alt || ''} class="w-full object-cover max-h-[55vh]" />
                         <div>
                           {slide.heading && <h3 class="text-2xl font-light mb-4">{slide.heading}</h3>}
                           {slide.body && <p class="text-base text-[--color-muted] leading-relaxed">{slide.body}</p>}
                         </div>
                       </div>
                     )}
+
                     {slide.type === 'quote' && (
                       <div class="text-center max-w-2xl mx-auto py-12">
                         <blockquote class="text-2xl md:text-3xl font-light leading-relaxed italic">&ldquo;{slide.text}&rdquo;</blockquote>
                         {slide.attribution && <p class="mt-6 text-sm text-[--color-muted]">— {slide.attribution}</p>}
                       </div>
                     )}
+
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          <!-- Bottom nav: vertical arrows + horizontal dots -->
           <div class="flex items-center justify-center gap-4 mb-16">
             <div class="flex flex-col gap-0">
               <button class="varrow-up p-1.5 text-[--color-muted] hover:text-[--color-ink] transition-colors cursor-pointer">
@@ -169,8 +210,8 @@ const isSections = layout === 'sections' && sections;
           <div class="max-w-4xl w-full slide-enter">
             {slide.type === 'title' && (<div class="text-center">{slide.overline && <p class="text-xs tracking-[0.3em] uppercase text-[--color-muted] mb-6">{slide.overline}</p>}<h1 class="text-[clamp(2rem,5vw,5rem)] font-light leading-[0.95] tracking-tight">{slide.heading}</h1>{slide.subheading && <p class="mt-6 text-lg text-[--color-muted] font-light">{slide.subheading}</p>}</div>)}
             {slide.type === 'text' && (<div>{slide.heading && <h2 class="text-3xl md:text-4xl font-light mb-8">{slide.heading}</h2>}{slide.body && <p class="text-base md:text-lg text-[--color-muted] leading-relaxed max-w-2xl">{slide.body}</p>}{slide.bullets && (<ul class="mt-6 space-y-3 list-disc pl-5 marker:text-[--color-ink]">{slide.bullets.map((b: string) => (<li class="text-base text-[--color-muted] pl-1">{b}</li>))}</ul>)}</div>)}
-            {slide.type === 'image' && (<div><img src={slide.src.startsWith('http') ? slide.src : `/presentaciones/${slug}/${slide.src}`} alt={slide.alt || ''} class="w-full max-h-[70vh] object-contain" />{slide.caption && <p class="mt-4 text-xs text-[--color-muted] text-center">{slide.caption}</p>}</div>)}
-            {slide.type === 'split' && (<div class="grid md:grid-cols-2 gap-12 items-center"><img src={slide.src.startsWith('http') ? slide.src : `/presentaciones/${slug}/${slide.src}`} alt={slide.alt || ''} class="w-full object-cover" /><div>{slide.heading && <h2 class="text-2xl font-light mb-4">{slide.heading}</h2>}{slide.body && <p class="text-base text-[--color-muted] leading-relaxed">{slide.body}</p>}</div></div>)}
+            {slide.type === 'image' && (<div><img src={imgSrc(slide.src)} alt={slide.alt || ''} class="w-full max-h-[70vh] object-contain" />{slide.caption && <p class="mt-4 text-xs text-[--color-muted] text-center">{slide.caption}</p>}</div>)}
+            {slide.type === 'split' && (<div class="grid md:grid-cols-2 gap-12 items-center"><img src={imgSrc(slide.src)} alt={slide.alt || ''} class="w-full object-cover" /><div>{slide.heading && <h2 class="text-2xl font-light mb-4">{slide.heading}</h2>}{slide.body && <p class="text-base text-[--color-muted] leading-relaxed">{slide.body}</p>}</div></div>)}
             {slide.type === 'quote' && (<div class="text-center max-w-2xl mx-auto"><blockquote class="text-2xl md:text-3xl font-light leading-relaxed italic">&ldquo;{slide.text}&rdquo;</blockquote>{slide.attribution && <p class="mt-6 text-sm text-[--color-muted]">— {slide.attribution}</p>}</div>)}
           </div>
         </section>
@@ -185,7 +226,7 @@ const isSections = layout === 'sections' && sections;
 
   </div>
 
-  <script define:vars={{ hasPassword, password: password || '', isSections }}>
+  <script define:vars={{ hasPassword, password: password || '', isSections, configJSON: JSON.stringify(config) }}>
     if (hasPassword) {
       var gate = document.getElementById('pw-gate'), deck = document.getElementById('deck');
       var input = document.getElementById('pw-input'), btn = document.getElementById('pw-btn'), err = document.getElementById('pw-error');
@@ -195,10 +236,12 @@ const isSections = layout === 'sections' && sections;
     }
 
     if (isSections) {
+      var cfg = JSON.parse(configJSON);
       var curSec = 0, curH = [];
       var vsections = document.querySelectorAll('.vsection');
       var secDots = document.querySelectorAll('.sec-dot');
       var secCounter = document.getElementById('sec-counter');
+      var curL3 = {};
       vsections.forEach(function() { curH.push(0); });
 
       function updateDots() {
@@ -212,8 +255,7 @@ const isSections = layout === 'sections' && sections;
 
       function showSection(si) {
         vsections[curSec].style.display = 'none'; curSec = si; vsections[curSec].style.display = '';
-        updateDots();
-        showHSlide(curSec, curH[curSec]);
+        updateDots(); showHSlide(curSec, curH[curSec]);
       }
 
       function showHSlide(si, hi) {
@@ -224,31 +266,65 @@ const isSections = layout === 'sections' && sections;
           if (i === hi) { s.classList.remove('hidden'); var inner = s.querySelector('.slide-enter'); if (inner) { inner.style.animation = 'none'; inner.offsetHeight; inner.style.animation = ''; } }
           else { s.classList.add('hidden'); }
         });
-        if (dotsWrap) {
-          dotsWrap.querySelectorAll('.hdot').forEach(function(d, i) {
-            d.style.background = i === hi ? 'var(--color-ink)' : 'var(--color-border)';
-          });
-        }
+        if (dotsWrap) { dotsWrap.querySelectorAll('.hdot').forEach(function(d, i) { d.style.background = i === hi ? 'var(--color-ink)' : 'var(--color-border)'; }); }
         curH[si] = hi;
+      }
+
+      function switchL3(si, hi, ti) {
+        var key = si + '-' + hi;
+        curL3[key] = ti;
+        var btns = document.querySelectorAll('.l3-btn[data-l3="' + key + '"]');
+        btns.forEach(function(b, i) {
+          if (i === ti) { b.classList.add('text-[--color-ink]'); b.classList.remove('text-[--color-muted]'); b.style.borderBottomColor = 'var(--color-ink)'; }
+          else { b.classList.remove('text-[--color-ink]'); b.classList.add('text-[--color-muted]'); b.style.borderBottomColor = 'transparent'; }
+        });
+        var secs = cfg.sections;
+        var l3len = secs[si].slides[hi].l3 ? secs[si].slides[hi].l3.length : 0;
+        for (var i = 0; i < l3len; i++) {
+          var el = document.querySelector('[data-l3c="' + si + '-' + hi + '-' + i + '"]');
+          if (el) { if (i === ti) el.classList.remove('hidden'); else el.classList.add('hidden'); }
+        }
       }
 
       function goUp() { if (curSec > 0) showSection(curSec - 1); }
       function goDown() { if (curSec < vsections.length - 1) showSection(curSec + 1); }
-      function goLeft() { if (curH[curSec] > 0) showHSlide(curSec, curH[curSec] - 1); }
-      function goRight() { var wrap = document.querySelector('.hslides-wrap[data-section="' + curSec + '"]'); var t = wrap.querySelectorAll('.hslide').length; if (curH[curSec] < t - 1) showHSlide(curSec, curH[curSec] + 1); }
+      function goLeft() {
+        var secs = cfg.sections;
+        var sl = secs[curSec].slides[curH[curSec]];
+        if (sl && sl.l3) {
+          var key = curSec + '-' + curH[curSec];
+          var ci = curL3[key] || 0;
+          if (ci > 0) { switchL3(curSec, curH[curSec], ci - 1); return; }
+        }
+        if (curH[curSec] > 0) showHSlide(curSec, curH[curSec] - 1);
+      }
+      function goRight() {
+        var secs = cfg.sections;
+        var sl = secs[curSec].slides[curH[curSec]];
+        if (sl && sl.l3) {
+          var key = curSec + '-' + curH[curSec];
+          var ci = curL3[key] || 0;
+          if (ci < sl.l3.length - 1) { switchL3(curSec, curH[curSec], ci + 1); return; }
+        }
+        var wrap = document.querySelector('.hslides-wrap[data-section="' + curSec + '"]');
+        var t = wrap.querySelectorAll('.hslide').length;
+        if (curH[curSec] < t - 1) showHSlide(curSec, curH[curSec] + 1);
+      }
 
-      // Section dot clicks
       secDots.forEach(function(d) { d.addEventListener('click', function() { showSection(Number(d.dataset.sec)); }); });
-      // Horizontal dot clicks
       document.querySelectorAll('.hdot').forEach(function(d) { d.addEventListener('click', function() { showHSlide(curSec, Number(d.dataset.hi)); }); });
-      // Horizontal arrow clicks
       document.querySelectorAll('.harrow-left').forEach(function(b) { b.addEventListener('click', goLeft); });
       document.querySelectorAll('.harrow-right').forEach(function(b) { b.addEventListener('click', goRight); });
-      // Vertical arrow clicks
       document.querySelectorAll('.varrow-up').forEach(function(b) { b.addEventListener('click', goUp); });
       document.querySelectorAll('.varrow-down').forEach(function(b) { b.addEventListener('click', goDown); });
 
-      // Keyboard
+      document.querySelectorAll('.l3-btn').forEach(function(b) {
+        b.addEventListener('click', function() {
+          var parts = b.dataset.l3.split('-');
+          switchL3(Number(parts[0]), Number(parts[1]), Number(b.dataset.ti));
+        });
+      });
+
       document.addEventListener('keydown', function(e) {
         if (e.key === 'ArrowUp') { e.preventDefault(); goUp(); }
         if (e.key === 'ArrowDown') { e.preventDefault(); goDown(); }
@@ -256,7 +332,6 @@ const isSections = layout === 'sections' && sections;
         if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); goRight(); }
       });
 
-      // Touch
       var tx = 0, ty = 0;
       document.addEventListener('touchstart', function(e) { tx = e.touches[0].clientX; ty = e.touches[0].clientY; });
       document.addEventListener('touchend', function(e) {
