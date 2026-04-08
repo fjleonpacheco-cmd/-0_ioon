@@ -9,8 +9,7 @@ const deckCount = Object.keys(decks).length;
 <Base>
   <!-- Nav -->
   <nav class="fixed top-0 left-0 w-full z-50 bg-[--color-paper]/90 backdrop-blur-sm">
-    <div class="flex items-center justify-between px-6 md:px-12 py-5">
-      <a href="/"><img src="/logo.png" alt="ioon" class="h-7" /></a>
+    <div class="flex items-center justify-end px-6 md:px-12 py-5">
       <a href="#contacto" class="text-[--color-muted] text-xs tracking-[0.2em] uppercase hover:text-[--color-ink] transition-colors">Contacto</a>
     </div>
   </nav>
@@ -22,11 +21,9 @@ const deckCount = Object.keys(decks).length;
 
     <div class="stagger relative z-10">
       <img src="/logo.png" alt="ioon" class="w-[200px] mb-10" />
-      <p class="text-[--color-muted] text-xs tracking-[0.3em] uppercase mb-4">Estudio de innovación — Oaxaca, México</p>
+      <p class="text-[--color-muted] text-xs tracking-[0.3em] uppercase mb-4">Desde Oaxaca, México con cariño</p>
       <h1 class="text-[clamp(2rem,5vw,4.5rem)] font-light leading-[0.95] tracking-tight max-w-[30ch]">
-        Diseño limpio y con estrategia<br/>
-        <span class="text-[--color-muted]">+ Tecnología Open Source</span><br/>
-        <span class="text-[--color-muted]">+ Agentes de IA que trabajan por ti</span>
+        Diseño soberano para la gente
       </h1>
       <div class="mt-8 w-12 h-px bg-[--color-ink]"></div>
     </div>
@@ -123,11 +120,11 @@ const deckCount = Object.keys(decks).length;
       </div>
       <div class="md:col-span-5">
         <p class="text-xl md:text-2xl font-light leading-relaxed">
-          Combinamos la sensibilidad estética del diseño de autor con herramientas open source 
+          Combinamos la sensibilidad estética con herramientas open source 
           para crear sistemas visuales que son tan bellos como soberanos.
         </p>
         <p class="mt-6 text-sm text-[--color-muted] leading-relaxed max-w-prose">
-          Cada proyecto parte de una investigación profunda del contexto, el desarrollo de una estrategia y una dirección artística clara, ejecutada con tecnología limpia y respetando estrictamente que tus datos te pertenezcan.
+          Cada proyecto parte de una investigación profunda de su contexto, el desarrollo de una estrategia específica y una dirección artística clara, ejecutada con tecnología limpia y respetando estrictamente la privacidad de las personas.
         </p>
       </div>
     </div>
@@ -142,10 +139,10 @@ const deckCount = Object.keys(decks).length;
       <div class="md:col-span-6">
         <div class="stagger">
           {[
-            { title: 'Dirección de arte', desc: 'Desarrollo y dirección creativa para marcas y proyectos culturales.' },
+            { title: 'Dirección de arte', desc: 'Desarrollo y dirección creativa para estudios creativos y proyectos culturales.' },
             { title: 'Fotografía', desc: 'Fotografía editorial de retrato y arquitectónica con mirada de autor.' },
-            { title: 'Diseño web y Desarrollo de Apps', desc: 'Sitios funcionales, rápidos, accesibles y aplicaciones a la medida de tus necesidades, limpias y con tu marca.' },
-            { title: 'Automatización creativa', desc: 'Flujos de trabajo con IA y herramientas open source para que tu proyecto escale sin perder control ni calidad.' },
+            { title: 'Diseño web y Desarrollo de Apps', desc: 'Sitios funcionales, rápidos y accesibles // Aplicaciones a la medida de tus necesidades, limpias y autónomas.' },
+            { title: 'Automatización creativa', desc: 'Flujos de trabajo con IA y herramientas open source para que tu proyecto escale y tú tengas tiempo sin perder control ni calidad.' },
           ].map((s, i) => (
             <div class="py-8 border-b border-[--color-border] group">
               <div class="flex items-start justify-between">
@@ -170,11 +167,11 @@ const deckCount = Object.keys(decks).length;
       </div>
       <div class="md:col-span-5">
         <h2 class="text-3xl md:text-4xl font-light leading-tight">Francisco León</h2>
-        <p class="mt-1 text-sm text-[--color-muted]">Director de Arte & Fotógrafo</p>
+        <p class="mt-1 text-sm text-[--color-muted]">Direccionales de Arte & Fotografía</p>
         <p class="mt-8 text-base leading-relaxed text-[--color-muted]">
           Desde Oaxaca dirijo <span class="font-medium text-[--color-ink]">ioon</span>, un estudio donde el diseño es pensamiento 
           y la tecnología es herramienta — nunca al revés. Cada proyecto es una 
-          pieza de autor con la solidez de la ingeniería open source.
+          pieza singular con la solidez de la ingeniería open source.
         </p>
       </div>
     </div>
@@ -187,8 +184,8 @@ const deckCount = Object.keys(decks).length;
         <p class="text-xs tracking-[0.3em] uppercase text-[--color-muted] mb-6">Contacto</p>
       </div>
       <div class="md:col-span-5">
-        <a href="mailto:hola.ioon@gmail.com" class="text-2xl md:text-3xl font-light hover:text-[--color-muted] transition-colors">
-          hola.ioon@gmail.com
+        <a href="mailto:hola@ioon.mx" class="text-2xl md:text-3xl font-light hover:text-[--color-muted] transition-colors">
+          hola@ioon.mx
         </a>
         <div class="mt-8 flex gap-8 text-sm text-[--color-muted]">
           <a href="tel:+529515081629" class="hover:text-[--color-ink] transition-colors">+52 951 5081629</a>
@@ -202,7 +199,7 @@ const deckCount = Object.keys(decks).length;
   <footer class="px-6 md:px-12 py-8 border-t border-[--color-border]">
     <div class="flex items-center justify-between text-xs text-[--color-muted]">
       <span>&copy; {new Date().getFullYear()} ioon</span>
-      <span class="tracking-[0.2em] uppercase">Diseño para la gente</span>
+      <span class="tracking-[0.2em] uppercase">Diseño soberano para la gente</span>
     </div>
   </footer>
 </Base>
