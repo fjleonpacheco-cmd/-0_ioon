@@ -162,7 +162,7 @@ function Lightbox({ project, imageIndex, onClose, onNext, onPrev }) {
         {project.images.map((img, i) => (
           <div
             key={i}
-            onClick={(e) => { e.stopPropagation(); /* handled by parent */ }}
+            onClick={(e) => { e.stopPropagation(); }}
             style={{
               width: 48, height: 48, borderRadius: 4, overflow: "hidden",
               border: i === imageIndex ? "2px solid #fff" : "2px solid transparent",
@@ -251,10 +251,14 @@ function HeroSlideshow() {
   );
 }
 
+const scrollTo = (id) => {
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+};
+
 // Main App
 export default function CanoVeraPortfolio() {
   const [filter, setFilter] = useState("Todos");
-  const [lightbox, setLightbox] = useState(null); // { projectId, imageIndex }
+  const [lightbox, setLightbox] = useState(null);
   const [hoveredProject, setHoveredProject] = useState(null);
 
   const filtered = filter === "Todos" ? PROJECTS : PROJECTS.filter(p => p.category === filter);
@@ -286,6 +290,7 @@ export default function CanoVeraPortfolio() {
       
       <style>{`
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
         .project-card img { transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
         .project-card:hover img { transform: scale(1.05); }
         .filter-btn { transition: all 0.3s ease; }
@@ -304,17 +309,25 @@ export default function CanoVeraPortfolio() {
         <div style={{
           fontFamily: "'Roboto', sans-serif",
           fontSize: 13, fontWeight: 500, letterSpacing: "0.15em",
-          color: "#1a1a1a",
-        }}>
+          color: "#1a1a1a", cursor: "pointer",
+        }} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
           CANO | VERA
         </div>
         <div style={{ display: "flex", gap: 32 }}>
-          {["Proyectos", "Estudio", "Premios", "Contacto"].map(item => (
-            <a key={item} href="#" style={{
+          {[
+            { label: "Proyectos", id: "proyectos" },
+            { label: "Estudio", id: "estudio" },
+            { label: "Premios", id: "premios" },
+            { label: "Contacto", id: "contacto" },
+          ].map(item => (
+            <a key={item.label} href={`#${item.id}`} onClick={(e) => {
+              e.preventDefault();
+              scrollTo(item.id);
+            }} style={{
               fontFamily: "'Roboto', sans-serif",
               fontSize: 13, color: "#666", textDecoration: "none",
               letterSpacing: "0.05em",
-            }}>{item}</a>
+            }}>{item.label}</a>
           ))}
         </div>
       </nav>
@@ -323,7 +336,7 @@ export default function CanoVeraPortfolio() {
       <HeroSlideshow />
 
       {/* Studio Statement */}
-      <section style={{
+      <section id="estudio" style={{
         padding: "96px 48px", maxWidth: 900, margin: "0 auto", textAlign: "center",
       }}>
         <div style={{
@@ -367,7 +380,7 @@ export default function CanoVeraPortfolio() {
       </section>
 
       {/* Filter Bar */}
-      <div style={{ padding: "0 48px 32px", display: "flex", gap: 24, justifyContent: "center" }}>
+      <div id="proyectos" style={{ padding: "0 48px 32px", display: "flex", gap: 24, justifyContent: "center" }}>
         {CATEGORIES.map(cat => (
           <button
             key={cat}
@@ -452,7 +465,7 @@ export default function CanoVeraPortfolio() {
       </section>
 
       {/* Partners Section */}
-      <section style={{
+      <section id="premios" style={{
         background: "#1a1a1a", padding: "80px 48px", textAlign: "center",
       }}>
         <div style={{
@@ -476,7 +489,7 @@ export default function CanoVeraPortfolio() {
       </section>
 
       {/* Contact */}
-      <section style={{ padding: "64px 48px", textAlign: "center" }}>
+      <section id="contacto" style={{ padding: "64px 48px", textAlign: "center" }}>
         <div style={{
           fontFamily: "'Roboto', sans-serif",
           fontSize: 32, color: "#1a1a1a", fontWeight: 100,
