@@ -19,34 +19,19 @@ const INDUSTRIES = [
     ],
   },
   {
-    id: "restaurantes",
-    label: "Restaurantes",
-    description: "Menús digitales, reservaciones y presencia web.",
-    demos: [],
-  },
-  {
-    id: "escuelas",
-    label: "Escuelas",
-    description: "Sitios institucionales con admisiones, programas y comunidad.",
-    demos: [],
-  },
-  {
-    id: "salud",
-    label: "Salud",
-    description: "Consultorios, clínicas y profesionales de la salud.",
-    demos: [],
-  },
-  {
-    id: "inmobiliarias",
-    label: "Inmobiliarias",
-    description: "Listados de propiedades con filtros y tours virtuales.",
-    demos: [],
-  },
-  {
-    id: "creativos",
-    label: "Creativos",
-    description: "Portafolios para fotógrafos, diseñadores y artistas.",
-    demos: [],
+    id: "fotografia",
+    label: "Fotografía",
+    description: "Portafolios para fotógrafos con vista fullscreen y navegación minimal.",
+    demos: [
+      {
+        id: "demo-fotografia-1",
+        title: "Portafolio Fotográfico",
+        subtitle: "Índice de proyectos con preview al hover, vista fullscreen y navegación por teclado.",
+        status: "live",
+        url: "https://demo-fotografia-1.ioon.mx",
+        tags: ["React", "Vite", "Minimal"],
+      },
+    ],
   },
 ];
 
