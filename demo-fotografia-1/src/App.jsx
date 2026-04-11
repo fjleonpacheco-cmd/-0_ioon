@@ -411,9 +411,10 @@ export default function App() {
               inset: 0,
               display: "flex",
               justifyContent: "center",
-              alignItems: "center",
+              alignItems: "flex-start",
+              paddingTop: 80,
               pointerEvents: "none",
-              zIndex: 0,
+              zIndex: 3,
             }}
           >
             <div style={{
