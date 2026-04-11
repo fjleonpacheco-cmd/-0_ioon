@@ -1,418 +1,841 @@
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 
+// ─── DATA ───────────────────────────────────────────────────────────
 const PROJECTS = [
   {
     id: 1,
-    title: "Plaza Andaro",
-    category: "Equipamiento",
-    location: "Avándaro, México",
-    year: "2013",
-    description: "Centro comercial que entreteje arquitectura con naturaleza mediante durmientes de ferrocarril reutilizados como persianas exteriores.",
+    title: "Casa del Lago",
+    category: "Residencial",
+    location: "Valle de Bravo, México",
+    year: "2024",
+    description: "Residencia integrada al paisaje lacustre. Muros de piedra local, terrazas escalonadas y ventanales que enmarcan el agua.",
     images: [
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80",
-      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c0?w=800&q=80",
-      "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?w=800&q=80",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80",
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=80",
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80",
+      "https://images.unsplash.com/photo-1600566753376-12c8ab7a5a0c?w=1200&q=80",
     ],
   },
   {
     id: 2,
-    title: "Utopía Estrella",
-    category: "Cultural",
-    location: "Iztapalapa, CDMX",
+    title: "Mercado Central",
+    category: "Comercial",
+    location: "Oaxaca, México",
     year: "2023",
-    description: "Transformación de un vertedero informal en centro comunitario y cultural enfocado en educación ecológica. Holcim Gold Award 2023.",
+    description: "Rehabilitación de mercado tradicional. Estructura de acero y bóvedas de ladrillo que permiten ventilación natural y luz cenital.",
     images: [
-      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80",
-      "https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=800&q=80",
-      "https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=800&q=80",
-      "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80",
+      "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1200&q=80",
+      "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80",
+      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1200&q=80",
     ],
   },
   {
     id: 3,
-    title: "Campus UMA",
-    category: "Institucional",
-    location: "Valle de Bravo, México",
-    year: "2020",
-    description: "Campus sustentable de la Universidad del Medio Ambiente con procesos regenerativos, en colaboración con Oscar Hagerman.",
+    title: "Centro Cultural del Río",
+    category: "Cultural",
+    location: "Guadalajara, México",
+    year: "2022",
+    description: "Espacio multifuncional a orillas del río. Planta libre, doble altura y fachada permeable que dialoga con el entorno fluvial.",
     images: [
-      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=80",
-      "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=80",
-      "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&q=80",
-      "https://images.unsplash.com/photo-1600210492493-0946911123ea?w=800&q=80",
+      "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1200&q=80",
+      "https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=1200&q=80",
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&q=80",
+      "https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=1200&q=80",
     ],
   },
   {
     id: 4,
-    title: "Los Pinos",
-    category: "Cultural",
+    title: "Parque Biblioteca Norte",
+    category: "Institucional",
     location: "CDMX, México",
-    year: "2019",
-    description: "Reprogramación de la antigua residencia presidencial de México para uso público: espacios abiertos, museo y pabellón gastronómico.",
+    year: "2021",
+    description: "Biblioteca pública con jardín elevado. Volúmenes de concreto aparente articulados por patios de lectura al aire libre.",
     images: [
-      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80",
-      "https://images.unsplash.com/photo-1600573472592-401b489a3cdc?w=800&q=80",
-      "https://images.unsplash.com/photo-1600585153490-76fb20a32601?w=800&q=80",
-      "https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?w=800&q=80",
+      "https://images.unsplash.com/photo-1524230572899-a752b3835840?w=1200&q=80",
+      "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1200&q=80",
+      "https://images.unsplash.com/photo-1448630360428-65456659616a?w=1200&q=80",
     ],
   },
   {
     id: 5,
-    title: "Edificio Leones",
-    category: "Equipamiento",
-    location: "CDMX, México",
-    year: "2016",
-    description: "Proyecto de equipamiento urbano que articula programa público y privado en una estructura de concreto aparente.",
+    title: "Edificio Jacarandas",
+    category: "Residencial",
+    location: "Mérida, México",
+    year: "2020",
+    description: "Conjunto habitacional de 12 unidades. Celosías de concreto, ventilación cruzada y jardines comunitarios en cada nivel.",
     images: [
-      "https://images.unsplash.com/photo-1600074169098-16a54d791d0d?w=800&q=80",
-      "https://images.unsplash.com/photo-1600563438938-a9a27215b59d?w=800&q=80",
-      "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800&q=80",
-      "https://images.unsplash.com/photo-1600607688969-a5bfcd646154?w=800&q=80",
+      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200&q=80",
+      "https://images.unsplash.com/photo-1460317442991-0ec209397118?w=1200&q=80",
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1200&q=80",
     ],
   },
   {
     id: 6,
-    title: "Casa Vecina",
-    category: "Vivienda",
-    location: "CDMX, México",
-    year: "2015",
-    description: "Intervención residencial en el centro histórico que dialoga con la arquitectura colonial existente.",
+    title: "Pabellón del Agua",
+    category: "Cultural",
+    location: "Puebla, México",
+    year: "2019",
+    description: "Pabellón efímero para bienal de arquitectura. Estructura de bambú y membranas textiles que filtran la luz natural.",
     images: [
-      "https://images.unsplash.com/photo-1600585154363-67eb9e2e2099?w=800&q=80",
-      "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800&q=80",
-      "https://images.unsplash.com/photo-1600566753376-12c8ab7c5a38?w=800&q=80",
-      "https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?w=800&q=80",
+      "https://images.unsplash.com/photo-1431576901776-e539bd916ba2?w=1200&q=80",
+      "https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?w=1200&q=80",
+      "https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=1200&q=80",
+      "https://images.unsplash.com/photo-1464146072230-91cabc968266?w=1200&q=80",
     ],
   },
 ];
 
-const CATEGORIES = ["Todos", "Cultural", "Equipamiento", "Institucional", "Vivienda"];
+const CATEGORIES = ["Todos", "Residencial", "Comercial", "Cultural", "Institucional"];
 
-const NAV_ITEMS = [
-  { label: "Proyectos", id: "proyectos" },
-  { label: "Estudio", id: "estudio" },
-  { label: "Premios", id: "premios" },
-  { label: "Contacto", id: "contacto" },
-];
+const FONT_LINK = "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&display=swap";
 
-const scrollTo = (id) => {
-  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-};
+// ─── COMPONENT ──────────────────────────────────────────────────────
+export default function App() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [heroIndex, setHeroIndex] = useState(0);
+  const [heroProgress, setHeroProgress] = useState(0);
+  const [activeCategory, setActiveCategory] = useState("Todos");
+  const [lightbox, setLightbox] = useState(null); // { projectId, imageIndex }
+  const [touchStart, setTouchStart] = useState(null);
+  const heroTimer = useRef(null);
+  const progressTimer = useRef(null);
 
-function Lightbox({ project, imageIndex, onClose, onNext, onPrev, onGoTo }) {
-  const touchStart = useRef(null);
+  const heroProjects = PROJECTS.slice(0, 4);
 
+  // ── Font loading
   useEffect(() => {
-    const handler = (e) => {
-      if (e.key === "Escape") onClose();
-      if (e.key === "ArrowRight") onNext();
-      if (e.key === "ArrowLeft") onPrev();
-    };
-    document.body.style.overflow = "hidden";
-    window.addEventListener("keydown", handler);
-    return () => {
-      document.body.style.overflow = "";
-      window.removeEventListener("keydown", handler);
-    };
-  }, [onClose, onNext, onPrev]);
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = FONT_LINK;
+    document.head.appendChild(link);
+  }, []);
 
-  const handleTouchStart = (e) => { touchStart.current = e.touches[0].clientX; };
-  const handleTouchEnd = (e) => {
-    if (touchStart.current === null) return;
-    const diff = touchStart.current - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 50) { diff > 0 ? onNext() : onPrev(); }
-    touchStart.current = null;
+  // ── Hero slideshow
+  useEffect(() => {
+    const DURATION = 5000;
+    const TICK = 50;
+    let elapsed = 0;
+
+    progressTimer.current = setInterval(() => {
+      elapsed += TICK;
+      setHeroProgress((elapsed / DURATION) * 100);
+      if (elapsed >= DURATION) {
+        elapsed = 0;
+        setHeroIndex((i) => (i + 1) % heroProjects.length);
+      }
+    }, TICK);
+
+    return () => clearInterval(progressTimer.current);
+  }, [heroIndex]);
+
+  const goToHeroSlide = (i) => {
+    clearInterval(progressTimer.current);
+    setHeroIndex(i);
+    setHeroProgress(0);
+  };
+
+  // ── Gallery filter
+  const filteredProjects = activeCategory === "Todos"
+    ? PROJECTS
+    : PROJECTS.filter((p) => p.category === activeCategory);
+
+  // ── Lightbox
+  const openLightbox = (projectId, imageIndex = 0) => {
+    setLightbox({ projectId, imageIndex });
+    document.body.style.overflow = "hidden";
+  };
+
+  const closeLightbox = () => {
+    setLightbox(null);
+    document.body.style.overflow = "";
+  };
+
+  const currentLBProject = lightbox ? PROJECTS.find((p) => p.id === lightbox.projectId) : null;
+
+  const lbNav = useCallback((dir) => {
+    if (!currentLBProject) return;
+    const len = currentLBProject.images.length;
+    setLightbox((lb) => ({
+      ...lb,
+      imageIndex: (lb.imageIndex + dir + len) % len,
+    }));
+  }, [currentLBProject]);
+
+  // Keyboard nav
+  useEffect(() => {
+    if (!lightbox) return;
+    const handler = (e) => {
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") lbNav(-1);
+      if (e.key === "ArrowRight") lbNav(1);
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [lightbox, lbNav]);
+
+  // Swipe
+  const onTouchStart = (e) => setTouchStart(e.touches[0].clientX);
+  const onTouchEnd = (e) => {
+    if (touchStart === null) return;
+    const diff = touchStart - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) lbNav(diff > 0 ? 1 : -1);
+    setTouchStart(null);
+  };
+
+  // ── Smooth scroll
+  const scrollTo = (id) => {
+    setMenuOpen(false);
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <div onClick={onClose}
-      onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}
-      style={{
-        position: "fixed", inset: 0, zIndex: 1000, background: "rgba(0,0,0,0.92)",
-        display: "flex", alignItems: "center", justifyContent: "center", animation: "fadeIn 0.3s ease",
-        touchAction: "pan-y",
-      }}>
-      <button onClick={onClose} style={{
-        position: "absolute", top: 16, right: 16, background: "none", border: "none",
-        color: "#fff", fontSize: 28, cursor: "pointer", opacity: 0.7, zIndex: 10,
-      }}>✕</button>
-      <button onClick={(e) => { e.stopPropagation(); onPrev(); }} className="lb-arrow lb-arrow-left">←</button>
-      <button onClick={(e) => { e.stopPropagation(); onNext(); }} className="lb-arrow lb-arrow-right">→</button>
-      <div onClick={(e) => e.stopPropagation()} className="lb-content">
-        <img src={project.images[imageIndex]} alt={project.title} className="lb-image" style={{ pointerEvents: "none", userSelect: "none" }} />
-        <div style={{ marginTop: 12, textAlign: "center" }}>
-          <div style={{ color: "#fff", fontFamily: "'Roboto', sans-serif", fontSize: 18, fontWeight: 300 }}>{project.title}</div>
-          <div style={{ color: "rgba(255,255,255,0.5)", fontSize: 12, marginTop: 4 }}>
-            {project.location} — {project.year} · {imageIndex + 1}/{project.images.length}
-          </div>
-        </div>
-      </div>
-      <div className="lb-thumbs">
-        {project.images.map((img, i) => (
-          <div key={i} onClick={(e) => { e.stopPropagation(); onGoTo(i); }} style={{
-            width: 40, height: 40, borderRadius: 4, overflow: "hidden", flexShrink: 0,
-            border: i === imageIndex ? "2px solid #fff" : "2px solid transparent",
-            opacity: i === imageIndex ? 1 : 0.4, cursor: "pointer", transition: "all 0.2s",
-          }}>
-            <img src={img} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", pointerEvents: "none" }} />
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function HeroSlideshow() {
-  const [current, setCurrent] = useState(0);
-  const heroImages = PROJECTS.slice(0, 4).map(p => ({ url: p.images[0], title: p.title, location: p.location }));
-  useEffect(() => {
-    const timer = setInterval(() => setCurrent(c => (c + 1) % heroImages.length), 5000);
-    return () => clearInterval(timer);
-  }, []);
-
-  return (
-    <div className="hero">
-      {heroImages.map((img, i) => (
-        <div key={i} style={{ position: "absolute", inset: 0, opacity: i === current ? 1 : 0, transition: "opacity 1.2s ease" }}>
-          <img src={img.url} alt={img.title} style={{ width: "100%", height: "100%", objectFit: "cover", filter: "brightness(0.55)" }} />
-        </div>
-      ))}
-      <div className="hero-overlay">
-        <div style={{ fontFamily: "'Roboto', sans-serif", fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginBottom: 12 }}>
-          CANO | VERA Arquitectura
-        </div>
-        <div className="hero-title">{heroImages[current].title}</div>
-        <div style={{ fontFamily: "'Roboto', sans-serif", fontSize: 14, color: "rgba(255,255,255,0.6)", marginTop: 12 }}>
-          {heroImages[current].location}
-        </div>
-        <div style={{ display: "flex", gap: 8, marginTop: 32 }}>
-          {heroImages.map((_, i) => (
-            <div key={i} onClick={() => setCurrent(i)} style={{
-              width: i === current ? 32 : 8, height: 3,
-              background: i === current ? "#fff" : "rgba(255,255,255,0.3)",
-              borderRadius: 2, cursor: "pointer", transition: "all 0.4s ease",
-            }} />
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function HamburgerIcon({ open }) {
-  const bar = { display: "block", width: 22, height: 1.5, background: "#1a1a1a", position: "absolute", left: 0, transition: "all 0.3s ease" };
-  return (
-    <div style={{ width: 22, height: 16, position: "relative" }}>
-      <span style={{ ...bar, top: open ? 7 : 0, transform: open ? "rotate(45deg)" : "none" }} />
-      <span style={{ ...bar, top: 7, opacity: open ? 0 : 1 }} />
-      <span style={{ ...bar, top: open ? 7 : 14, transform: open ? "rotate(-45deg)" : "none" }} />
-    </div>
-  );
-}
-
-export default function CanoVeraPortfolio() {
-  const [filter, setFilter] = useState("Todos");
-  const [lightbox, setLightbox] = useState(null);
-  const [hoveredProject, setHoveredProject] = useState(null);
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const filtered = filter === "Todos" ? PROJECTS : PROJECTS.filter(p => p.category === filter);
-  const openLightbox = (projectId, imageIndex) => setLightbox({ projectId, imageIndex });
-  const closeLightbox = () => setLightbox(null);
-  const currentProject = lightbox ? PROJECTS.find(p => p.id === lightbox.projectId) : null;
-
-  const nextImage = useCallback(() => {
-    if (!lightbox || !currentProject) return;
-    setLightbox(prev => ({ ...prev, imageIndex: (prev.imageIndex + 1) % currentProject.images.length }));
-  }, [lightbox, currentProject]);
-
-  const prevImage = useCallback(() => {
-    if (!lightbox || !currentProject) return;
-    setLightbox(prev => ({ ...prev, imageIndex: (prev.imageIndex - 1 + currentProject.images.length) % currentProject.images.length }));
-  }, [lightbox, currentProject]);
-
-  useEffect(() => {
-    const h = () => { if (window.innerWidth > 768 && menuOpen) setMenuOpen(false); };
-    window.addEventListener("resize", h);
-    return () => window.removeEventListener("resize", h);
-  }, [menuOpen]);
-
-  useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
-  }, [menuOpen]);
-
-  return (
-    <div style={{ background: "#f5f3ef", minHeight: "100vh", fontFamily: "'Roboto', sans-serif" }}>
-      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet" />
+    <div style={{
+      fontFamily: "'Space Grotesk', system-ui, sans-serif",
+      fontWeight: 300,
+      background: "#fafafa",
+      color: "#0a0a0a",
+      minHeight: "100vh",
+    }}>
       <style>{`
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
-        @keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(20px) } to { opacity: 1; transform: translateY(0) } }
-        .project-card img { transition: transform 0.8s cubic-bezier(0.16,1,0.3,1); }
-        .project-card:hover img { transform: scale(1.05); }
-        .filter-btn { transition: all 0.3s ease; }
-        .filter-btn:hover { color: #1a1a1a !important; }
-        .hero { position: relative; width: 100%; height: 85vh; overflow: hidden; background: #0a0a0a; }
-        .hero-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 80px 48px 48px; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%); }
-        .hero-title { font-family: 'Roboto', sans-serif; font-weight: 100; color: #fff; font-size: clamp(32px,5vw,64px); line-height: 1.1; max-width: 600; transition: all 0.5s ease; }
-        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 20px 48px; background: rgba(245,243,239,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(0,0,0,0.06); }
-        .nav-links-desktop { display: flex; gap: 32px; }
-        .nav-hamburger { display: none; cursor: pointer; background: none; border: none; padding: 4px; }
-        .mobile-menu { position: fixed; inset: 0; z-index: 99; background: rgba(245,243,239,0.98); backdrop-filter: blur(20px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 32px; animation: fadeIn 0.3s ease; }
-        .mobile-menu a { font-family: 'Roboto', sans-serif; font-size: 24px; font-weight: 100; color: #1a1a1a; text-decoration: none; letter-spacing: 0.1em; }
-        .lb-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #fff; width: 44px; height: 44px; border-radius: 50%; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-        .lb-arrow-left { left: 16px; }
-        .lb-arrow-right { right: 16px; }
-        .lb-content { max-width: 85vw; max-height: 80vh; animation: slideUp 0.4s ease; }
-        .lb-image { max-width: 85vw; max-height: 70vh; object-fit: contain; border-radius: 4px; display: block; }
-        .lb-thumbs { position: absolute; bottom: 20px; display: flex; gap: 6px; }
-        .section-pad { padding: 96px 48px; }
-        .stats-row { display: flex; justify-content: center; gap: 48px; margin-top: 48px; flex-wrap: wrap; }
-        .grid-projects { padding: 0 48px 96px; display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 24px; max-width: 1400px; margin: 0 auto; }
-        .filter-bar { padding: 0 48px 32px; display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
-        .team-section { background: #1a1a1a; padding: 80px 48px; text-align: center; }
-        .contact-section { padding: 64px 48px; text-align: center; }
-        @media (max-width: 768px) {
-          .nav { padding: 16px 20px; }
-          .nav-links-desktop { display: none !important; }
-          .nav-hamburger { display: block !important; }
-          .hero { height: 70vh; }
-          .hero-overlay { padding: 60px 20px 32px; }
-          .section-pad { padding: 64px 20px; }
-          .stats-row { gap: 24px; }
-          .filter-bar { padding: 0 20px 24px; gap: 12px; }
-          .grid-projects { padding: 0 20px 64px; grid-template-columns: 1fr; }
-          .grid-projects > div { grid-row: span 1 !important; }
-          .team-section { padding: 48px 20px; }
-          .contact-section { padding: 48px 20px; }
-          .lb-arrow { width: 36px; height: 36px; font-size: 16px; }
-          .lb-arrow-left { left: 8px; }
-          .lb-arrow-right { right: 8px; }
-          .lb-content { max-width: 95vw; }
-          .lb-image { max-width: 95vw; max-height: 65vh; }
-          .lb-thumbs > div { width: 32px !important; height: 32px !important; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        ::selection { background: #0a0a0a; color: #fafafa; }
+        img { display: block; }
+
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(12px); }
+          to { opacity: 1; transform: translateY(0); }
         }
-        @media (max-width: 480px) {
-          .hero { height: 60vh; }
-          .stats-row { gap: 16px; }
-          .filter-bar { gap: 8px; }
-          .filter-bar button { font-size: 11px !important; }
+
+        .nav-link {
+          color: #71717a;
+          text-decoration: none;
+          font-size: 13px;
+          font-weight: 400;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          transition: color 0.2s;
+          cursor: pointer;
+          background: none;
+          border: none;
+          font-family: inherit;
+        }
+        .nav-link:hover { color: #0a0a0a; }
+
+        .filter-btn {
+          background: none;
+          border: none;
+          border-bottom: 2px solid transparent;
+          color: #71717a;
+          padding: 8px 16px;
+          font-size: 13px;
+          font-weight: 400;
+          font-family: inherit;
+          cursor: pointer;
+          transition: all 0.2s;
+        }
+        .filter-btn:hover { color: #18181b; }
+        .filter-btn.active {
+          color: #0a0a0a;
+          border-bottom-color: #0a0a0a;
+          font-weight: 500;
+        }
+
+        .gallery-item {
+          position: relative;
+          overflow: hidden;
+          cursor: pointer;
+        }
+        .gallery-item img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.35s ease;
+        }
+        .gallery-item:hover img { transform: scale(1.03); }
+        .gallery-overlay {
+          position: absolute;
+          inset: 0;
+          background: rgba(10,10,10,0.6);
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          padding: 24px;
+          opacity: 0;
+          transition: opacity 0.3s;
+        }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+        .lb-arrow {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          background: none;
+          border: none;
+          color: #fafafa;
+          font-size: 24px;
+          cursor: pointer;
+          padding: 16px;
+          transition: opacity 0.2s;
+          opacity: 0.6;
+          font-family: inherit;
+        }
+        .lb-arrow:hover { opacity: 1; }
+
+        .lb-thumb {
+          width: 48px;
+          height: 36px;
+          object-fit: cover;
+          opacity: 0.4;
+          cursor: pointer;
+          transition: opacity 0.2s;
+          border: 1px solid transparent;
+        }
+        .lb-thumb.active { opacity: 1; border-color: #fafafa; }
+        .lb-thumb:hover { opacity: 0.8; }
+
+        .hamburger {
+          display: none;
+          background: none;
+          border: none;
+          cursor: pointer;
+          width: 28px;
+          height: 20px;
+          position: relative;
+          z-index: 101;
+        }
+        .hamburger span {
+          display: block;
+          width: 100%;
+          height: 1.5px;
+          background: #0a0a0a;
+          position: absolute;
+          left: 0;
+          transition: all 0.3s;
+        }
+        .hamburger span:nth-child(1) { top: 0; }
+        .hamburger span:nth-child(2) { top: 9px; }
+        .hamburger span:nth-child(3) { top: 18px; }
+        .hamburger.open span:nth-child(1) { top: 9px; transform: rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { top: 9px; transform: rotate(-45deg); }
+
+        .mobile-menu {
+          display: none;
+          position: fixed;
+          inset: 0;
+          background: #fafafa;
+          z-index: 100;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 32px;
+        }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu button {
+          font-size: clamp(22px, 3vw, 34px);
+          font-weight: 300;
+          letter-spacing: -0.5px;
+          color: #0a0a0a;
+          background: none;
+          border: none;
+          font-family: inherit;
+          cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+          .desktop-nav { display: none !important; }
+          .hamburger { display: block; }
+          .gallery-grid { grid-template-columns: 1fr !important; }
+          .gallery-item:first-child { grid-row: span 1 !important; }
+          .hero-content { padding: 0 24px !important; }
+          .section-pad { padding-left: 24px !important; padding-right: 24px !important; }
+          .stats-row { flex-wrap: wrap; gap: 24px !important; }
+          .lb-arrow { display: none !important; }
+          .filters-row { overflow-x: auto; flex-wrap: nowrap; }
+          .filter-btn { white-space: nowrap; padding: 6px 10px; font-size: 11px; }
         }
       `}</style>
 
-      <nav className="nav">
-        <div style={{ fontFamily: "'Roboto', sans-serif", fontSize: 13, fontWeight: 500, letterSpacing: "0.15em", color: "#1a1a1a", cursor: "pointer" }}
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-          CANO | VERA
-        </div>
-        <div className="nav-links-desktop">
-          {NAV_ITEMS.map(item => (
-            <a key={item.label} href={`#${item.id}`} onClick={(e) => { e.preventDefault(); scrollTo(item.id); }}
-              style={{ fontFamily: "'Roboto', sans-serif", fontSize: 13, color: "#666", textDecoration: "none", letterSpacing: "0.05em" }}>
-              {item.label}
-            </a>
+      {/* ── NAV ─────────────────────────────────── */}
+      <nav style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 50,
+        padding: "20px 80px",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        background: "rgba(250,250,250,0.9)",
+        backdropFilter: "blur(12px)",
+        borderBottom: "1px solid #e4e4e7",
+      }}>
+        <span style={{
+          fontSize: 13,
+          fontWeight: 400,
+          letterSpacing: 3,
+          textTransform: "uppercase",
+        }}>Taller de Arquitectura</span>
+
+        <div className="desktop-nav" style={{ display: "flex", gap: 32 }}>
+          {["proyectos", "estudio", "premios", "contacto"].map((s) => (
+            <button key={s} className="nav-link" onClick={() => scrollTo(s)}>
+              {s}
+            </button>
           ))}
         </div>
-        <button className="nav-hamburger" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menú">
-          <HamburgerIcon open={menuOpen} />
+
+        <button
+          className={`hamburger ${menuOpen ? "open" : ""}`}
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          <span /><span /><span />
         </button>
       </nav>
 
-      {menuOpen && (
-        <div className="mobile-menu">
-          {NAV_ITEMS.map(item => (
-            <a key={item.label} href={`#${item.id}`} onClick={(e) => {
-              e.preventDefault(); setMenuOpen(false); setTimeout(() => scrollTo(item.id), 100);
-            }}>{item.label}</a>
-          ))}
-        </div>
-      )}
-
-      <HeroSlideshow />
-
-      <section id="estudio" className="section-pad" style={{ maxWidth: 900, margin: "0 auto", textAlign: "center" }}>
-        <div style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: "#999", marginBottom: 24 }}>
-          Taller de Arquitectura — CDMX, desde 2007
-        </div>
-        <p style={{ fontSize: "clamp(22px, 3vw, 36px)", color: "#1a1a1a", lineHeight: 1.4, fontWeight: 100 }}>
-          "Lo específico puede transformar el todo."
-        </p>
-        <p style={{ fontSize: 15, color: "#777", lineHeight: 1.8, marginTop: 24, maxWidth: 640, margin: "24px auto 0" }}>
-          Arquitectura con orientación social y sensibilidad al contexto, expresada en formas de escala ambiciosa. Vivienda social, proyectos institucionales, culturales e infraestructura.
-        </p>
-        <div className="stats-row">
-          {[{ n: "17+", l: "Años" }, { n: "40+", l: "Proyectos" }, { n: "2×", l: "Bienal Venecia" }, { n: "Gold", l: "Holcim 2023" }].map(s => (
-            <div key={s.l} style={{ textAlign: "center" }}>
-              <div style={{ fontSize: 28, color: "#1a1a1a", fontWeight: 100 }}>{s.n}</div>
-              <div style={{ fontSize: 11, color: "#999", letterSpacing: "0.1em", marginTop: 4, textTransform: "uppercase" }}>{s.l}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <div id="proyectos" className="filter-bar">
-        {CATEGORIES.map(cat => (
-          <button key={cat} className="filter-btn" onClick={() => setFilter(cat)} style={{
-            background: "none", border: "none", cursor: "pointer", fontSize: 13, letterSpacing: "0.05em",
-            color: filter === cat ? "#1a1a1a" : "#aaa",
-            borderBottom: filter === cat ? "1.5px solid #1a1a1a" : "1.5px solid transparent", paddingBottom: 6,
-          }}>{cat}</button>
+      {/* Mobile menu overlay */}
+      <div className={`mobile-menu ${menuOpen ? "open" : ""}`}>
+        {["proyectos", "estudio", "premios", "contacto"].map((s) => (
+          <button key={s} onClick={() => scrollTo(s)}>{s}</button>
         ))}
       </div>
 
-      <section className="grid-projects">
-        {filtered.map((project, pi) => (
-          <div key={project.id} className="project-card"
-            onMouseEnter={() => setHoveredProject(project.id)} onMouseLeave={() => setHoveredProject(null)}
-            style={{ cursor: "pointer", gridRow: pi === 0 ? "span 2" : "span 1", animation: `slideUp 0.6s ease ${pi * 0.1}s both` }}
-            onClick={() => openLightbox(project.id, 0)}>
-            <div style={{ position: "relative", overflow: "hidden", borderRadius: 4, aspectRatio: pi === 0 ? "3/4" : "4/3", background: "#ddd" }}>
-              <img src={project.images[0]} alt={project.title} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-              <div style={{
-                position: "absolute", inset: 0, background: "rgba(0,0,0,0.4)",
-                opacity: hoveredProject === project.id ? 1 : 0, transition: "opacity 0.4s ease",
-                display: "flex", alignItems: "flex-end", padding: 20,
-              }}>
-                <div>
-                  <div style={{ color: "rgba(255,255,255,0.6)", fontSize: 11, letterSpacing: "0.15em", textTransform: "uppercase" }}>{project.category} — {project.year}</div>
-                  <div style={{ color: "#fff", fontSize: 14, marginTop: 8, lineHeight: 1.5, maxWidth: 320 }}>{project.description}</div>
-                  <div style={{ color: "rgba(255,255,255,0.5)", fontSize: 12, marginTop: 12 }}>{project.images.length} fotografías →</div>
-                </div>
-              </div>
-            </div>
-            <div style={{ marginTop: 12 }}>
-              <div style={{ fontSize: 18, color: "#1a1a1a", fontWeight: 300 }}>{project.title}</div>
-              <div style={{ fontSize: 12, color: "#999", marginTop: 2 }}>{project.location}</div>
-            </div>
+      {/* ── HERO SLIDESHOW ──────────────────────── */}
+      <header style={{
+        position: "relative",
+        height: "100vh",
+        overflow: "hidden",
+      }}>
+        {heroProjects.map((p, i) => (
+          <div key={p.id} style={{
+            position: "absolute",
+            inset: 0,
+            opacity: i === heroIndex ? 1 : 0,
+            transition: "opacity 0.8s ease",
+          }}>
+            <img
+              src={p.images[0]}
+              alt={p.title}
+              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            />
+            <div style={{
+              position: "absolute",
+              inset: 0,
+              background: "linear-gradient(rgba(10,10,10,0.7), rgba(10,10,10,0.1), transparent)",
+            }} />
           </div>
         ))}
-      </section>
 
-      <section id="premios" className="team-section">
-        <div style={{ fontSize: 11, letterSpacing: "0.2em", color: "rgba(255,255,255,0.4)", textTransform: "uppercase", marginBottom: 12 }}>Equipo</div>
-        <div style={{ fontSize: "clamp(18px, 3vw, 28px)", color: "#fff", fontWeight: 100 }}>
-          Juan Carlos Cano · Paloma Vera · Fermín Andrade
+        <div className="hero-content" style={{
+          position: "absolute",
+          bottom: 120,
+          left: 80,
+          color: "#fafafa",
+          animation: "fadeIn 0.35s ease",
+        }}>
+          <h1 style={{
+            fontSize: "clamp(32px, 5vw, 56px)",
+            fontWeight: 300,
+            letterSpacing: -1,
+            lineHeight: 1.15,
+            marginBottom: 8,
+          }}>{heroProjects[heroIndex].title}</h1>
+          <p style={{
+            fontSize: 14,
+            fontWeight: 400,
+            letterSpacing: 2,
+            textTransform: "uppercase",
+            color: "rgba(250,250,250,0.6)",
+          }}>{heroProjects[heroIndex].location} — {heroProjects[heroIndex].year}</p>
         </div>
-        <div style={{ fontSize: 14, color: "rgba(255,255,255,0.45)", marginTop: 16, lineHeight: 1.7, maxWidth: 560, margin: "16px auto 0" }}>
-          Emerging Voices 2024 — The Architectural League of New York<br />Holcim Gold Award 2023 — Latinoamérica<br />Bienal de Venecia 2016, 2018
+
+        {/* Progress indicators */}
+        <div style={{
+          position: "absolute",
+          bottom: 60,
+          left: 80,
+          right: 80,
+          display: "flex",
+          gap: 8,
+        }}>
+          {heroProjects.map((_, i) => (
+            <button key={i} onClick={() => goToHeroSlide(i)} style={{
+              flex: 1,
+              height: 2,
+              background: "rgba(250,250,250,0.2)",
+              border: "none",
+              cursor: "pointer",
+              padding: 0,
+              position: "relative",
+              overflow: "hidden",
+            }}>
+              <div style={{
+                position: "absolute",
+                left: 0,
+                top: 0,
+                height: "100%",
+                background: "#fafafa",
+                width: i === heroIndex ? `${heroProgress}%` : i < heroIndex ? "100%" : "0%",
+                transition: i === heroIndex ? "none" : "width 0.3s",
+              }} />
+            </button>
+          ))}
+        </div>
+      </header>
+
+      {/* ── ESTUDIO ─────────────────────────────── */}
+      <section id="estudio" className="section-pad" style={{
+        padding: "120px 80px",
+        maxWidth: 900,
+      }}>
+        <div style={{
+          fontSize: 13,
+          fontWeight: 400,
+          letterSpacing: 3,
+          textTransform: "uppercase",
+          color: "#71717a",
+          marginBottom: 16,
+        }}>Estudio</div>
+
+        <blockquote style={{
+          fontSize: "clamp(20px, 3vw, 30px)",
+          fontWeight: 300,
+          fontStyle: "italic",
+          lineHeight: 1.5,
+          maxWidth: 700,
+          marginBottom: 24,
+          color: "#0a0a0a",
+        }}>
+          "Cada proyecto es una respuesta específica a su contexto."
+        </blockquote>
+
+        <p style={{
+          fontSize: 17,
+          fontWeight: 300,
+          color: "#18181b",
+          lineHeight: 1.7,
+          maxWidth: 680,
+          marginBottom: 48,
+        }}>
+          Somos un estudio fundado en la convicción de que la arquitectura debe emerger del lugar, la cultura y las necesidades reales de quienes la habitan. Trabajamos con materiales locales, sistemas constructivos eficientes y un compromiso con el paisaje.
+        </p>
+
+        <div className="stats-row" style={{ display: "flex", gap: 64 }}>
+          {[
+            { n: "10+", l: "Años" },
+            { n: "30+", l: "Proyectos" },
+            { n: "5", l: "Premios" },
+            { n: "3", l: "Publicaciones" },
+          ].map((s) => (
+            <div key={s.l}>
+              <div style={{
+                fontSize: "clamp(32px, 5vw, 48px)",
+                fontWeight: 300,
+                letterSpacing: -1,
+                lineHeight: 1.15,
+              }}>{s.n}</div>
+              <div style={{
+                fontSize: 11,
+                fontWeight: 400,
+                letterSpacing: 2,
+                textTransform: "uppercase",
+                color: "#71717a",
+                marginTop: 8,
+              }}>{s.l}</div>
+            </div>
+          ))}
         </div>
       </section>
 
-      <section id="contacto" className="contact-section">
-        <div style={{ fontSize: "clamp(24px, 4vw, 32px)", color: "#1a1a1a", fontWeight: 100 }}>¿Conversamos?</div>
-        <a href="mailto:info@canovera.com" style={{
-          display: "inline-block", marginTop: 24, padding: "14px 40px", background: "#1a1a1a", color: "#fff",
-          fontSize: 13, letterSpacing: "0.1em", textDecoration: "none", borderRadius: 2,
-        }}>info@canovera.com</a>
+      {/* ── PROYECTOS (GALERÍA FILTRABLE) ──────── */}
+      <section id="proyectos" className="section-pad" style={{
+        padding: "0 80px 120px",
+        maxWidth: 1100,
+      }}>
+        <div style={{
+          fontSize: 13,
+          fontWeight: 400,
+          letterSpacing: 3,
+          textTransform: "uppercase",
+          color: "#71717a",
+          marginBottom: 16,
+        }}>Proyectos</div>
+
+        <h2 style={{
+          fontSize: "clamp(22px, 3vw, 34px)",
+          fontWeight: 300,
+          letterSpacing: -0.5,
+          marginBottom: 32,
+        }}>Selección de obra</h2>
+
+        {/* Filters */}
+        <div className="filters-row" style={{
+          display: "flex",
+          gap: 0,
+          borderBottom: "1px solid #e4e4e7",
+          marginBottom: 48,
+        }}>
+          {CATEGORIES.map((cat) => (
+            <button
+              key={cat}
+              className={`filter-btn ${activeCategory === cat ? "active" : ""}`}
+              onClick={() => setActiveCategory(cat)}
+            >{cat}</button>
+          ))}
+        </div>
+
+        {/* Grid */}
+        <div className="gallery-grid" style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(2, 1fr)",
+          gap: 12,
+        }}>
+          {filteredProjects.map((project, i) => (
+            <div
+              key={project.id}
+              className="gallery-item"
+              style={{
+                aspectRatio: i === 0 ? undefined : "4/3",
+                gridRow: i === 0 ? "span 2" : undefined,
+                height: i === 0 ? "100%" : undefined,
+              }}
+              onClick={() => openLightbox(project.id)}
+            >
+              <img
+                src={project.images[0]}
+                alt={project.title}
+                loading="lazy"
+              />
+              <div className="gallery-overlay">
+                <span style={{
+                  fontSize: 11,
+                  fontWeight: 400,
+                  letterSpacing: 2,
+                  textTransform: "uppercase",
+                  color: "rgba(250,250,250,0.5)",
+                  marginBottom: 6,
+                }}>{project.category} — {project.year}</span>
+                <span style={{
+                  fontSize: "clamp(18px, 2.2vw, 26px)",
+                  fontWeight: 300,
+                  letterSpacing: -0.5,
+                  color: "#fafafa",
+                  marginBottom: 6,
+                }}>{project.title}</span>
+                <span style={{
+                  fontSize: 13,
+                  color: "rgba(250,250,250,0.5)",
+                }}>{project.images.length} fotos</span>
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
 
-      {lightbox && currentProject && (
-        <Lightbox project={currentProject} imageIndex={lightbox.imageIndex}
-          onClose={closeLightbox} onNext={nextImage} onPrev={prevImage}
-          onGoTo={(i) => setLightbox(prev => ({ ...prev, imageIndex: i }))} />
+      {/* ── PREMIOS ─────────────────────────────── */}
+      <section id="premios" style={{
+        background: "#0a0a0a",
+        color: "#fafafa",
+        padding: "120px 80px",
+      }}>
+        <div className="section-pad" style={{ maxWidth: 900 }}>
+          <div style={{
+            fontSize: 13,
+            fontWeight: 400,
+            letterSpacing: 3,
+            textTransform: "uppercase",
+            color: "#71717a",
+            marginBottom: 16,
+          }}>Equipo y reconocimientos</div>
+
+          <h2 style={{
+            fontSize: "clamp(22px, 3vw, 34px)",
+            fontWeight: 300,
+            letterSpacing: -0.5,
+            marginBottom: 32,
+          }}>Arq. Nombre Apellido · Arq. Nombre Apellido</h2>
+
+          <div style={{
+            fontSize: 16,
+            fontWeight: 300,
+            color: "#a1a1aa",
+            lineHeight: 1.7,
+            maxWidth: 680,
+          }}>
+            {[
+              "Premio Nacional de Arquitectura 2023",
+              "Bienal Iberoamericana de Arquitectura — Selección Oficial 2022",
+              "Architectural Review Emerging Architecture 2021",
+              "Publicación en Domus, ArchDaily, Plataforma Arquitectura",
+              "Mención Honorífica — Bienal de Venecia 2019",
+            ].map((item, i) => (
+              <div key={i} style={{
+                display: "flex",
+                alignItems: "flex-start",
+                gap: 12,
+                marginBottom: 12,
+              }}>
+                <span style={{
+                  width: 4,
+                  height: 4,
+                  borderRadius: "50%",
+                  background: "#71717a",
+                  marginTop: 10,
+                  flexShrink: 0,
+                }} />
+                <span>{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── CONTACTO ────────────────────────────── */}
+      <section id="contacto" className="section-pad" style={{
+        padding: "120px 80px",
+        maxWidth: 900,
+      }}>
+        <div style={{
+          fontSize: 13,
+          fontWeight: 400,
+          letterSpacing: 3,
+          textTransform: "uppercase",
+          color: "#71717a",
+          marginBottom: 16,
+        }}>Contacto</div>
+
+        <h2 style={{
+          fontSize: "clamp(22px, 3vw, 34px)",
+          fontWeight: 300,
+          letterSpacing: -0.5,
+          marginBottom: 12,
+        }}>Platiquemos sobre tu proyecto</h2>
+
+        <p style={{
+          fontSize: 17,
+          fontWeight: 300,
+          color: "#71717a",
+          lineHeight: 1.7,
+          marginBottom: 32,
+          maxWidth: 480,
+        }}>Escríbenos para agendar una primera conversación.</p>
+
+        <a href="mailto:hola@tallerdearquitectura.mx" style={{
+          color: "#0a0a0a",
+          textDecoration: "none",
+          fontSize: 13,
+          fontWeight: 400,
+          letterSpacing: 2,
+          textTransform: "uppercase",
+          borderBottom: "1px solid #0a0a0a",
+          paddingBottom: 4,
+        }}>hola@tallerdearquitectura.mx</a>
+      </section>
+
+      {/* ── FOOTER ──────────────────────────────── */}
+      <footer className="section-pad" style={{
+        borderTop: "1px solid #e4e4e7",
+        padding: "32px 80px",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+      }}>
+        <span style={{
+          fontSize: 11,
+          fontWeight: 400,
+          letterSpacing: 2,
+          textTransform: "uppercase",
+          color: "#71717a",
+        }}>Taller de Arquitectura</span>
+        <span style={{
+          fontSize: 11,
+          color: "#d4d4d8",
+        }}>
+          Sitio por{" "}
+          <a href="https://ioon.mx" style={{ color: "#71717a", textDecoration: "none" }}>ioon</a>
+        </span>
+      </footer>
+
+      {/* ── LIGHTBOX ────────────────────────────── */}
+      {lightbox && currentLBProject && (
+        <div
+          style={{
+            position: "fixed",
+            inset: 0,
+            zIndex: 200,
+            background: "rgba(10,10,10,0.95)",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}
+        >
+          {/* Close */}
+          <button onClick={closeLightbox} style={{
+            position: "absolute",
+            top: 20,
+            right: 24,
+            background: "none",
+            border: "none",
+            color: "#fafafa",
+            fontSize: 18,
+            cursor: "pointer",
+            fontFamily: "inherit",
+            opacity: 0.6,
+          }}>Cerrar</button>
+
+          {/* Main image */}
+          <img
+            src={currentLBProject.images[lightbox.imageIndex]}
+            alt={currentLBProject.title}
+            style={{
+              maxWidth: "85vw",
+              maxHeight: "70vh",
+              objectFit: "contain",
+            }}
+          />
+
+          {/* Title */}
+          <div style={{
+            marginTop: 16,
+            textAlign: "center",
+            color: "#fafafa",
+          }}>
+            <span style={{
+              fontSize: 16,
+              fontWeight: 300,
+            }}>{currentLBProject.title}</span>
+            <span style={{
+              fontSize: 13,
+              color: "#71717a",
+              marginLeft: 12,
+            }}>{lightbox.imageIndex + 1} / {currentLBProject.images.length}</span>
+          </div>
+
+          {/* Arrows */}
+          <button className="lb-arrow" style={{ left: 16 }} onClick={() => lbNav(-1)}>←</button>
+          <button className="lb-arrow" style={{ right: 16 }} onClick={() => lbNav(1)}>→</button>
+
+          {/* Thumbnails */}
+          <div style={{
+            display: "flex",
+            gap: 8,
+            marginTop: 20,
+          }}>
+            {currentLBProject.images.map((img, i) => (
+              <img
+                key={i}
+                src={img}
+                alt=""
+                className={`lb-thumb ${i === lightbox.imageIndex ? "active" : ""}`}
+                onClick={() => setLightbox((lb) => ({ ...lb, imageIndex: i }))}
+              />
+            ))}
+          </div>
+        </div>
       )}
     </div>
   );

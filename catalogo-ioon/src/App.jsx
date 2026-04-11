@@ -13,6 +13,7 @@ const INDUSTRIES = [
         title: "Taller de Arquitectura",
         subtitle: "Portafolio con galería filtrable, lightbox y hero slideshow.",
         status: "live",
+        url: "https://canovera.ioon.mx",
         tags: ["React", "Vite", "Responsive"],
       },
     ],
@@ -185,7 +186,7 @@ export default function CatalogoIoon() {
         <img
           src={`data:image/png;base64,${LOGO_B64}`}
           alt="ioon"
-          style={{ height: 28, filter: "invert(1)" }}
+          style={{ height: 28 }}
         />
         <div style={{ display: "flex", gap: 32 }}>
           <a className="nav-link" href="#catalogo">Demos</a>
@@ -277,7 +278,9 @@ export default function CatalogoIoon() {
 
               {industry.demos.length > 0 ? (
                 industry.demos.map((demo) => (
-                  <div key={demo.id} className="demo-card">
+                  <div key={demo.id} className="demo-card"
+                    onClick={() => demo.url && window.open(demo.url, "_blank")}
+                  >
                     <div style={{
                       display: "flex", justifyContent: "space-between",
                       alignItems: "center", marginBottom: 12,
@@ -390,7 +393,7 @@ export default function CatalogoIoon() {
         <img
           src={`data:image/png;base64,${LOGO_B64}`}
           alt="ioon"
-          style={{ height: 18, filter: "invert(1)", opacity: 0.3 }}
+          style={{ height: 18, opacity: 0.3 }}
         />
         <span style={{
           fontSize: 11, fontWeight: 400, letterSpacing: 2,
