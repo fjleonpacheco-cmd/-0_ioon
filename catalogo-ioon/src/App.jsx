@@ -13,7 +13,7 @@ const INDUSTRIES = [
         title: "Taller de Arquitectura",
         subtitle: "Portafolio con galería filtrable, lightbox y hero slideshow.",
         status: "live",
-        url: "https://canovera.ioon.mx",
+        url: "https://demo-arquitectura-1.ioon.mx",
         tags: ["React", "Vite", "Responsive"],
       },
     ],
