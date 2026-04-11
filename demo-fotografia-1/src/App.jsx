@@ -266,6 +266,7 @@ export default function App() {
           .project-title-text { font-size: 20px !important; }
           .info-container { padding: 80px 24px !important; grid-template-columns: 1fr !important; }
           .hover-image { display: none !important; }
+          .vertical-type { display: none !important; }
           .cursor-arrow { display: none !important; }
         }
       `}</style>
@@ -396,6 +397,35 @@ export default function App() {
                   display: "block",
                 }}
               />
+            </div>
+          )}
+
+          {/* Vertical typography */}
+          {!hoveredProject && (
+            <div
+              className="vertical-type"
+              style={{
+                position: "fixed",
+                right: -20,
+                top: 0,
+                bottom: 0,
+                display: "flex",
+                alignItems: "center",
+                pointerEvents: "none",
+                animation: "fadeIn 0.3s ease",
+              }}
+            >
+              <span style={{
+                writingMode: "vertical-rl",
+                fontSize: "clamp(120px, 18vw, 260px)",
+                fontWeight: 300,
+                letterSpacing: -6,
+                lineHeight: 0.85,
+                color: "#e4e4e7",
+                textTransform: "uppercase",
+                userSelect: "none",
+                whiteSpace: "nowrap",
+              }}>{PHOTOGRAPHER.name.split(" ")[1] || PHOTOGRAPHER.name}</span>
             </div>
           )}
         </main>
