@@ -327,6 +327,8 @@ export default function App() {
             padding: "100px 40px 60px",
             maxWidth: 700,
             animation: "fadeIn 0.3s ease",
+            position: "relative",
+            zIndex: 1,
           }}
         >
           {PROJECTS.map((project) => (
@@ -385,6 +387,7 @@ export default function App() {
                 overflow: "hidden",
                 pointerEvents: "none",
                 animation: "fadeIn 0.2s ease",
+                zIndex: 2,
               }}
             >
               <img
@@ -400,52 +403,47 @@ export default function App() {
             </div>
           )}
 
-          {/* Vertical typography */}
-          {!hoveredProject && (
-            <div
-              className="vertical-type"
-              style={{
-                position: "fixed",
-                right: 0,
-                top: 0,
-                bottom: 0,
-                width: "50vw",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                pointerEvents: "none",
-                animation: "fadeIn 0.3s ease",
-              }}
-            >
-              <div style={{
-                writingMode: "vertical-rl",
-                transform: "rotate(180deg)",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "flex-start",
-                gap: 6,
-              }}>
-                {[
-                  "Territorio",
-                  "  Materia",
-                  "    Frontera",
-                  "  Luz",
-                  "Silencio",
-                ].map((word, i) => (
-                  <span key={i} style={{
-                    fontSize: "clamp(60px, 10vw, 140px)",
-                    fontWeight: 400,
-                    letterSpacing: -3,
-                    lineHeight: 0.9,
-                    color: "#e4e4e7",
-                    textTransform: "uppercase",
-                    userSelect: "none",
-                    whiteSpace: "pre",
-                  }}>{word}</span>
-                ))}
-              </div>
+          {/* Vertical typography — background layer */}
+          <div
+            className="vertical-type"
+            style={{
+              position: "fixed",
+              inset: 0,
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              pointerEvents: "none",
+              zIndex: 0,
+            }}
+          >
+            <div style={{
+              writingMode: "vertical-rl",
+              transform: "rotate(180deg)",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "flex-start",
+              gap: 6,
+            }}>
+              {[
+                "Territorio",
+                "  Materia",
+                "    Frontera",
+                "  Luz",
+                "Silencio",
+              ].map((word, i) => (
+                <span key={i} style={{
+                  fontSize: "clamp(60px, 10vw, 140px)",
+                  fontWeight: 400,
+                  letterSpacing: -3,
+                  lineHeight: 0.9,
+                  color: "#e4e4e7",
+                  textTransform: "uppercase",
+                  userSelect: "none",
+                  whiteSpace: "pre",
+                }}>{word}</span>
+              ))}
             </div>
-          )}
+          </div>
         </main>
       )}
 
