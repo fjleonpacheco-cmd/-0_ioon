@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 
 const PROJECTS = [
   {
@@ -100,7 +100,9 @@ const scrollTo = (id) => {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 };
 
-function Lightbox({ project, imageIndex, onClose, onNext, onPrev }) {
+function Lightbox({ project, imageIndex, onClose, onNext, onPrev, onGoTo }) {
+  const touchStart = useRef(null);
+
   useEffect(() => {
     const handler = (e) => {
       if (e.key === "Escape") onClose();
@@ -115,11 +117,22 @@ function Lightbox({ project, imageIndex, onClose, onNext, onPrev }) {
     };
   }, [onClose, onNext, onPrev]);
 
+  const handleTouchStart = (e) => { touchStart.current = e.touches[0].clientX; };
+  const handleTouchEnd = (e) => {
+    if (touchStart.current === null) return;
+    const diff = touchStart.current - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) { diff > 0 ? onNext() : onPrev(); }
+    touchStart.current = null;
+  };
+
   return (
-    <div onClick={onClose} style={{
-      position: "fixed", inset: 0, zIndex: 1000, background: "rgba(0,0,0,0.92)",
-      display: "flex", alignItems: "center", justifyContent: "center", animation: "fadeIn 0.3s ease",
-    }}>
+    <div onClick={onClose}
+      onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}
+      style={{
+        position: "fixed", inset: 0, zIndex: 1000, background: "rgba(0,0,0,0.92)",
+        display: "flex", alignItems: "center", justifyContent: "center", animation: "fadeIn 0.3s ease",
+        touchAction: "pan-y",
+      }}>
       <button onClick={onClose} style={{
         position: "absolute", top: 16, right: 16, background: "none", border: "none",
         color: "#fff", fontSize: 28, cursor: "pointer", opacity: 0.7, zIndex: 10,
@@ -127,7 +140,7 @@ function Lightbox({ project, imageIndex, onClose, onNext, onPrev }) {
       <button onClick={(e) => { e.stopPropagation(); onPrev(); }} className="lb-arrow lb-arrow-left">←</button>
       <button onClick={(e) => { e.stopPropagation(); onNext(); }} className="lb-arrow lb-arrow-right">→</button>
       <div onClick={(e) => e.stopPropagation()} className="lb-content">
-        <img src={project.images[imageIndex]} alt={project.title} className="lb-image" />
+        <img src={project.images[imageIndex]} alt={project.title} className="lb-image" style={{ pointerEvents: "none", userSelect: "none" }} />
         <div style={{ marginTop: 12, textAlign: "center" }}>
           <div style={{ color: "#fff", fontFamily: "'Roboto', sans-serif", fontSize: 18, fontWeight: 300 }}>{project.title}</div>
           <div style={{ color: "rgba(255,255,255,0.5)", fontSize: 12, marginTop: 4 }}>
@@ -137,12 +150,12 @@ function Lightbox({ project, imageIndex, onClose, onNext, onPrev }) {
       </div>
       <div className="lb-thumbs">
         {project.images.map((img, i) => (
-          <div key={i} onClick={(e) => e.stopPropagation()} style={{
+          <div key={i} onClick={(e) => { e.stopPropagation(); onGoTo(i); }} style={{
             width: 40, height: 40, borderRadius: 4, overflow: "hidden", flexShrink: 0,
             border: i === imageIndex ? "2px solid #fff" : "2px solid transparent",
             opacity: i === imageIndex ? 1 : 0.4, cursor: "pointer", transition: "all 0.2s",
           }}>
-            <img src={img} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+            <img src={img} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", pointerEvents: "none" }} />
           </div>
         ))}
       </div>
@@ -398,7 +411,8 @@ export default function CanoVeraPortfolio() {
 
       {lightbox && currentProject && (
         <Lightbox project={currentProject} imageIndex={lightbox.imageIndex}
-          onClose={closeLightbox} onNext={nextImage} onPrev={prevImage} />
+          onClose={closeLightbox} onNext={nextImage} onPrev={prevImage}
+          onGoTo={(i) => setLightbox(prev => ({ ...prev, imageIndex: i }))} />
       )}
     </div>
   );
