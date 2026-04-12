@@ -408,16 +408,15 @@ export default function App() {
             return (
             <div key={cat.id}>
               {/* Category divider */}
-              {catIdx > 0 && (
-                <div style={{
-                  borderTop: isArchive ? "1.25px solid #d4d4d8" : "1px solid #0a0a0a",
-                  margin: isArchive ? "32px 0 20px" : "20px 0",
-                }} />
-              )}
+              <div style={{
+                borderTop: isArchive ? "1.25px solid #0a0a0a" : "1px solid #0a0a0a",
+                margin: isArchive ? "32px 0 20px" : "20px 0",
+                marginTop: catIdx === 0 ? 0 : undefined,
+              }} />
 
               {/* Category label — clickable */}
               <button onClick={toggleCat} style={{
-                fontSize: isArchive ? 8 : "clamp(14px, 2vw, 17px)",
+                fontSize: isArchive ? 12 : "clamp(14px, 2vw, 17px)",
                 fontWeight: 400,
                 letterSpacing: 1,
                 textTransform: "uppercase",
