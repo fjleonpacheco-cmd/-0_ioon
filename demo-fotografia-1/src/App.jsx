@@ -9,106 +9,123 @@ const PHOTOGRAPHER = {
   instagram: "@nombre",
 };
 
-const PROJECTS = [
+const CATEGORIES = [
   {
-    id: 1,
-    title: "Territorio Silencioso",
-    year: "2024",
-    category: "Paisaje",
-    images: [
-      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1400&q=80",
-      "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1400&q=80",
-      "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1400&q=80",
-      "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1400&q=80",
-      "https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=1400&q=80",
+    id: "retrato",
+    label: "Retrato",
+    projects: [
+      {
+        id: 1,
+        title: "Pedro",
+        year: "2024",
+        images: [
+          "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=1400&q=80",
+          "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1400&q=80",
+          "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=1400&q=80",
+          "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=1400&q=80",
+        ],
+      },
+      {
+        id: 2,
+        title: "Juan",
+        year: "2023",
+        images: [
+          "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=1400&q=80",
+          "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=1400&q=80",
+          "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=1400&q=80",
+        ],
+      },
+      {
+        id: 3,
+        title: "María",
+        year: "2023",
+        images: [
+          "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=1400&q=80",
+          "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=1400&q=80",
+          "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=1400&q=80",
+          "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=1400&q=80",
+        ],
+      },
     ],
   },
   {
-    id: 2,
-    title: "Materia Gris",
-    year: "2024",
-    category: "Arquitectura",
-    images: [
-      "https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=1400&q=80",
-      "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1400&q=80",
-      "https://images.unsplash.com/photo-1431576901776-e539bd916ba2?w=1400&q=80",
-      "https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?w=1400&q=80",
+    id: "arquitectura",
+    label: "Arquitectura",
+    projects: [
+      {
+        id: 4,
+        title: "Casa Habitación",
+        year: "2024",
+        images: [
+          "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1400&q=80",
+          "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1400&q=80",
+          "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1400&q=80",
+        ],
+      },
+      {
+        id: 5,
+        title: "Edificio de oficinas",
+        year: "2023",
+        images: [
+          "https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=1400&q=80",
+          "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1400&q=80",
+          "https://images.unsplash.com/photo-1431576901776-e539bd916ba2?w=1400&q=80",
+          "https://images.unsplash.com/photo-1524230572899-a752b3835840?w=1400&q=80",
+        ],
+      },
+      {
+        id: 6,
+        title: "Hospital",
+        year: "2022",
+        images: [
+          "https://images.unsplash.com/photo-1448630360428-65456659616a?w=1400&q=80",
+          "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1400&q=80",
+          "https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=1400&q=80",
+        ],
+      },
     ],
   },
   {
-    id: 3,
-    title: "Las Horas Largas",
-    year: "2023",
-    category: "Retrato",
-    images: [
-      "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=1400&q=80",
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=1400&q=80",
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1400&q=80",
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=1400&q=80",
-      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=1400&q=80",
-      "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=1400&q=80",
-    ],
-  },
-  {
-    id: 4,
-    title: "Objetos Encontrados",
-    year: "2023",
-    category: "Naturaleza muerta",
-    images: [
-      "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=1400&q=80",
-      "https://images.unsplash.com/photo-1490750967868-88aa4f44baee?w=1400&q=80",
-      "https://images.unsplash.com/photo-1526040652367-ac003a0475fe?w=1400&q=80",
-    ],
-  },
-  {
-    id: 5,
-    title: "Frontera Norte",
-    year: "2022",
-    category: "Documental",
-    images: [
-      "https://images.unsplash.com/photo-1504198453319-5ce911bafcde?w=1400&q=80",
-      "https://images.unsplash.com/photo-1473116763249-2faaef81ccda?w=1400&q=80",
-      "https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=1400&q=80",
-      "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1400&q=80",
-      "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1400&q=80",
-    ],
-  },
-  {
-    id: 6,
-    title: "Luz Doméstica",
-    year: "2022",
-    category: "Interior",
-    images: [
-      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1400&q=80",
-      "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1400&q=80",
-      "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=1400&q=80",
-      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1400&q=80",
-    ],
-  },
-  {
-    id: 7,
-    title: "Después del Agua",
-    year: "2021",
-    category: "Paisaje",
-    images: [
-      "https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=1400&q=80",
-      "https://images.unsplash.com/photo-1414609245224-afa02bfb3fda?w=1400&q=80",
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1400&q=80",
-    ],
-  },
-  {
-    id: 8,
-    title: "Edificio Fantasma",
-    year: "2020",
-    category: "Arquitectura",
-    images: [
-      "https://images.unsplash.com/photo-1524230572899-a752b3835840?w=1400&q=80",
-      "https://images.unsplash.com/photo-1448630360428-65456659616a?w=1400&q=80",
-      "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1400&q=80",
-      "https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=1400&q=80",
+    id: "gastronomia",
+    label: "Gastronomía",
+    projects: [
+      {
+        id: 7,
+        title: "Pomodoro",
+        year: "2024",
+        images: [
+          "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=1400&q=80",
+          "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=1400&q=80",
+          "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=1400&q=80",
+        ],
+      },
+      {
+        id: 8,
+        title: "Garlic",
+        year: "2023",
+        images: [
+          "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1400&q=80",
+          "https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=1400&q=80",
+          "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1400&q=80",
+          "https://images.unsplash.com/photo-1432139509613-5c4255a78e03?w=1400&q=80",
+        ],
+      },
+      {
+        id: 9,
+        title: "Fetuccini",
+        year: "2022",
+        images: [
+          "https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=1400&q=80",
+          "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=1400&q=80",
+          "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=1400&q=80",
+        ],
+      },
     ],
   },
 ];
+
+// Flat list for navigation
+const ALL_PROJECTS = CATEGORIES.flatMap((c) => c.projects);
 
 // Hero images — shown randomly on load. Replace URLs with your own.
 const HERO_IMAGES = [
@@ -161,9 +178,9 @@ export default function App() {
   // Next/prev project
   const navProject = useCallback((dir) => {
     if (!activeProject) return;
-    const idx = PROJECTS.findIndex((p) => p.id === activeProject.id);
-    const next = (idx + dir + PROJECTS.length) % PROJECTS.length;
-    setActiveProject(PROJECTS[next]);
+    const idx = ALL_PROJECTS.findIndex((p) => p.id === activeProject.id);
+    const next = (idx + dir + ALL_PROJECTS.length) % ALL_PROJECTS.length;
+    setActiveProject(ALL_PROJECTS[next]);
     setImageIndex(0);
   }, [activeProject]);
 
@@ -191,7 +208,7 @@ export default function App() {
     setTouchStart(null);
   };
 
-  const hoveredProject = hoveredId ? PROJECTS.find((p) => p.id === hoveredId) : null;
+  const hoveredProject = hoveredId ? ALL_PROJECTS.find((p) => p.id === hoveredId) : null;
 
   return (
     <div style={{
@@ -342,27 +359,52 @@ export default function App() {
             zIndex: 2,
           }}
         >
-          {PROJECTS.map((project) => (
-            <button
-              key={project.id}
-              className="project-link"
-              onMouseEnter={() => setHoveredId(project.id)}
-              onMouseLeave={() => setHoveredId(null)}
-              onClick={() => openProject(project)}
-            >
-              <span className="project-title-text" style={{
-                fontSize: "clamp(20px, 3vw, 28px)",
-                fontWeight: 300,
-                letterSpacing: -0.5,
-              }}>{project.title}</span>
-              <span style={{
-                fontSize: 13,
-                color: "#71717a",
+          {CATEGORIES.map((cat, catIdx) => (
+            <div key={cat.id}>
+              {/* Category divider — 1pt */}
+              {catIdx > 0 && (
+                <div style={{ borderTop: "1px solid #0a0a0a", margin: "20px 0" }} />
+              )}
+
+              {/* Category label */}
+              <div style={{
+                fontSize: "clamp(14px, 2vw, 17px)",
                 fontWeight: 400,
-                flexShrink: 0,
-                marginLeft: 24,
-              }}>{project.year}</span>
-            </button>
+                letterSpacing: 1,
+                textTransform: "uppercase",
+                color: "#71717a",
+                padding: "8px 0",
+              }}>{cat.label}</div>
+
+              {/* Projects in category */}
+              {cat.projects.map((project, projIdx) => (
+                <div key={project.id}>
+                  {/* Project divider — 0.5pt */}
+                  {projIdx > 0 && (
+                    <div style={{ borderTop: "0.5px solid #d4d4d8", margin: "0" }} />
+                  )}
+                  <button
+                    className="project-link"
+                    onMouseEnter={() => setHoveredId(project.id)}
+                    onMouseLeave={() => setHoveredId(null)}
+                    onClick={() => openProject(project)}
+                  >
+                    <span className="project-title-text" style={{
+                      fontSize: "clamp(20px, 3vw, 28px)",
+                      fontWeight: 300,
+                      letterSpacing: -0.5,
+                    }}>{project.title}</span>
+                    <span style={{
+                      fontSize: 13,
+                      color: "#71717a",
+                      fontWeight: 400,
+                      flexShrink: 0,
+                      marginLeft: 24,
+                    }}>{project.year}</span>
+                  </button>
+                </div>
+              ))}
+            </div>
           ))}
 
           {/* Footer */}
@@ -375,7 +417,7 @@ export default function App() {
             alignItems: "center",
           }}>
             <span style={{ fontSize: 13, color: "#d4d4d8" }}>
-              {PROJECTS.length} proyectos
+              {ALL_PROJECTS.length} proyectos
             </span>
             <span style={{ fontSize: 11, color: "#d4d4d8" }}>
               Sitio por{" "}
@@ -459,11 +501,9 @@ export default function App() {
               gap: 6,
             }}>
               {[
-                "Territorio",
-                "  Materia",
-                "    Frontera",
-                "  Luz",
-                "Silencio",
+                "Retrato",
+                "  Arquitectura",
+                "    Gastronomía",
               ].map((word, i) => (
                 <span key={i} style={{
                   fontSize: "clamp(60px, 10vw, 140px)",
