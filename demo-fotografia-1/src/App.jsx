@@ -389,12 +389,10 @@ export default function App() {
               className="hover-image"
               style={{
                 position: "fixed",
-                right: 40,
-                top: "50%",
-                transform: "translateY(-50%)",
-                width: "45vw",
-                maxWidth: 600,
-                aspectRatio: "3/2",
+                right: 0,
+                top: 0,
+                bottom: 0,
+                width: "55vw",
                 overflow: "hidden",
                 pointerEvents: "none",
                 animation: "fadeIn 0.2s ease",
