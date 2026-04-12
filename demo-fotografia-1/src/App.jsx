@@ -110,6 +110,16 @@ const PROJECTS = [
   },
 ];
 
+// Hero images — shown randomly on load. Replace URLs with your own.
+const HERO_IMAGES = [
+  "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1800&q=80",
+  "https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=1800&q=80",
+  "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=1800&q=80",
+  "https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=1800&q=80",
+  "https://images.unsplash.com/photo-1524230572899-a752b3835840?w=1800&q=80",
+  "https://images.unsplash.com/photo-1473116763249-2faaef81ccda?w=1800&q=80",
+];
+
 const FONT_LINK = "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&display=swap";
 
 // ─── COMPONENT ──────────────────────────────────────────────────────
@@ -120,6 +130,7 @@ export default function App() {
   const [imageIndex, setImageIndex] = useState(0);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [touchStart, setTouchStart] = useState(null);
+  const [heroImage] = useState(() => HERO_IMAGES[Math.floor(Math.random() * HERO_IMAGES.length)]);
 
   useEffect(() => {
     const link = document.createElement("link");
@@ -328,7 +339,7 @@ export default function App() {
             maxWidth: 700,
             animation: "fadeIn 0.3s ease",
             position: "relative",
-            zIndex: 1,
+            zIndex: 2,
           }}
         >
           {PROJECTS.map((project) => (
@@ -387,7 +398,7 @@ export default function App() {
                 overflow: "hidden",
                 pointerEvents: "none",
                 animation: "fadeIn 0.2s ease",
-                zIndex: 2,
+                zIndex: 3,
               }}
             >
               <img
@@ -403,6 +414,30 @@ export default function App() {
             </div>
           )}
 
+          {/* Hero image — random on load */}
+          <div style={{
+            position: "fixed",
+            right: 0,
+            top: 0,
+            bottom: 0,
+            width: "55vw",
+            pointerEvents: "none",
+            zIndex: 0,
+            opacity: hoveredId ? 0 : 1,
+            transition: "opacity 0.3s ease",
+          }}>
+            <img
+              src={heroImage}
+              alt=""
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                display: "block",
+              }}
+            />
+          </div>
+
           {/* Vertical typography — background layer */}
           <div
             className="vertical-type"
@@ -414,7 +449,7 @@ export default function App() {
               alignItems: "flex-start",
               paddingTop: 80,
               pointerEvents: "none",
-              zIndex: 3,
+              zIndex: 1,
             }}
           >
             <div style={{
