@@ -122,6 +122,43 @@ const CATEGORIES = [
       },
     ],
   },
+  {
+    id: "archivo",
+    label: "Archivo",
+    archive: true,
+    projects: [
+      {
+        id: 10,
+        title: "Vereda tropical",
+        year: "2019",
+        images: [
+          "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1400&q=80",
+          "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1400&q=80",
+          "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1400&q=80",
+        ],
+      },
+      {
+        id: 11,
+        title: "Entonces",
+        year: "2018",
+        images: [
+          "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1400&q=80",
+          "https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=1400&q=80",
+          "https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=1400&q=80",
+        ],
+      },
+      {
+        id: 12,
+        title: "Ojitos de golondrina",
+        year: "2017",
+        images: [
+          "https://images.unsplash.com/photo-1414609245224-afa02bfb3fda?w=1400&q=80",
+          "https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=1400&q=80",
+          "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1400&q=80",
+        ],
+      },
+    ],
+  },
 ];
 
 // Flat list for navigation
@@ -362,6 +399,7 @@ export default function App() {
         >
           {CATEGORIES.map((cat, catIdx) => {
             const isOpen = expandedCats.includes(cat.id);
+            const isArchive = cat.archive;
             const toggleCat = () => setExpandedCats((prev) =>
               prev.includes(cat.id)
                 ? prev.filter((c) => c !== cat.id)
@@ -369,14 +407,17 @@ export default function App() {
             );
             return (
             <div key={cat.id}>
-              {/* Category divider — 1pt */}
+              {/* Category divider */}
               {catIdx > 0 && (
-                <div style={{ borderTop: "1px solid #0a0a0a", margin: "20px 0" }} />
+                <div style={{
+                  borderTop: isArchive ? "1.25px solid #0a0a0a" : "1px solid #0a0a0a",
+                  margin: isArchive ? "32px 0 20px" : "20px 0",
+                }} />
               )}
 
               {/* Category label — clickable */}
               <button onClick={toggleCat} style={{
-                fontSize: "clamp(14px, 2vw, 17px)",
+                fontSize: isArchive ? 16 : "clamp(14px, 2vw, 17px)",
                 fontWeight: 400,
                 letterSpacing: 1,
                 textTransform: "uppercase",
@@ -416,12 +457,12 @@ export default function App() {
                     onClick={() => openProject(project)}
                   >
                     <span className="project-title-text" style={{
-                      fontSize: "clamp(10px, 1.5vw, 14px)",
+                      fontSize: isArchive ? "10.67px" : "clamp(10px, 1.5vw, 14px)",
                       fontWeight: 300,
                       letterSpacing: -0.3,
                     }}>{project.title}</span>
                     <span style={{
-                      fontSize: 11,
+                      fontSize: isArchive ? 9 : 11,
                       color: "#71717a",
                       fontWeight: 400,
                       flexShrink: 0,
