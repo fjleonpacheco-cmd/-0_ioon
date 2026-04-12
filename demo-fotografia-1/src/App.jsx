@@ -293,8 +293,8 @@ export default function App() {
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        background: view === "project" ? "transparent" : "rgba(250,250,250,0.9)",
-        backdropFilter: view === "project" ? "none" : "blur(12px)",
+        background: "transparent",
+        backdropFilter: "none",
         transition: "background 0.3s",
       }}>
         <button
