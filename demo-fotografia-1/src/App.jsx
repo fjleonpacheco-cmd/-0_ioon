@@ -410,14 +410,14 @@ export default function App() {
               {/* Category divider */}
               {catIdx > 0 && (
                 <div style={{
-                  borderTop: isArchive ? "1.25px solid #0a0a0a" : "1px solid #0a0a0a",
+                  borderTop: isArchive ? "1.25px solid #d4d4d8" : "1px solid #0a0a0a",
                   margin: isArchive ? "32px 0 20px" : "20px 0",
                 }} />
               )}
 
               {/* Category label — clickable */}
               <button onClick={toggleCat} style={{
-                fontSize: isArchive ? 16 : "clamp(14px, 2vw, 17px)",
+                fontSize: isArchive ? 8 : "clamp(14px, 2vw, 17px)",
                 fontWeight: 400,
                 letterSpacing: 1,
                 textTransform: "uppercase",
@@ -461,13 +461,6 @@ export default function App() {
                       fontWeight: 300,
                       letterSpacing: -0.3,
                     }}>{project.title}</span>
-                    <span style={{
-                      fontSize: isArchive ? 9 : 11,
-                      color: "#71717a",
-                      fontWeight: 400,
-                      flexShrink: 0,
-                      marginLeft: 24,
-                    }}>{project.year}</span>
                   </button>
                 </div>
               ))}
