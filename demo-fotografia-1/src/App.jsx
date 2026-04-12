@@ -447,7 +447,7 @@ export default function App() {
               alignItems: "flex-start",
               paddingTop: 80,
               pointerEvents: "none",
-              zIndex: 1,
+              zIndex: 4,
             }}
           >
             <div style={{
