@@ -148,6 +148,7 @@ export default function App() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [touchStart, setTouchStart] = useState(null);
   const [heroImage] = useState(() => HERO_IMAGES[Math.floor(Math.random() * HERO_IMAGES.length)]);
+  const [expandedCats, setExpandedCats] = useState(["retrato"]);
 
   useEffect(() => {
     const link = document.createElement("link");
@@ -359,25 +360,50 @@ export default function App() {
             zIndex: 2,
           }}
         >
-          {CATEGORIES.map((cat, catIdx) => (
+          {CATEGORIES.map((cat, catIdx) => {
+            const isOpen = expandedCats.includes(cat.id);
+            const toggleCat = () => setExpandedCats((prev) =>
+              prev.includes(cat.id)
+                ? prev.filter((c) => c !== cat.id)
+                : [...prev, cat.id]
+            );
+            return (
             <div key={cat.id}>
               {/* Category divider — 1pt */}
               {catIdx > 0 && (
                 <div style={{ borderTop: "1px solid #0a0a0a", margin: "20px 0" }} />
               )}
 
-              {/* Category label */}
-              <div style={{
+              {/* Category label — clickable */}
+              <button onClick={toggleCat} style={{
                 fontSize: "clamp(14px, 2vw, 17px)",
                 fontWeight: 400,
                 letterSpacing: 1,
                 textTransform: "uppercase",
                 color: "#71717a",
                 padding: "8px 0",
-              }}>{cat.label}</div>
+                background: "none",
+                border: "none",
+                fontFamily: "inherit",
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                gap: 8,
+                transition: "color 0.2s",
+                width: "100%",
+                textAlign: "left",
+              }}>
+                <span style={{
+                  fontSize: 10,
+                  transition: "transform 0.2s",
+                  transform: isOpen ? "rotate(90deg)" : "rotate(0deg)",
+                  display: "inline-block",
+                }}>→</span>
+                {cat.label}
+              </button>
 
-              {/* Projects in category */}
-              {cat.projects.map((project, projIdx) => (
+              {/* Projects in category — collapsible */}
+              {isOpen && cat.projects.map((project, projIdx) => (
                 <div key={project.id}>
                   {/* Project divider — 0.5pt */}
                   {projIdx > 0 && (
@@ -390,12 +416,12 @@ export default function App() {
                     onClick={() => openProject(project)}
                   >
                     <span className="project-title-text" style={{
-                      fontSize: "clamp(20px, 3vw, 28px)",
+                      fontSize: "clamp(10px, 1.5vw, 14px)",
                       fontWeight: 300,
-                      letterSpacing: -0.5,
+                      letterSpacing: -0.3,
                     }}>{project.title}</span>
                     <span style={{
-                      fontSize: 13,
+                      fontSize: 11,
                       color: "#71717a",
                       fontWeight: 400,
                       flexShrink: 0,
@@ -405,7 +431,8 @@ export default function App() {
                 </div>
               ))}
             </div>
-          ))}
+            );
+          })}
 
           {/* Footer */}
           <div style={{
