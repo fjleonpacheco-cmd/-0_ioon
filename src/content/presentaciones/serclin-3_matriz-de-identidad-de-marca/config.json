@@ -1,0 +1,235 @@
+{
+  "title": "Matriz de Identidad de Marca",
+  "client": "Serclin",
+  "date": "2026-04-14",
+  "password": "",
+  "layout": "sections",
+  "sections": [
+    {
+      "title": "Portada",
+      "slides": [
+        {
+          "type": "title",
+          "overline": "ioon × Serclin",
+          "headingHtml": "<b>MATRIZ DE IDENTIDAD DE MARCA</b>",
+          "subheading": "Desarrollo de marca — Abril 2026"
+        }
+      ]
+    },
+    {
+      "title": "Nombre de Proyecto",
+      "slides": [
+        {
+          "type": "text",
+          "heading": "Matriz de Identidad de marca",
+          "bodyHtml": "La marca es mucho más que un logo o un nombre; es la suma de <b>todas las experiencias y percepciones</b> que un consumidor tiene con una empresa. En la era digital, donde la interacción es constante y multidimensional, establecer una base de marca sólida es imperativo para construir conexiones emocionales duraderas y diferenciarse en el mercado."
+        }
+      ]
+    },
+    {
+      "title": "Contexto",
+      "slides": [
+        {
+          "type": "text",
+          "heading": "Contexto",
+          "bodyHtml": "México se ha consolidado como el epicentro de las tiendas departamentales en Latinoamérica, un mercado donde el espacio físico ha dejado de ser un simple punto de transacción para convertirse en el <b>escenario crítico de la experiencia de marca</b>. En este ecosistema tan demandante, la diferencia entre una visita olvidable y una conexión emocional profunda reside en el detalle invisible: la impecabilidad absoluta del entorno.<br><br>Sin embargo, la brecha entre los estándares internacionales de excelencia y la ejecución operativa local representa hoy el mayor <b>riesgo reputacional</b> para las firmas de prestigio. En un entorno donde el consumidor es más analítico y exigente que nunca, la gestión de infraestructura debe evolucionar; ya no basta con higienizar, es imperativo preservar. Para las marcas que habitan el terreno del retail, el orden y la perfección técnica no son meros gastos operativos, sino los <b>guardianes silenciosos de su valor de marca</b>."
+        }
+      ]
+    },
+    {
+      "title": "Propósito",
+      "slides": [
+        {
+          "type": "text",
+          "heading": "Propósito de marca",
+          "body": "Es la razón de ser más allá de la venta de productos o servicios",
+          "l3": [
+            {
+              "label": "Opción 1",
+              "headingHtml": "Honrar el valor de cada espacio a través de un cuidado impecable, <b>transformando la limpieza en un acto de hospitalidad</b> que dignifica el entorno y a quienes lo habitan.",
+              "bodyHtml": "Enfoque en el <b>Legado y la Hospitalidad</b> (El \"Alma\" Oaxaqueña). Ideal si quieres diferenciarte de los gigantes globales a través de la calidez y el cuidado artesanal."
+            },
+            {
+              "label": "Opción 2",
+              "headingHtml": "Crear el <b>escenario perfecto</b> para que el éxito de nuestros clientes brille sin interrupciones.",
+              "bodyHtml": "Enfoque en la <b>Escenografía y el Prestigio</b> (El \"Guante Blanco\"). Ideal para el pitch de ventas ante directores de tiendas departamentales de lujo (tipo El Palacio de Hierro)."
+            },
+            {
+              "label": "Opción 3",
+              "headingHtml": "<b>Impulsar el bienestar de nuestra comunidad</b> y la preservación de los espacios a través de una limpieza consciente, profesional y humana.",
+              "bodyHtml": "Enfoque en la <b>Responsabilidad y el Futuro</b> (Sustentabilidad). Ideal para resaltar el aspecto de Empresa Socialmente Responsable (ESR) y la modernización."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Misión",
+      "slides": [
+        {
+          "type": "text",
+          "heading": "Misión",
+          "body": "Debe equilibrar la autoridad de una empresa que nació en los 80 con la aspiración de una marca que compite en el mercado de lujo actual.",
+          "l3": [
+            {
+              "label": "Opción 1",
+              "headingHtml": "Somos una empresa oaxaqueña con cuatro décadas de historia dedicada a la gestión profesional de ambientes. <b>Combinamos el rigor operativo con la calidez de nuestra raíz</b> para ofrecer servicios de mantenimiento de alta gama, <b>garantizando la continuidad y el prestigio de las marcas que confían en nosotros</b>.",
+              "bodyHtml": "Enfoque en el <b>Legado y la Hospitalidad</b> (El \"Alma\" Oaxaqueña)."
+            },
+            {
+              "label": "Opción 2",
+              "headingHtml": "Proveer soluciones especializadas de limpieza y mantenimiento para el sector corporativo y de retail de alto nivel. <b>Elevamos los estándares de higiene</b> mediante procesos profesionalizados, tecnología y un equipo humano altamente comprometido, <b>protegiendo la imagen y el patrimonio de nuestros aliados comerciales</b>.",
+              "bodyHtml": "Enfoque en la <b>Escenografía y el Prestigio</b> (El \"Guante Blanco\")."
+            },
+            {
+              "label": "Opción 3",
+              "headingHtml": "Transformar la industria de servicios de limpieza en México mediante un modelo de negocio socialmente responsable y eficiente. Desde 1980, <b>profesionalizamos el oficio del mantenimiento para ofrecer entornos saludables y sostenibles</b>, apoyados en la experiencia de nuestro talento y el respeto por el medio ambiente.",
+              "bodyHtml": "Enfoque en la <b>Responsabilidad y el Futuro</b> (Sustentabilidad)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Filosofía de Marca",
+      "slides": [
+        {
+          "type": "text",
+          "heading": "Filosofía de marca.",
+          "bodyHtml": "<b>\"La Estética de la Constancia\".</b> Creemos que la excelencia no es un acto aislado, sino un hábito que se cultiva con el tiempo. <b>La filosofía de Serclin se basa en tres pilares fundamentales</b> que dictan cómo habitamos y transformamos los espacios de nuestros aliados:",
+          "l3": [
+            {
+              "label": "1. Lo Invisible",
+              "heading": "El valor de lo invisible",
+              "bodyHtml": "En el mundo del retail, la perfección se siente, pero no se nota. Entendemos que <b>nuestro éxito radica en ser el escenario invisible</b>: esa atmósfera impecable que permite que las marcas de nuestros clientes brillen sin distracciones. Si el entorno es perfecto, la experiencia de compra es total."
+            },
+            {
+              "label": "El Rigor",
+              "heading": "Rigor profesional con rostro humano",
+              "bodyHtml": "Honramos nuestra raíz oaxaqueña transformando la limpieza en una forma de hospitalidad técnica. No enviamos cuadrillas; enviamos especialistas que entienden que cuidar el escenario de nuestros clientes requiere tanto de protocolos como de un respeto profundo por el patrimonio. <b>Para nosotros, profesionalizar es dignificar</b>."
+            },
+            {
+              "label": "3. La Resiliencia",
+              "heading": "La resiliencia como garantía",
+              "bodyHtml": "Nacimos en 1980 y hemos crecido al ritmo de México. Esta trayectoria no es sólo tiempo; es <b>memoria operativa</b>. Nuestra filosofía de permanencia asegura a nuestros aliados que, ante cualquier reto o cambio en el mercado, nosotros somos el cimiento de confianza que nunca falla. La constancia es nuestra mayor ventaja competitiva.<br><br><i>\"No limpiamos superficies; preservamos el prestigio de quienes las habitan.\"</i>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Valores",
+      "slides": [
+        {
+          "type": "text",
+          "heading": "Valores",
+          "body": "Son los principios éticos y emocionales que guían el comportamiento y la toma de decisiones en Serclin.",
+          "l3": [
+            {
+              "label": "Valores Núcleo",
+              "heading": "Son los que garantizan que el servicio se entregue con calidad.",
+              "bodyHtml": "<ul><li><b>Rigor Operativo:</b> No sólo limpiamos; seguimos protocolos. La precisión es nuestra base para garantizar ambientes saludables y seguros.</li><li><b>Integridad de Legado:</b> Actuamos con la honestidad y rectitud que nos ha permitido crecer orgánicamente desde los años 80. Nuestra palabra y nuestros contratos son ley.</li><li><b>Disciplina de Continuidad:</b> Entendemos que en el retail el tiempo no se detiene. Somos el aliado que garantiza que la tienda siempre esté lista para abrir, sin excusas.</li></ul>"
+            },
+            {
+              "label": "Valores Relacionales",
+              "heading": "Aquí es donde entra la singularidad y el origen oaxaqueño.",
+              "bodyHtml": "<ul><li><b>Hospitalidad Técnica:</b> Elevamos la limpieza a un acto de servicio superior. No somos una cuadrilla industrial; somos anfitriones expertos que cuidan el espacio para que el cliente se sienta bienvenido.</li><li><b>Mística del Detalle:</b> Donde otros ven una superficie, nosotros vemos un activo de marca. Tenemos el ojo entrenado para detectar lo que otros ignoran, manteniendo el estándar de \"guante blanco\" en cada rincón.</li><li><b>Resiliencia Adaptativa:</b> A diferencia de las estructuras trasnacionales rígidas, tenemos la agilidad de una empresa con raíces para resolver retos específicos con soluciones creativas y personalizadas.</li></ul>"
+            },
+            {
+              "label": "Valores Diferenciales",
+              "heading": "Definen la experiencia de trabajar con la empresa. Es el factor humano y social.",
+              "bodyHtml": "<ul><li><b>Cercanía de Alta Dirección:</b> En un mundo de <i>call centers</i> y <i>tickets</i>, nosotros ofrecemos una relación directa. El cliente tiene acceso a quienes toman las decisiones, generando una confianza que las globales no pueden igualar.</li><li><b>Bienestar de Raíz (ESR):</b> Nuestro crecimiento impulsa el de nuestra comunidad en Oaxaca. Nos vinculamos con el cliente a través de un impacto social tangible: empleos dignos, estables y con sentido de pertenencia.</li><li><b>Transparencia de Aliado:</b> No somos un proveedor externo; somos parte del equipo. Compartimos datos, fallas y aciertos con total apertura para construir una relación a largo plazo, no solo una transacción.</li></ul>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Verdad Inmutable",
+      "slides": [
+        {
+          "type": "concept",
+          "headingHtml": "<i>\"El <b>cuidado</b> absoluto es la forma más alta de la <b>hospitalidad</b>.\"</i>",
+          "subheading": "Verdad Inmutable",
+          "bodyHtml": "Es nuestra \"estrella polar\", aquello que no cambia aunque la empresa se digitalice, use robots o se expanda a otros países. Es el alma que ha mantenido viva a esta organización desde los ochenta."
+        }
+      ]
+    },
+    {
+      "title": "Creencia Disruptiva",
+      "slides": [
+        {
+          "type": "concept",
+          "headingHtml": "<i>\"La limpieza no es un gasto de mantenimiento; es el <b>activo de marketing</b> más rentable (y el más ignorado) de una marca de retail.\"</i>",
+          "subheading": "Creencia Disruptiva",
+          "bodyHtml": "Es aquello que desafía el sentido común de la industria. Mientras todos los competidores (Sodexo, EULEN, etc.) dicen que la limpieza es \"necesaria para la operación\", <b>Serclin debe decir algo que cambie las reglas del juego</b> y obligue al director de compras a ver su presupuesto de forma distinta."
+        }
+      ]
+    },
+    {
+      "title": "Declaración del Problema y Solución",
+      "slides": [
+        {
+          "type": "text",
+          "heading": "Declaración del Problema y Solución",
+          "body": "Esta declaración es el \"corazón\" de la propuesta comercial de Serclin. Está diseñada para que, cuando Rodrigo (el Director de Compras) la lea, sienta que finalmente alguien entiende el caos silencioso de su operación diaria.",
+          "l3": [
+            {
+              "label": "Problema",
+              "heading": "El reto estratégico del Retail de Lujo",
+              "bodyHtml": "En el mercado del <i>retail</i> de alta gama, las grandes cadenas invierten millones en arquitectura, iluminación y curaduría de productos para crear una experiencia de marca impecable. Sin embargo, esta inversión se ve vulnerada diariamente por un <b>modelo de limpieza basado en el 'commodity'</b>: proveedores masivos con altísima rotación de personal, desconectados de la experiencia que la tienda quiere ofrecer a sus clientes. En este nivel, un piso opaco o un cristal con huellas no es un error de limpieza; es una <b>erosión directa del valor de la marca</b>."
+            },
+            {
+              "label": "Solución",
+              "headingHtml": "La propuesta de <b>Serclin</b>: Hospitalidad Técnica",
+              "bodyHtml": "Nuestra solución nace de la unión de dos mundos: la <b>hospitalidad profunda de nuestra raíz oaxaqueña</b> y el <b>rigor operativo de cuatro décadas de experiencia</b>. No ofrecemos una cuadrilla de limpieza; ofrecemos una <b>Escenografía de Orden y Cuidado</b>.<br><br>A través de nuestra metodología de <b>Hospitalidad Técnica</b>, profesionalizamos el oficio del mantenimiento para convertirlo en un activo de marketing. Garantizamos la continuidad operativa mediante personal estable y orgulloso de su labor, blindamos la seguridad legal de nuestros aliados y elevamos el estándar visual de cada rincón.<br><br>Desde 1980, no solo limpiamos superficies: <b>custodiamos el prestigio</b> de nuestros aliados, asegurando que su escenario esté siempre a la altura de la experiencia que buscan ofrecer."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Promesa Emocional",
+      "slides": [
+        {
+          "type": "concept",
+          "headingHtml": "<i>\"La quietud de lo impecable.\"</i>",
+          "subheading": "Promesa Emocional",
+          "bodyHtml": "La Promesa Emocional es el contrato invisible que Serclin firma con el corazón de sus clientes. Mientras que la promesa funcional es \"limpiar\", la emocional es el <b>sentimiento que entrega</b> a Rodrigo (el Buyer Persona) para que pueda dormir tranquilo."
+        }
+      ]
+    },
+    {
+      "title": "Propuesta Única de Valor",
+      "slides": [
+        {
+          "type": "concept",
+          "headingHtml": "<i>\"<b>La arquitectura del orden:</b> Elevamos la limpieza técnica a una disciplina de hospitalidad que preserva el silencio, el prestigio y el escenario de nuestros aliados.\"</i>",
+          "subheading": "Propuesta Única de Valor",
+          "bodyHtml": "Esta propuesta debe ser el punto de fuga donde todas las líneas que hemos trazado —desde el rigor de Rodrigo hasta el reconocimiento oaxaqueño— convergen. No es un eslogan; es la declaración de por qué <b>Serclin</b> es la única opción lógica y deseable para el sector del retail."
+        }
+      ]
+    },
+    {
+      "title": "Visión",
+      "slides": [
+        {
+          "type": "concept",
+          "headingHtml": "<i>\"Consolidarnos como la <b>boutique de infraestructura más deseada</b> de México, redefiniendo el estándar del retail a través de un modelo donde la precisión técnica y la mística de la hospitalidad se fusionan para ser los guardianes definitivos del prestigio de nuestros aliados.\"</i>",
+          "subheading": "Visión",
+          "bodyHtml": "¿A dónde queremos llegar?"
+        }
+      ]
+    },
+    {
+      "title": "Cierre",
+      "slides": [
+        {
+          "type": "title",
+          "heading": "¡Gracias!",
+          "subheading": "hola@ioon.mx"
+        }
+      ]
+    }
+  ]
+}
