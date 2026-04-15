@@ -45,6 +45,9 @@ function imgSrc(s: string) {
 
   {isSections ? (
     <div>
+    <style>{`
+      .sec-dot:hover span:first-child { background: var(--color-ink) !important; border-color: var(--color-ink) !important; }
+    `}</style>
     <nav class="fixed top-0 left-0 w-full z-40 bg-[--color-paper]/90 backdrop-blur-sm border-b border-[--color-border]">
       <div class="flex items-center justify-between px-6 md:px-12 py-4">
         <a href="/" class="hover:opacity-70 transition-opacity"><img src="/logo.png" alt="ioon" class="h-6" /></a>
@@ -61,7 +64,7 @@ function imgSrc(s: string) {
     <div class="fixed left-[8px] md:left-[20px] top-1/2 -translate-y-1/2 z-40 flex flex-col gap-[9px]" id="sec-nav">
       {sections.map((sec: any, i: number) => (
         <button class={`sec-dot group relative cursor-pointer p-0`} data-sec={i}>
-          <span class={`block w-[8px] h-[8px] rounded-full transition-all group-hover:bg-[--color-ink] ${i === 0 ? 'bg-[--color-ink]' : 'bg-transparent'}`} style={i === 0 ? 'border:1px solid var(--color-ink)' : 'border:1px solid var(--color-muted)'} />
+          <span class={`block w-[8px] h-[8px] rounded-full transition-all ${i === 0 ? 'bg-[--color-ink]' : 'bg-transparent'}`} style={i === 0 ? 'border:1px solid var(--color-ink)' : 'border:1px solid var(--color-muted)'} />
           <span class="hidden md:block absolute left-[20px] top-1/2 -translate-y-1/2 text-[10px] tracking-[1px] uppercase text-[--color-muted] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">{sec.title}</span>
         </button>
       ))}
