@@ -45,9 +45,6 @@ function imgSrc(s: string) {
 
   {isSections ? (
     <div>
-    <style>{`
-      .sec-dot:hover span:first-child { background: var(--color-ink) !important; border-color: var(--color-ink) !important; }
-    `}</style>
     <nav class="fixed top-0 left-0 w-full z-40 bg-[--color-paper]/90 backdrop-blur-sm border-b border-[--color-border]">
       <div class="flex items-center justify-between px-6 md:px-12 py-4">
         <a href="/" class="hover:opacity-70 transition-opacity"><img src="/logo.png" alt="ioon" class="h-6" /></a>
@@ -336,6 +333,11 @@ function imgSrc(s: string) {
       }
 
       secDots.forEach(function(d) { d.addEventListener('click', function() { showSection(Number(d.dataset.sec)); }); });
+      secDots.forEach(function(d) {
+        var c = d.querySelector('span');
+        d.addEventListener('mouseenter', function() { c.style.background = 'var(--color-ink)'; c.style.borderColor = 'var(--color-ink)'; });
+        d.addEventListener('mouseleave', function() { var i = Number(d.dataset.sec); if (i === curSec) { c.style.background = 'var(--color-ink)'; c.style.borderColor = 'var(--color-ink)'; } else { c.style.background = 'transparent'; c.style.borderColor = 'var(--color-muted)'; } });
+      });
       document.querySelectorAll('.hdot').forEach(function(d) { d.addEventListener('click', function() { showHSlide(curSec, Number(d.dataset.hi)); }); });
       document.querySelectorAll('.harrow-left').forEach(function(b) { b.addEventListener('click', goLeft); });
       document.querySelectorAll('.harrow-right').forEach(function(b) { b.addEventListener('click', goRight); });
