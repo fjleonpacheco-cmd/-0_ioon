@@ -54,33 +54,13 @@ function imgSrc(s: string) {
         </div>
         <div class="text-xs text-[--color-muted]" id="sec-counter">1/{sections.length}</div>
       </div>
-      <div class="h-[2px] bg-transparent relative"><div id="ioon-progress" class="h-[2px] bg-[--color-ink] transition-all duration-300" style="width:0%"></div></div>
     </nav>
 
-    <style>{`
-      #sec-nav { left:20px!important; right:auto!important; gap:6px!important; }
-      @media(max-width:768px){ #sec-nav { left:8px!important; } }
-      .sec-dot { padding:0!important; gap:0!important; position:relative; }
-      .sec-dot .vdot { width:8px;height:8px;border-radius:50%;border:1.5px solid var(--color-muted);background:transparent;transition:all 0.25s;display:block; }
-      .sec-dot .vdot-label { position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--color-muted);white-space:nowrap;opacity:0;pointer-events:none;transition:opacity 0.2s; }
-      .sec-dot:hover .vdot-label { opacity:1; }
-      @media(max-width:768px){ .sec-dot .vdot-label { display:none; } }
-      .ioon-section-label { font-size:11px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--color-muted); }
-      .ioon-nav-bottom { position:fixed;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:24px;z-index:90; }
-      .ioon-nav-bottom button { font-size:14px;color:var(--color-muted);cursor:pointer;background:none;border:none;font-family:var(--font-sans);transition:color 0.2s;padding:4px;line-height:1; }
-      .ioon-nav-bottom button:hover { color:var(--color-ink); }
-      .ioon-hdots { position:fixed;bottom:40px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:90; }
-      .ioon-hdots .hdot { width:7px!important;height:7px!important;border-radius:50%!important;border:1.5px solid var(--color-muted);padding:0!important;cursor:pointer;transition:all 0.25s; }
-      .ioon-version { position:fixed;bottom:12px;right:20px;font-size:9px;font-weight:400;letter-spacing:1px;text-transform:uppercase;color:var(--color-highlight);z-index:90; }
-    `}</style>
-
-    <div class="ioon-version">Propuesta C1 — v20260414</div>
-
-    <div class="fixed left-5 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-1.5" id="sec-nav">
+    <div class="fixed right-3 md:right-auto md:left-6 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-1" id="sec-nav">
       {sections.map((sec: any, i: number) => (
-        <button class="sec-dot cursor-pointer transition-all" data-sec={i}>
-          <span class={`vdot ${i === 0 ? '' : ''}`} style={i === 0 ? 'background:var(--color-ink);border-color:var(--color-ink)' : ''} />
-          <span class="vdot-label">{sec.title}</span>
+        <button class={`sec-dot flex items-center gap-3 py-1.5 md:py-2 px-1 group cursor-pointer transition-all`} data-sec={i}>
+          <span class={`block w-1.5 h-1.5 md:w-2 md:h-2 rounded-full border border-[--color-ink] transition-all ${i === 0 ? 'bg-[--color-ink] scale-125' : 'bg-transparent'}`} />
+          <span class="hidden md:block text-[10px] tracking-[0.15em] uppercase text-[--color-muted] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">{sec.title}</span>
         </button>
       ))}
     </div>
@@ -89,7 +69,8 @@ function imgSrc(s: string) {
       {sections.map((sec: any, si: number) => (
         <section class="vsection min-h-screen flex flex-col justify-center" data-section={si} style={si > 0 ? 'display:none' : ''}>
           <div class="px-12 md:px-20 pt-8 pb-4">
-            <p class="ioon-section-label">{sec.title}</p>
+            <p class="text-xs tracking-[0.3em] uppercase text-[--color-muted]">{String(si + 1).padStart(2, '0')}</p>
+            <h2 class="text-2xl md:text-3xl font-light mt-1">{sec.title}</h2>
           </div>
           <div class="flex-1 flex items-center overflow-hidden">
             <div class="hslides-wrap w-full" data-section={si}>
@@ -100,8 +81,10 @@ function imgSrc(s: string) {
                     {slide.type === 'title' && (
                       <div class="text-center py-12">
                         {slide.overline && <p class="text-xs tracking-[0.3em] uppercase text-[--color-muted] mb-6">{slide.overline}</p>}
-                        {slide.heading && <h1 class="text-[clamp(2rem,5vw,5rem)] font-light leading-[0.95] tracking-tight">{slide.heading}</h1>}
-                        {slide.headingHtml && <h1 class="text-[clamp(2rem,5vw,5rem)] font-light leading-[0.95] tracking-tight" set:html={slide.headingHtml} />}
+                        {slide.headingHtml
+                          ? <h1 class="text-[clamp(2rem,5vw,5rem)] font-light leading-[0.95] tracking-tight" set:html={slide.headingHtml} />
+                          : <h1 class="text-[clamp(2rem,5vw,5rem)] font-light leading-[0.95] tracking-tight">{slide.heading}</h1>
+                        }
                         {slide.subheading && <p class="mt-6 text-lg text-[--color-muted] font-light">{slide.subheading}</p>}
                         {slide.subheadingHtml && <p class="mt-6 text-lg text-[--color-muted] font-light" set:html={slide.subheadingHtml} />}
                       </div>
@@ -142,8 +125,10 @@ function imgSrc(s: string) {
                         </div>
                         {slide.l3.map((tab: any, ti: number) => (
                           <div class={`l3-content ${ti === 0 ? '' : 'hidden'}`} data-l3c={`${si}-${hi}-${ti}`}>
-                            {tab.heading && <h4 class="text-xl md:text-2xl font-light mb-4">{tab.heading}</h4>}
-                            {tab.headingHtml && <h4 class="text-xl md:text-2xl font-light mb-4" set:html={tab.headingHtml} />}
+                            {tab.headingHtml
+                              ? <h4 class="text-xl md:text-2xl font-light mb-4" set:html={tab.headingHtml} />
+                              : tab.heading && <h4 class="text-xl md:text-2xl font-light mb-4">{tab.heading}</h4>
+                            }
                             {tab.body && <p class="text-base text-[--color-muted] leading-relaxed max-w-2xl">{tab.body}</p>}
                             {tab.bodyHtml && <p class="text-base text-[--color-muted] leading-relaxed max-w-2xl" set:html={tab.bodyHtml} />}
                             {tab.bullets && (<ul class="mt-4 space-y-2 list-disc pl-5 marker:text-[--color-ink]">{tab.bullets.map((b: string) => (<li class="text-sm text-[--color-muted] pl-1">{b}</li>))}</ul>)}
@@ -187,11 +172,15 @@ function imgSrc(s: string) {
 
                     {slide.type === 'concept' && (
                       <div>
-                        {slide.heading && <h2 class="text-[clamp(1.6rem,4vw,3rem)] font-light leading-[1.15] tracking-tight">{slide.heading}</h2>}
-                        {slide.headingHtml && <h2 class="text-[clamp(1.6rem,4vw,3rem)] font-light leading-[1.15] tracking-tight" set:html={slide.headingHtml} />}
+                        {slide.headingHtml
+                          ? <h2 class="text-[clamp(1.6rem,4vw,3rem)] font-light leading-[1.15] tracking-tight" set:html={slide.headingHtml} />
+                          : slide.heading && <h2 class="text-[clamp(1.6rem,4vw,3rem)] font-light leading-[1.15] tracking-tight">{slide.heading}</h2>
+                        }
                         {slide.subheading && <p class="text-xl md:text-2xl font-light text-[--color-muted] mt-3">{slide.subheading}</p>}
-                        {slide.body && <p class="text-base md:text-lg text-[--color-muted] leading-relaxed max-w-2xl mt-4">{slide.body}</p>}
-                        {slide.bodyHtml && <div class="text-base md:text-lg text-[--color-muted] leading-relaxed max-w-2xl mt-4" set:html={slide.bodyHtml} />}
+                        {slide.bodyHtml
+                          ? <div class="text-base md:text-lg text-[--color-muted] leading-relaxed max-w-2xl mt-4" set:html={slide.bodyHtml} />
+                          : slide.body && <p class="text-base md:text-lg text-[--color-muted] leading-relaxed max-w-2xl mt-4">{slide.body}</p>
+                        }
                       </div>
                     )}
 
@@ -201,24 +190,35 @@ function imgSrc(s: string) {
             </div>
           </div>
 
-          {sec.slides.length > 1 && (
-            <div class="ioon-hdots hdots" data-section={si}>
-              {sec.slides.map((_: any, hi: number) => (
-                <button class={`hdot`} data-hi={hi} style={hi === 0 ? 'background:var(--color-ink);border-color:var(--color-ink)' : 'background:transparent'} />
-              ))}
+          <div class="flex items-center justify-center gap-4 mb-16">
+            <div class="flex flex-col gap-0">
+              <button class="varrow-up p-1.5 text-[--color-muted] hover:text-[--color-ink] transition-colors cursor-pointer">
+                <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12L10 6L16 12"/></svg>
+              </button>
+              <button class="varrow-down p-1.5 text-[--color-muted] hover:text-[--color-ink] transition-colors cursor-pointer">
+                <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 8L10 14L16 8"/></svg>
+              </button>
             </div>
-          )}
+            {sec.slides.length > 1 && (
+              <div class="flex items-center gap-3 hdots" data-section={si}>
+                <div class="w-px h-5 bg-[--color-border]"></div>
+                <button class="harrow-left p-2 text-[--color-muted] hover:text-[--color-ink] transition-colors cursor-pointer">
+                  <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 4L6 10L12 16"/></svg>
+                </button>
+                <div class="flex gap-2">
+                  {sec.slides.map((_: any, hi: number) => (
+                    <button class={`hdot w-8 h-1.5 rounded-full transition-all cursor-pointer ${hi === 0 ? 'bg-[--color-ink]' : 'bg-[--color-border]'}`} data-hi={hi} />
+                  ))}
+                </div>
+                <button class="harrow-right p-2 text-[--color-muted] hover:text-[--color-ink] transition-colors cursor-pointer">
+                  <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 4L14 10L8 16"/></svg>
+                </button>
+              </div>
+            )}
+          </div>
         </section>
       ))}
     </main>
-
-    <div class="ioon-nav-bottom">
-      <button class="varrow-up">↑</button>
-      <button class="harrow-left">←</button>
-      <button class="harrow-right">→</button>
-      <button class="varrow-down">↓</button>
-    </div>
-
     </div>
   ) : (
     <div>
@@ -242,7 +242,7 @@ function imgSrc(s: string) {
             {slide.type === 'image' && (<div><img src={imgSrc(slide.src)} alt={slide.alt || ''} class="w-full max-h-[70vh] object-contain" />{slide.caption && <p class="mt-4 text-xs text-[--color-muted] text-center">{slide.caption}</p>}</div>)}
             {slide.type === 'split' && (<div class="grid md:grid-cols-2 gap-12 items-center"><img src={imgSrc(slide.src)} alt={slide.alt || ''} class="w-full object-cover" /><div>{slide.heading && <h2 class="text-2xl font-light mb-4">{slide.heading}</h2>}{slide.body && <p class="text-base text-[--color-muted] leading-relaxed">{slide.body}</p>}</div></div>)}
             {slide.type === 'quote' && (<div class="text-center max-w-2xl mx-auto"><blockquote class="text-2xl md:text-3xl font-light leading-relaxed italic">&ldquo;{slide.text}&rdquo;</blockquote>{slide.attribution && <p class="mt-6 text-sm text-[--color-muted]">— {slide.attribution}</p>}</div>)}
-            {slide.type === 'concept' && (<div>{slide.heading && <h2 class="text-[clamp(1.6rem,4vw,3rem)] font-light leading-[1.15] tracking-tight">{slide.heading}</h2>}{slide.headingHtml && <h2 class="text-[clamp(1.6rem,4vw,3rem)] font-light leading-[1.15] tracking-tight" set:html={slide.headingHtml} />}{slide.subheading && <p class="text-xl md:text-2xl font-light text-[--color-muted] mt-3">{slide.subheading}</p>}{slide.body && <p class="text-base md:text-lg text-[--color-muted] leading-relaxed max-w-2xl mt-4">{slide.body}</p>}{slide.bodyHtml && <div class="text-base md:text-lg text-[--color-muted] leading-relaxed max-w-2xl mt-4" set:html={slide.bodyHtml} />}</div>)}
+            {slide.type === 'concept' && (<div>{slide.headingHtml ? <h2 class="text-[clamp(1.6rem,4vw,3rem)] font-light leading-[1.15] tracking-tight" set:html={slide.headingHtml} /> : slide.heading && <h2 class="text-[clamp(1.6rem,4vw,3rem)] font-light leading-[1.15] tracking-tight">{slide.heading}</h2>}{slide.subheading && <p class="text-xl md:text-2xl font-light text-[--color-muted] mt-3">{slide.subheading}</p>}{slide.bodyHtml ? <div class="text-base md:text-lg text-[--color-muted] leading-relaxed max-w-2xl mt-4" set:html={slide.bodyHtml} /> : slide.body && <p class="text-base md:text-lg text-[--color-muted] leading-relaxed max-w-2xl mt-4">{slide.body}</p>}</div>)}
           </div>
         </section>
       ))}
@@ -271,33 +271,16 @@ function imgSrc(s: string) {
       var vsections = document.querySelectorAll('.vsection');
       var secDots = document.querySelectorAll('.sec-dot');
       var secCounter = document.getElementById('sec-counter');
-      var ioonProgress = document.getElementById('ioon-progress');
       var curL3 = {};
       vsections.forEach(function() { curH.push(0); });
 
       function updateDots() {
         secDots.forEach(function(d, i) {
-          var circle = d.querySelector('.vdot');
-          if (i === curSec) { circle.style.background = 'var(--color-ink)'; circle.style.borderColor = 'var(--color-ink)'; }
-          else { circle.style.background = 'transparent'; circle.style.borderColor = 'var(--color-muted)'; }
+          var circle = d.querySelector('span');
+          if (i === curSec) { circle.style.background = 'var(--color-ink)'; circle.style.transform = 'scale(1.25)'; }
+          else { circle.style.background = 'transparent'; circle.style.transform = 'scale(1)'; }
         });
-        if (secCounter) secCounter.textContent = (curSec + 1) + '/' + vsections.length;
-        var secLabel = document.querySelector('.ioon-section-label');
-        if (secLabel) secLabel.textContent = cfg.sections[curSec].title;
-        updateProgress();
-      }
-
-      function updateProgress() {
-        var total = 0, current = 0;
-        for (var s = 0; s < cfg.sections.length; s++) {
-          for (var sl = 0; sl < cfg.sections[s].slides.length; sl++) {
-            var l3c = (cfg.sections[s].slides[sl].l3 && cfg.sections[s].slides[sl].l3.length) || 1;
-            if (s < curSec || (s === curSec && sl < curH[curSec])) current += l3c;
-            else if (s === curSec && sl === curH[curSec]) { var key = s + '-' + sl; current += (curL3[key] || 0); }
-            total += l3c;
-          }
-        }
-        if (ioonProgress) ioonProgress.style.width = (total > 0 ? ((current + 1) / total) * 100 : 0) + '%';
+        secCounter.textContent = (curSec + 1) + '/' + vsections.length;
       }
 
       function showSection(si) {
@@ -313,7 +296,7 @@ function imgSrc(s: string) {
           if (i === hi) { s.classList.remove('hidden'); var inner = s.querySelector('.slide-enter'); if (inner) { inner.style.animation = 'none'; inner.offsetHeight; inner.style.animation = ''; } }
           else { s.classList.add('hidden'); }
         });
-        if (dotsWrap) { dotsWrap.querySelectorAll('.hdot').forEach(function(d, i) { if (i === hi) { d.style.background = 'var(--color-ink)'; d.style.borderColor = 'var(--color-ink)'; } else { d.style.background = 'transparent'; d.style.borderColor = 'var(--color-muted)'; } }); }
+        if (dotsWrap) { dotsWrap.querySelectorAll('.hdot').forEach(function(d, i) { d.style.background = i === hi ? 'var(--color-ink)' : 'var(--color-border)'; }); }
         curH[si] = hi;
       }
 
@@ -372,7 +355,6 @@ function imgSrc(s: string) {
         if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) { dx > 0 ? goRight() : goLeft(); }
         else if (Math.abs(dy) > 50) { dy > 0 ? goDown() : goUp(); }
       });
-      updateDots();
     } else {
       var current = 0, slides2 = document.querySelectorAll('.slide'), total = slides2.length;
       var counter = document.getElementById('current-slide'), progress = document.getElementById('progress');
