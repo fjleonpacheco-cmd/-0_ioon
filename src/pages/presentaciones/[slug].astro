@@ -69,35 +69,34 @@ function imgSrc(s: string) {
       {sections.map((sec: any, si: number) => (
         <section class="vsection min-h-screen flex flex-col justify-center" data-section={si} style={si > 0 ? 'display:none' : ''}>
           <div class="px-12 md:px-20 pt-8 pb-4">
-            <p class="text-xs tracking-[0.3em] uppercase text-[--color-muted]">{String(si + 1).padStart(2, '0')}</p>
-            <h2 class="text-2xl md:text-3xl font-light mt-1">{sec.title}</h2>
+            <p class="text-[11px] font-normal tracking-[2px] uppercase text-[--color-muted]">{sec.title}</p>
           </div>
           <div class="flex-1 flex items-center overflow-hidden">
             <div class="hslides-wrap w-full" data-section={si}>
               {sec.slides.map((slide: any, hi: number) => (
                 <div class={`hslide w-full px-12 md:px-20 py-8 ${hi > 0 ? 'hidden' : ''}`} data-hindex={hi}>
-                  <div class="max-w-4xl mx-auto slide-enter">
+                  <div class="max-w-[900px] mx-auto slide-enter">
 
                     {slide.type === 'title' && (
                       <div class="text-center py-12">
-                        {slide.overline && <p class="text-xs tracking-[0.3em] uppercase text-[--color-muted] mb-6">{slide.overline}</p>}
+                        {slide.overline && <p class="text-[13px] font-normal tracking-[3px] uppercase text-[--color-muted] mb-4">{slide.overline}</p>}
                         {slide.headingHtml
-                          ? <h1 class="text-[clamp(2rem,5vw,5rem)] font-light leading-[0.95] tracking-tight" set:html={slide.headingHtml} />
-                          : <h1 class="text-[clamp(2rem,5vw,5rem)] font-light leading-[0.95] tracking-tight">{slide.heading}</h1>
+                          ? <h1 class="text-[clamp(32px,5vw,56px)] font-light leading-[1.15] tracking-[-1px]" set:html={slide.headingHtml} />
+                          : <h1 class="text-[clamp(32px,5vw,56px)] font-light leading-[1.15] tracking-[-1px]">{slide.heading}</h1>
                         }
-                        {slide.subheading && <p class="mt-6 text-lg text-[--color-muted] font-light">{slide.subheading}</p>}
-                        {slide.subheadingHtml && <p class="mt-6 text-lg text-[--color-muted] font-light" set:html={slide.subheadingHtml} />}
+                        {slide.subheading && <p class="mt-3 text-[16px] font-light text-[--color-muted]">{slide.subheading}</p>}
+                        {slide.subheadingHtml && <p class="mt-3 text-[16px] font-light text-[--color-muted]" set:html={slide.subheadingHtml} />}
                       </div>
                     )}
 
                     {slide.type === 'text' && !slide.l3 && (
                       <div>
-                        {slide.heading && <h3 class="text-2xl md:text-3xl font-light mb-6">{slide.heading}</h3>}
-                        {slide.headingHtml && <h3 class="text-2xl md:text-3xl font-light mb-6" set:html={slide.headingHtml} />}
-                        {slide.body && <p class="text-base md:text-lg text-[--color-muted] leading-relaxed max-w-2xl">{slide.body}</p>}
-                        {slide.bodyHtml && <p class="text-base md:text-lg text-[--color-muted] leading-relaxed max-w-2xl" set:html={slide.bodyHtml} />}
-                        {slide.bullets && !slide.bulletsHtml && (<ul class="mt-6 space-y-3 list-disc pl-5 marker:text-[--color-ink]">{slide.bullets.map((b: string) => (<li class="text-base text-[--color-muted] pl-1">{b}</li>))}</ul>)}
-                        {slide.bulletsHtml && (<ul class="mt-6 space-y-3 list-disc pl-5 marker:text-[--color-ink]">{slide.bulletsHtml.map((b: string) => (<li class="text-base text-[--color-muted] pl-1" set:html={b} />))}</ul>)}
+                        {slide.heading && <h3 class="text-[clamp(22px,3vw,34px)] font-light tracking-[-0.5px] mb-4">{slide.heading}</h3>}
+                        {slide.headingHtml && <h3 class="text-[clamp(22px,3vw,34px)] font-light tracking-[-0.5px] mb-4" set:html={slide.headingHtml} />}
+                        {slide.body && <p class="text-[16px] font-light leading-[1.7] text-[--color-accent] max-w-[680px]">{slide.body}</p>}
+                        {slide.bodyHtml && <div class="text-[16px] font-light leading-[1.7] text-[--color-accent] max-w-[680px]" set:html={slide.bodyHtml} />}
+                        {slide.bullets && !slide.bulletsHtml && (<ul class="mt-3.5 space-y-1 max-w-[680px] list-none pl-0">{slide.bullets.map((b: string) => (<li class="text-[15px] font-light leading-[1.6] text-[--color-accent] pl-4 relative before:content-[''] before:absolute before:left-0 before:top-[10px] before:w-1 before:h-1 before:rounded-full before:bg-[--color-muted]">{b}</li>))}</ul>)}
+                        {slide.bulletsHtml && (<ul class="mt-3.5 space-y-1 max-w-[680px] list-none pl-0">{slide.bulletsHtml.map((b: string) => (<li class="text-[15px] font-light leading-[1.6] text-[--color-accent] pl-4 relative before:content-[''] before:absolute before:left-0 before:top-[10px] before:w-1 before:h-1 before:rounded-full before:bg-[--color-muted]" set:html={b} />))}</ul>)}
                         {slide.imgLayout && slide.images && (
                           <div class={`mt-8 ${slide.imgLayout === '2x' ? 'grid grid-cols-2 gap-4' : slide.imgLayout === '1of2' ? 'grid grid-cols-2 gap-4' : slide.imgLayout === '4p' ? 'grid grid-cols-2 md:grid-cols-4 gap-4' : ''}`}>
                             {slide.images.map((img: string) => (
@@ -110,14 +109,14 @@ function imgSrc(s: string) {
 
                     {slide.type === 'text' && slide.l3 && (
                       <div>
-                        {slide.heading && <h3 class="text-2xl md:text-3xl font-light mb-4">{slide.heading}</h3>}
-                        {slide.headingHtml && <h3 class="text-2xl md:text-3xl font-light mb-4" set:html={slide.headingHtml} />}
-                        {slide.body && <p class="text-base md:text-lg text-[--color-muted] leading-relaxed max-w-2xl mb-2">{slide.body}</p>}
-                        {slide.bodyHtml && <p class="text-base md:text-lg text-[--color-muted] leading-relaxed max-w-2xl mb-2" set:html={slide.bodyHtml} />}
-                        <div class="flex gap-0 border-b border-[--color-border] mt-4 mb-4 l3-tabs" data-l3={`${si}-${hi}`}>
+                        {slide.heading && <h3 class="text-[clamp(22px,3vw,34px)] font-light tracking-[-0.5px] mb-4">{slide.heading}</h3>}
+                        {slide.headingHtml && <h3 class="text-[clamp(22px,3vw,34px)] font-light tracking-[-0.5px] mb-4" set:html={slide.headingHtml} />}
+                        {slide.body && <p class="text-[16px] font-light leading-[1.7] text-[--color-accent] max-w-[680px] mb-2">{slide.body}</p>}
+                        {slide.bodyHtml && <div class="text-[16px] font-light leading-[1.7] text-[--color-accent] max-w-[680px] mb-2" set:html={slide.bodyHtml} />}
+                        <div class="flex gap-0 border-b border-[--color-border] mt-5 mb-5 l3-tabs flex-wrap" data-l3={`${si}-${hi}`}>
                           {slide.l3.map((tab: any, ti: number) => (
                             <button
-                              class={`l3-btn px-4 py-2 text-xs tracking-[0.08em] uppercase border-b-2 transition-all cursor-pointer ${ti === 0 ? 'text-[--color-ink] border-[--color-ink]' : 'text-[--color-muted] border-transparent hover:text-[--color-ink]'}`}
+                              class={`l3-btn text-[13px] px-4 py-2 border-b-2 transition-all cursor-pointer whitespace-nowrap ${ti === 0 ? 'text-[--color-ink] font-medium border-[--color-ink]' : 'text-[--color-muted] font-normal border-transparent hover:text-[--color-accent]'}`}
                               data-l3={`${si}-${hi}`}
                               data-ti={ti}
                             >{tab.label}</button>
@@ -126,12 +125,12 @@ function imgSrc(s: string) {
                         {slide.l3.map((tab: any, ti: number) => (
                           <div class={`l3-content ${ti === 0 ? '' : 'hidden'}`} data-l3c={`${si}-${hi}-${ti}`}>
                             {tab.headingHtml
-                              ? <h4 class="text-xl md:text-2xl font-light mb-4" set:html={tab.headingHtml} />
-                              : tab.heading && <h4 class="text-xl md:text-2xl font-light mb-4">{tab.heading}</h4>
+                              ? <h4 class="text-[clamp(18px,2.2vw,26px)] font-light tracking-[-0.5px] mb-3" set:html={tab.headingHtml} />
+                              : tab.heading && <h4 class="text-[clamp(18px,2.2vw,26px)] font-light tracking-[-0.5px] mb-3">{tab.heading}</h4>
                             }
-                            {tab.body && <p class="text-base text-[--color-muted] leading-relaxed max-w-2xl">{tab.body}</p>}
-                            {tab.bodyHtml && <p class="text-base text-[--color-muted] leading-relaxed max-w-2xl" set:html={tab.bodyHtml} />}
-                            {tab.bullets && (<ul class="mt-4 space-y-2 list-disc pl-5 marker:text-[--color-ink]">{tab.bullets.map((b: string) => (<li class="text-sm text-[--color-muted] pl-1">{b}</li>))}</ul>)}
+                            {tab.body && <p class="text-[16px] font-light leading-[1.7] text-[--color-accent] max-w-[680px]">{tab.body}</p>}
+                            {tab.bodyHtml && <div class="text-[16px] font-light leading-[1.7] text-[--color-accent] max-w-[680px]" set:html={tab.bodyHtml} />}
+                            {tab.bullets && (<ul class="mt-3.5 space-y-1 max-w-[680px] list-none pl-0">{tab.bullets.map((b: string) => (<li class="text-[15px] font-light leading-[1.6] text-[--color-accent] pl-4 relative before:content-[''] before:absolute before:left-0 before:top-[10px] before:w-1 before:h-1 before:rounded-full before:bg-[--color-muted]">{b}</li>))}</ul>)}
                             {tab.imgLayout && tab.images && (
                               <div class={`mt-6 ${tab.imgLayout === '2x' ? 'grid grid-cols-2 gap-4' : tab.imgLayout === '1of2' ? 'grid grid-cols-2 gap-4' : tab.imgLayout === '4p' ? 'grid grid-cols-2 md:grid-cols-4 gap-4' : ''}`}>
                                 {tab.images.map((img: string) => (
@@ -155,31 +154,31 @@ function imgSrc(s: string) {
                       <div class="grid md:grid-cols-2 gap-12 items-center">
                         <img src={imgSrc(slide.src)} alt={slide.alt || ''} class="w-full object-cover max-h-[55vh]" />
                         <div>
-                          {slide.heading && <h3 class="text-2xl font-light mb-4">{slide.heading}</h3>}
-                          {slide.body && <p class="text-base text-[--color-muted] leading-relaxed">{slide.body}</p>}
-                          {slide.bodyHtml && <p class="text-base text-[--color-muted] leading-relaxed" set:html={slide.bodyHtml} />}
+                          {slide.heading && <h3 class="text-[clamp(22px,3vw,34px)] font-light tracking-[-0.5px] mb-4">{slide.heading}</h3>}
+                          {slide.body && <p class="text-[16px] font-light leading-[1.7] text-[--color-accent]">{slide.body}</p>}
+                          {slide.bodyHtml && <p class="text-[16px] font-light leading-[1.7] text-[--color-accent]" set:html={slide.bodyHtml} />}
                         </div>
                       </div>
                     )}
 
                     {slide.type === 'quote' && (
-                      <div class="text-center max-w-2xl mx-auto py-12">
-                        {slide.text && <blockquote class="text-2xl md:text-3xl font-light leading-relaxed italic">&ldquo;{slide.text}&rdquo;</blockquote>}
-                        {slide.textHtml && <blockquote class="text-2xl md:text-3xl font-light leading-relaxed italic" set:html={`&ldquo;${slide.textHtml}&rdquo;`} />}
-                        {slide.attribution && <p class="mt-6 text-sm text-[--color-muted]">— {slide.attribution}</p>}
+                      <div class="text-center max-w-[700px] mx-auto py-12">
+                        {slide.text && <blockquote class="text-[clamp(20px,3vw,30px)] font-light leading-[1.5] italic">&ldquo;{slide.text}&rdquo;</blockquote>}
+                        {slide.textHtml && <blockquote class="text-[clamp(20px,3vw,30px)] font-light leading-[1.5] italic" set:html={`&ldquo;${slide.textHtml}&rdquo;`} />}
+                        {slide.attribution && <p class="mt-5 text-[14px] font-normal text-[--color-muted]">— {slide.attribution}</p>}
                       </div>
                     )}
 
                     {slide.type === 'concept' && (
                       <div>
                         {slide.headingHtml
-                          ? <h2 class="text-[clamp(1.6rem,4vw,3rem)] font-light leading-[1.15] tracking-tight" set:html={slide.headingHtml} />
-                          : slide.heading && <h2 class="text-[clamp(1.6rem,4vw,3rem)] font-light leading-[1.15] tracking-tight">{slide.heading}</h2>
+                          ? <h2 class="text-[clamp(32px,5vw,56px)] font-light leading-[1.15] tracking-[-1px]" set:html={slide.headingHtml} />
+                          : slide.heading && <h2 class="text-[clamp(32px,5vw,56px)] font-light leading-[1.15] tracking-[-1px]">{slide.heading}</h2>
                         }
-                        {slide.subheading && <p class="text-xl md:text-2xl font-light text-[--color-muted] mt-3">{slide.subheading}</p>}
+                        {slide.subheading && <p class="text-[clamp(22px,3vw,34px)] font-light tracking-[-0.5px] text-[--color-muted] mt-3">{slide.subheading}</p>}
                         {slide.bodyHtml
-                          ? <div class="text-base md:text-lg text-[--color-muted] leading-relaxed max-w-2xl mt-4" set:html={slide.bodyHtml} />
-                          : slide.body && <p class="text-base md:text-lg text-[--color-muted] leading-relaxed max-w-2xl mt-4">{slide.body}</p>
+                          ? <div class="text-[16px] font-light leading-[1.7] text-[--color-accent] max-w-[680px] mt-4" set:html={slide.bodyHtml} />
+                          : slide.body && <p class="text-[16px] font-light leading-[1.7] text-[--color-accent] max-w-[680px] mt-4">{slide.body}</p>
                         }
                       </div>
                     )}
@@ -236,13 +235,13 @@ function imgSrc(s: string) {
     <main class="pt-16">
       {slides.map((slide: any, i: number) => (
         <section class="slide min-h-screen flex items-center justify-center px-6 md:px-12 py-20" data-index={i} style={i > 0 ? 'display:none' : ''}>
-          <div class="max-w-4xl w-full slide-enter">
-            {slide.type === 'title' && (<div class="text-center">{slide.overline && <p class="text-xs tracking-[0.3em] uppercase text-[--color-muted] mb-6">{slide.overline}</p>}<h1 class="text-[clamp(2rem,5vw,5rem)] font-light leading-[0.95] tracking-tight">{slide.heading}</h1>{slide.subheading && <p class="mt-6 text-lg text-[--color-muted] font-light">{slide.subheading}</p>}</div>)}
-            {slide.type === 'text' && (<div>{slide.heading && <h2 class="text-3xl md:text-4xl font-light mb-8">{slide.heading}</h2>}{slide.body && <p class="text-base md:text-lg text-[--color-muted] leading-relaxed max-w-2xl">{slide.body}</p>}{slide.bullets && (<ul class="mt-6 space-y-3 list-disc pl-5 marker:text-[--color-ink]">{slide.bullets.map((b: string) => (<li class="text-base text-[--color-muted] pl-1">{b}</li>))}</ul>)}</div>)}
-            {slide.type === 'image' && (<div><img src={imgSrc(slide.src)} alt={slide.alt || ''} class="w-full max-h-[70vh] object-contain" />{slide.caption && <p class="mt-4 text-xs text-[--color-muted] text-center">{slide.caption}</p>}</div>)}
-            {slide.type === 'split' && (<div class="grid md:grid-cols-2 gap-12 items-center"><img src={imgSrc(slide.src)} alt={slide.alt || ''} class="w-full object-cover" /><div>{slide.heading && <h2 class="text-2xl font-light mb-4">{slide.heading}</h2>}{slide.body && <p class="text-base text-[--color-muted] leading-relaxed">{slide.body}</p>}</div></div>)}
-            {slide.type === 'quote' && (<div class="text-center max-w-2xl mx-auto"><blockquote class="text-2xl md:text-3xl font-light leading-relaxed italic">&ldquo;{slide.text}&rdquo;</blockquote>{slide.attribution && <p class="mt-6 text-sm text-[--color-muted]">— {slide.attribution}</p>}</div>)}
-            {slide.type === 'concept' && (<div>{slide.headingHtml ? <h2 class="text-[clamp(1.6rem,4vw,3rem)] font-light leading-[1.15] tracking-tight" set:html={slide.headingHtml} /> : slide.heading && <h2 class="text-[clamp(1.6rem,4vw,3rem)] font-light leading-[1.15] tracking-tight">{slide.heading}</h2>}{slide.subheading && <p class="text-xl md:text-2xl font-light text-[--color-muted] mt-3">{slide.subheading}</p>}{slide.bodyHtml ? <div class="text-base md:text-lg text-[--color-muted] leading-relaxed max-w-2xl mt-4" set:html={slide.bodyHtml} /> : slide.body && <p class="text-base md:text-lg text-[--color-muted] leading-relaxed max-w-2xl mt-4">{slide.body}</p>}</div>)}
+          <div class="max-w-[900px] w-full slide-enter">
+            {slide.type === 'title' && (<div class="text-center">{slide.overline && <p class="text-[13px] font-normal tracking-[3px] uppercase text-[--color-muted] mb-4">{slide.overline}</p>}<h1 class="text-[clamp(32px,5vw,56px)] font-light leading-[1.15] tracking-[-1px]">{slide.heading}</h1>{slide.subheading && <p class="mt-3 text-[16px] font-light text-[--color-muted]">{slide.subheading}</p>}</div>)}
+            {slide.type === 'text' && (<div>{slide.heading && <h2 class="text-[clamp(22px,3vw,34px)] font-light tracking-[-0.5px] mb-4">{slide.heading}</h2>}{slide.body && <p class="text-[16px] font-light leading-[1.7] text-[--color-accent] max-w-[680px]">{slide.body}</p>}{slide.bullets && (<ul class="mt-3.5 space-y-1 max-w-[680px] list-none pl-0">{slide.bullets.map((b: string) => (<li class="text-[15px] font-light leading-[1.6] text-[--color-accent] pl-4 relative before:content-[''] before:absolute before:left-0 before:top-[10px] before:w-1 before:h-1 before:rounded-full before:bg-[--color-muted]">{b}</li>))}</ul>)}</div>)}
+            {slide.type === 'image' && (<div><img src={imgSrc(slide.src)} alt={slide.alt || ''} class="w-full max-h-[70vh] object-contain" />{slide.caption && <p class="mt-4 text-[14px] font-normal text-[--color-muted] text-center">{slide.caption}</p>}</div>)}
+            {slide.type === 'split' && (<div class="grid md:grid-cols-2 gap-12 items-center"><img src={imgSrc(slide.src)} alt={slide.alt || ''} class="w-full object-cover" /><div>{slide.heading && <h2 class="text-[clamp(22px,3vw,34px)] font-light tracking-[-0.5px] mb-4">{slide.heading}</h2>}{slide.body && <p class="text-[16px] font-light leading-[1.7] text-[--color-accent]">{slide.body}</p>}</div></div>)}
+            {slide.type === 'quote' && (<div class="text-center max-w-[700px] mx-auto"><blockquote class="text-[clamp(20px,3vw,30px)] font-light leading-[1.5] italic">&ldquo;{slide.text}&rdquo;</blockquote>{slide.attribution && <p class="mt-5 text-[14px] font-normal text-[--color-muted]">— {slide.attribution}</p>}</div>)}
+            {slide.type === 'concept' && (<div>{slide.headingHtml ? <h2 class="text-[clamp(32px,5vw,56px)] font-light leading-[1.15] tracking-[-1px]" set:html={slide.headingHtml} /> : slide.heading && <h2 class="text-[clamp(32px,5vw,56px)] font-light leading-[1.15] tracking-[-1px]">{slide.heading}</h2>}{slide.subheading && <p class="text-[clamp(22px,3vw,34px)] font-light tracking-[-0.5px] text-[--color-muted] mt-3">{slide.subheading}</p>}{slide.bodyHtml ? <div class="text-[16px] font-light leading-[1.7] text-[--color-accent] max-w-[680px] mt-4" set:html={slide.bodyHtml} /> : slide.body && <p class="text-[16px] font-light leading-[1.7] text-[--color-accent] max-w-[680px] mt-4">{slide.body}</p>}</div>)}
           </div>
         </section>
       ))}
