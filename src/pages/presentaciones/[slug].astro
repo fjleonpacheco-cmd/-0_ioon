@@ -56,11 +56,13 @@ function imgSrc(s: string) {
       </div>
     </nav>
 
-    <div class="fixed right-3 md:right-auto md:left-6 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-1" id="sec-nav">
+    <p class="fixed top-[16px] left-[24px] md:left-[80px] text-[11px] font-normal tracking-[2px] uppercase text-[--color-muted] z-40" id="sec-label">{sections[0].title}</p>
+
+    <div class="fixed left-[8px] md:left-[20px] top-1/2 -translate-y-1/2 z-40 flex flex-col gap-[6px]" id="sec-nav">
       {sections.map((sec: any, i: number) => (
-        <button class={`sec-dot flex items-center gap-3 py-1.5 md:py-2 px-1 group cursor-pointer transition-all`} data-sec={i}>
-          <span class={`block w-1.5 h-1.5 md:w-2 md:h-2 rounded-full border border-[--color-ink] transition-all ${i === 0 ? 'bg-[--color-ink] scale-125' : 'bg-transparent'}`} />
-          <span class="hidden md:block text-[10px] tracking-[0.15em] uppercase text-[--color-muted] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">{sec.title}</span>
+        <button class={`sec-dot relative cursor-pointer transition-all p-0`} data-sec={i}>
+          <span class={`block w-[8px] h-[8px] rounded-full border-[1.5px] border-[--color-muted] transition-all ${i === 0 ? 'bg-[--color-ink] border-[--color-ink]' : 'bg-transparent'}`} />
+          <span class="hidden md:block absolute left-[16px] top-1/2 -translate-y-1/2 text-[10px] tracking-[1px] uppercase text-[--color-muted] opacity-0 group-hover:opacity-100 hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">{sec.title}</span>
         </button>
       ))}
     </div>
@@ -68,9 +70,6 @@ function imgSrc(s: string) {
     <main class="pt-16">
       {sections.map((sec: any, si: number) => (
         <section class="vsection min-h-screen flex flex-col justify-center" data-section={si} style={si > 0 ? 'display:none' : ''}>
-          <div class="px-12 md:px-20 pt-8 pb-4">
-            <p class="text-[11px] font-normal tracking-[2px] uppercase text-[--color-muted]">{sec.title}</p>
-          </div>
           <div class="flex-1 flex items-center overflow-hidden">
             <div class="hslides-wrap w-full" data-section={si}>
               {sec.slides.map((slide: any, hi: number) => (
@@ -276,10 +275,12 @@ function imgSrc(s: string) {
       function updateDots() {
         secDots.forEach(function(d, i) {
           var circle = d.querySelector('span');
-          if (i === curSec) { circle.style.background = 'var(--color-ink)'; circle.style.transform = 'scale(1.25)'; }
-          else { circle.style.background = 'transparent'; circle.style.transform = 'scale(1)'; }
+          if (i === curSec) { circle.style.background = 'var(--color-ink)'; circle.style.borderColor = 'var(--color-ink)'; }
+          else { circle.style.background = 'transparent'; circle.style.borderColor = 'var(--color-muted)'; }
         });
         secCounter.textContent = (curSec + 1) + '/' + vsections.length;
+        var secLabel = document.getElementById('sec-label');
+        if (secLabel) secLabel.textContent = cfg.sections[curSec].title;
       }
 
       function showSection(si) {
