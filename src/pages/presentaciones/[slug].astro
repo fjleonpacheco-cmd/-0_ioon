@@ -58,10 +58,10 @@ function imgSrc(s: string) {
 
     <p class="fixed top-[80px] left-[24px] md:left-[80px] text-[11px] font-normal tracking-[2px] uppercase text-[--color-muted] z-40" id="sec-label">{sections[0].title}</p>
 
-    <div class="fixed left-[8px] md:left-[20px] top-1/2 -translate-y-1/2 z-40 flex flex-col gap-[6px]" id="sec-nav">
+    <div class="fixed left-[8px] md:left-[20px] top-1/2 -translate-y-1/2 z-40 flex flex-col gap-[9px]" id="sec-nav">
       {sections.map((sec: any, i: number) => (
         <button class={`sec-dot group relative cursor-pointer p-0`} data-sec={i}>
-          <span class={`block w-[8px] h-[8px] rounded-full transition-all ${i === 0 ? 'bg-[--color-ink]' : 'bg-transparent'}`} style={i === 0 ? 'border:1.5px solid var(--color-ink)' : 'border:1.5px solid var(--color-muted)'} />
+          <span class={`block w-[8px] h-[8px] rounded-full transition-all ${i === 0 ? 'bg-[--color-ink]' : 'bg-transparent'}`} style={i === 0 ? 'border:1px solid var(--color-ink)' : 'border:1px solid var(--color-muted)'} />
           <span class="hidden md:block absolute left-[20px] top-1/2 -translate-y-1/2 text-[10px] tracking-[1px] uppercase text-[--color-muted] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">{sec.title}</span>
         </button>
       ))}
