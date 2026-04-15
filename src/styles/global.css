@@ -2,6 +2,7 @@
 
 @theme {
   --font-sans: 'Space Grotesk', system-ui, sans-serif;
+  --default-font-family: var(--font-sans);
   --color-ink: #0a0a0a;
   --color-paper: #fafafa;
   --color-muted: #71717a;
@@ -37,8 +38,17 @@ html {
 }
 
 @keyframes bounce {
-  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.4; }
-  50% { transform: translateX(-50%) translateY(8px); opacity: 0.8; }
+
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 0.4;
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(8px);
+    opacity: 0.8;
+  }
 }
 
 /* Slide transitions */
@@ -47,21 +57,46 @@ html {
 }
 
 @keyframes slideIn {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Stagger children */
-.stagger > * {
+.stagger>* {
   opacity: 0;
   animation: slideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
-.stagger > *:nth-child(1) { animation-delay: 0.05s; }
-.stagger > *:nth-child(2) { animation-delay: 0.12s; }
-.stagger > *:nth-child(3) { animation-delay: 0.19s; }
-.stagger > *:nth-child(4) { animation-delay: 0.26s; }
-.stagger > *:nth-child(5) { animation-delay: 0.33s; }
-.stagger > *:nth-child(6) { animation-delay: 0.40s; }
+
+.stagger>*:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.stagger>*:nth-child(2) {
+  animation-delay: 0.12s;
+}
+
+.stagger>*:nth-child(3) {
+  animation-delay: 0.19s;
+}
+
+.stagger>*:nth-child(4) {
+  animation-delay: 0.26s;
+}
+
+.stagger>*:nth-child(5) {
+  animation-delay: 0.33s;
+}
+
+.stagger>*:nth-child(6) {
+  animation-delay: 0.40s;
+}
 
 /* Password form */
 .pw-input {
@@ -73,6 +108,7 @@ html {
   outline: none;
   transition: border-color 0.2s;
 }
+
 .pw-input:focus {
   border-color: var(--color-ink);
 }
