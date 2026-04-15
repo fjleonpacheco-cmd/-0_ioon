@@ -9,6 +9,8 @@
   --color-accent: #18181b;
   --color-border: #e4e4e7;
   --color-highlight: #d4d4d8;
+  --default-mono-font-family: 'Space Grotesk', system-ui, sans-serif;
+  --default-font-feature-settings: normal;
 }
 
 @font-face {
@@ -25,6 +27,12 @@ html {
   background: var(--color-paper);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*::before,
+*::after {
+  font-family: var(--font-sans) !important;
 }
 
 ::selection {
