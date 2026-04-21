@@ -1,0 +1,203 @@
+{
+  "title": "Personalidad de Marca",
+  "client": "SERCLIN",
+  "date": "2026-04-20",
+  "password": "",
+  "layout": "sections",
+  "sections": [
+    {
+      "title": "Portada",
+      "slides": [
+        {
+          "type": "title",
+          "overline": "ioon × SERCLIN",
+          "heading": "Personalidad de Marca",
+          "subheadingHtml": "<i>Custodios del Prestigio</i><br/>La psicología y la estética de una <b>Boutique de Infraestructura</b>."
+        }
+      ]
+    },
+    {
+      "title": "El Posicionamiento",
+      "slides": [
+        {
+          "type": "quote",
+          "textHtml": "Serclin abandona el lenguaje industrial para adoptar uno de <b>autoridad, sofisticación y cuidado artesanal</b>.",
+          "attribution": "Dirección estratégica ioon"
+        },
+        {
+          "type": "concept",
+          "headingHtml": "Una <i>Boutique de Infraestructura</i>",
+          "subheading": "No somos una empresa de limpieza a escala",
+          "bodyHtml": "Somos los <b>Custodios del Prestigio</b>: el artista invisible que prepara el escenario para que la marca del cliente brille."
+        }
+      ]
+    },
+    {
+      "title": "Arquetipos de Jung",
+      "slides": [
+        {
+          "type": "text",
+          "heading": "Los 12 Arquetipos de Carl Jung",
+          "bodyHtml": "Patrones universales del <b>inconsciente colectivo</b>. Las marcas que se anclan en un arquetipo se vuelven memorables porque resuenan con motivaciones humanas profundas.",
+          "l3": [
+            {
+              "label": "Origen",
+              "heading": "De Jung al branding",
+              "bodyHtml": "En <b>1919</b>, Carl Gustav Jung propuso que la psique humana contiene patrones heredados —el inconsciente colectivo—. Son figuras simbólicas que se repiten en mitos, religiones y narrativas de toda cultura. En <b>2001</b>, Margaret Mark y Carol S. Pearson los traducen al branding en <i>\"The Hero and the Outlaw\"</i>: las marcas más fuertes encarnan un arquetipo dominante."
+            },
+            {
+              "label": "Los 12",
+              "heading": "Doce arquetipos, cuatro motivaciones",
+              "bodyHtml": "Se agrupan en cuatro familias según la necesidad humana profunda que expresan:<ul><li><b>Independencia</b> — anhelar el paraíso: <i>Inocente</i>, <i>Sabio</i>, <i>Explorador</i>.</li><li><b>Maestría</b> — dejar huella: <i>Héroe</i>, <i>Rebelde</i>, <i>Mago</i>.</li><li><b>Pertenencia</b> — conectar con otros: <i>Amante</i>, <i>Bufón</i>, <i>Ciudadano</i>.</li><li><b>Estabilidad</b> — proveer estructura: <i>Cuidador</i>, <b>Gobernante</b>, <i>Creador</i>.</li></ul>"
+            },
+            {
+              "label": "En marketing",
+              "heading": "¿Para qué sirve en una marca?",
+              "bodyHtml": "<ul><li><b>Diferenciación emocional</b> en categorías saturadas donde los atributos racionales se igualan.</li><li><b>Coherencia narrativa:</b> tono de voz, visuales y storytelling se derivan del arquetipo, no se inventan slide por slide.</li><li><b>Reconocimiento instantáneo:</b> Apple = Mago · Nike = Héroe · Harley-Davidson = Rebelde · Coca-Cola = Inocente.</li><li><b>Híbridos estratégicos:</b> combinar un primario con un secundario que matice las aristas duras. Es exactamente la jugada de Serclin.</li></ul>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Arquetipo de Marca",
+      "slides": [
+        {
+          "type": "text",
+          "heading": "El híbrido estratégico",
+          "bodyHtml": "Serclin opera bajo una <b>dualidad</b> que resuelve la tensión entre el control operativo y la calidez del servicio.",
+          "l3": [
+            {
+              "label": "Híbrido",
+              "heading": "Dos arquetipos, una sola voz",
+              "bodyHtml": "El <b>Gobernante</b> garantiza el control; el <b>Cuidador</b> aporta la calidez. Juntos construyen una marca que es, a la vez, autoridad experta y guante blanco."
+            },
+            {
+              "label": "Gobernante",
+              "heading": "Arquetipo primario — El Gobernante",
+              "bodyHtml": "<ul><li><b>Esencia:</b> poder, control, orden y liderazgo.</li><li><b>Rol:</b> garantiza el cumplimiento normativo (REPSE), la mitigación de riesgos y la disciplina técnica.</li><li><b>Voz:</b> le dice a Rodrigo que todo está bajo control.</li><li><b>Promesa:</b> <i>\"El orden es la base de la excelencia\".</i></li></ul>"
+            },
+            {
+              "label": "Cuidador",
+              "heading": "Arquetipo secundario — El Cuidador",
+              "bodyHtml": "<ul><li><b>Esencia:</b> protección, servicio, generosidad y atención al detalle.</li><li><b>Rol:</b> herencia de la hospitalidad oaxaqueña; preserva el patrimonio y los materiales nobles (mármol, maderas, cristales).</li><li><b>Voz:</b> el guante blanco del servicio.</li><li><b>Promesa:</b> <i>\"Cuidamos su escenario como si fuera nuestra propia historia\".</i></li></ul>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Dimensiones de Aaker",
+      "slides": [
+        {
+          "type": "text",
+          "heading": "Las 5 Dimensiones de Jennifer Aaker",
+          "bodyHtml": "Un modelo <b>cuantitativo</b> que mide la personalidad de marca en cinco ejes universales, comparables y replicables.",
+          "l3": [
+            {
+              "label": "Origen",
+              "heading": "De la psicología social al branding",
+              "bodyHtml": "En <b>1997</b>, Jennifer Aaker (Stanford) publicó <i>\"Dimensions of Brand Personality\"</i> en el <i>Journal of Marketing Research</i>. Adaptó el modelo <b>Big Five</b> de personalidad humana a las marcas y, tras encuestar a más de 600 personas sobre 114 marcas, identificó cinco dimensiones medibles y replicables."
+            },
+            {
+              "label": "Las 5",
+              "heading": "Cinco ejes universales",
+              "bodyHtml": "<ul><li><b>Sinceridad</b> — honesta, cálida, familiar, alegre. <i>Ej.: Hallmark, Kodak.</i></li><li><b>Emoción</b> — atrevida, espontánea, imaginativa, contemporánea. <i>Ej.: Pepsi, MTV.</i></li><li><b>Competencia</b> — fiable, inteligente, exitosa. <i>Ej.: IBM, Microsoft.</i></li><li><b>Sofisticación</b> — clase alta, encanto, exclusividad. <i>Ej.: Mercedes-Benz, Rolex.</i></li><li><b>Robustez</b> — al aire libre, ruda, fuerte. <i>Ej.: Levi's, Marlboro.</i></li></ul>"
+            },
+            {
+              "label": "En marketing",
+              "heading": "¿Para qué sirve?",
+              "bodyHtml": "<ul><li><b>Posicionamiento medible:</b> ubica la marca en un espacio dimensional comparable con competidores.</li><li><b>Auditoría de identidad:</b> detecta si lo que la marca dice ser coincide con lo que sus consumidores perciben.</li><li><b>Dirección creativa:</b> traduce la estrategia en decisiones de copy, fotografía y tono.</li><li><b>Foco estratégico:</b> Serclin se ancla deliberadamente en <b>Competencia + Sofisticación</b> para entrar al sector de exclusividad.</li></ul>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Dimensiones de Marca",
+      "slides": [
+        {
+          "type": "text",
+          "heading": "Modelo de Jennifer Aaker aplicado",
+          "bodyHtml": "Para posicionarse en el sector de exclusividad, Serclin se proyecta en <b>dos dimensiones</b> específicas.",
+          "l3": [
+            {
+              "label": "Competencia",
+              "heading": "Competencia",
+              "bodyHtml": "Fiabilidad, inteligencia, éxito y tecnicismo.<ul><li><b>Manifestación:</b> KPIs y SLAs, tecnología de reporteo y trayectoria desde 1980.</li><li><b>Resultado:</b> la marca se percibe como un <b>experto</b> en el que se puede confiar una operación crítica.</li></ul>"
+            },
+            {
+              "label": "Sofisticación",
+              "heading": "Sofisticación",
+              "bodyHtml": "Clase alta, encanto, estética y exclusividad.<ul><li><b>Manifestación:</b> enfoque en <i>Hospitalidad Técnica</i>.</li><li><b>Resultado:</b> Serclin no pertenece al sótano de las instalaciones, sino al <b>piso de venta</b> de las marcas más prestigiosas del mundo.</li></ul>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Identidad Visual",
+      "slides": [
+        {
+          "type": "text",
+          "heading": "La personalidad debe \"verse\" antes de leerse",
+          "bodyHtml": "Pautas para traducir el ADN de marca a un sistema visual de <b>Exclusividad Silenciosa</b>.",
+          "l3": [
+            {
+              "label": "Paleta",
+              "heading": "Paleta cromática — Exclusividad silenciosa",
+              "bodyHtml": "<ul><li><b>Azul Obsidiana</b> (principal) — autoridad, profundidad y rigor corporativo; el color del Gobernante.</li><li><b>Gris Oxford</b> (secundario) — tecnología, acero y modernidad de la infraestructura.</li><li><b>Barro Refinado</b> (acento) — terracota desaturado; raíz oaxaqueña, calidez humana y hospitalidad.</li></ul>"
+            },
+            {
+              "label": "Tipografía",
+              "heading": "Tipografía",
+              "bodyHtml": "<ul><li><b>Serif clásica</b> (elegancia) — para titulares y conceptos de marca; evoca legado, historia y boutique.</li><li><b>Sans-serif geométrica</b> (precisión) — para cuerpos de texto y datos técnicos; evoca limpieza, orden y eficiencia.</li></ul>"
+            },
+            {
+              "label": "Fotografía",
+              "heading": "Estilo fotográfico",
+              "bodyHtml": "<ul><li><b>Planos detalle</b> — texturas perfectas; brillo en mármol, transparencia en cristal.</li><li><b>Retratos editoriales</b> — el personal como especialistas, no como limpieza: <i>Concierges de Infraestructura</i>.</li><li><b>Arquitectura</b> — espacios amplios, simétricos y silenciosos.</li></ul>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Universo de Marca",
+      "slides": [
+        {
+          "type": "text",
+          "heading": "El escenario de la experiencia",
+          "bodyHtml": "El universo de Serclin respira <i>\"La quietud de lo impecable\"</i>.",
+          "l3": [
+            {
+              "label": "Tono de voz",
+              "heading": "Tono de voz",
+              "bodyHtml": "Profesional, culto, preciso y altamente respetuoso. Evita diminutivos y lenguaje informal."
+            },
+            {
+              "label": "Storytelling",
+              "heading": "Storytelling",
+              "bodyHtml": "La narrativa no se centra en \"quitar la suciedad\", sino en <b>revelar la belleza del espacio</b>. Serclin es el artista invisible que prepara el escenario para que la marca del cliente brille."
+            },
+            {
+              "label": "Presencia física",
+              "heading": "Presencia física",
+              "bodyHtml": "Uniformes tipo sastre, herramientas de trabajo estéticamente ordenadas y una <b>discreción absoluta</b> en la ejecución. La exclusividad no hace ruido."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Cierre",
+      "slides": [
+        {
+          "type": "title",
+          "heading": "SERCLIN",
+          "subheadingHtml": "<i>Custodios del Prestigio.</i><br/>La quietud de lo impecable."
+        }
+      ]
+    }
+  ]
+}

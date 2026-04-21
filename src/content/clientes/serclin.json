@@ -6,6 +6,8 @@
   "presentations": [
     { "slug": "serclin-1_estudio-de-mercado", "title": "Estudio de Mercado", "date": "2026-04-06" },
     { "slug": "serclin-2_ventaja-competitiva", "title": "Ventaja Competitiva", "date": "2026-04-06" },
-    { "slug": "serclin-3_audiencia", "title": "Audiencia", "date": "2026-04-06" }
+    { "slug": "serclin-3_audiencia", "title": "Audiencia", "date": "2026-04-06" },
+    { "slug": "serclin-3_matriz-de-identidad-de-marca", "title": "Matriz de Identidad de Marca", "date": "2026-04-14" },
+    { "slug": "serclin-5_personalidad-de-marca", "title": "Personalidad de Marca", "date": "2026-04-20" }
   ]
 }
