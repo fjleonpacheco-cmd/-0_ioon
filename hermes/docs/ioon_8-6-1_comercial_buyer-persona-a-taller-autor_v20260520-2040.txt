@@ -1,0 +1,38 @@
+---
+proyecto: 8. ioon
+subtema: 8.X marketing y ventas
+version: v20260520-2040
+autor: Francisco Javier León Pacheco
+nivel: documento canónico · buyer persona
+estado: vigente — primera iteración
+proposito: Definir el arquetipo de cliente "Socio Fundador / Taller de Autor", inspirado en el perfil de LAMZ Arquitectura, para guiar la estrategia de marketing, el tono de comunicación y el desarrollo del Nivel 1 del stack ioon.
+depende_de:
+  - ioon_8-X-X_identidad_catalogo-servicios
+---
+
+# Buyer Persona A: El Taller de Autor (El purista de la materia)
+
+## Perfil General
+**Arquetipo:** El arquitecto del paisaje y la materia. 
+**Inspiración directa:** LAMZ Arquitectura.
+**Ubicación:** Oaxaca / Zonas con alta riqueza material y contextual.
+**Tamaño del estudio:** 3 a 8 personas. 
+**Tipo de obra:** Proyectos *boutique*, residencias de autor, espacios de hospitalidad, refugios e intervenciones que respetan el entorno (madera, tierra, concreto aparente).
+
+## La Psicología y Filosofía
+Este perfil ve la arquitectura como un acto de memoria. No buscan "vender casas", buscan construir espacios con esencia. Son sumamente críticos con la estética y consumen referencias visuales de altísima calidad (revistas impresas, monografías, ArchDaily, Divisare). Rechazan lo comercial, lo "elegante" vacío y lo genérico; valoran lo austero, lo digno y lo auténtico.
+
+## El Dolor Operativo (Puntos de Fricción)
+1. **La pérdida de la textura:** Toman fotografías de su obra con equipo profesional, pero al subirlas a plataformas genéricas (Squarespace, Wix, WordPress) o a Instagram, la compresión destruye la textura del concreto y la madera. Su obra se "aplana".
+2. **Homogeneización:** Sienten que su sitio web se ve exactamente igual al de cientos de despachos comerciales que no tienen su nivel de rigor tectónico.
+3. **Carga pesada:** Como tienen galerías con decenas de fotos de alta resolución, sus sitios web actuales tardan muchísimo en cargar, rompiendo la inmersión del espectador.
+
+## La Solución ioon (El Encaje del Producto)
+**Producto a ofrecer:** Nivel 1 (Cimiento) — Web estática hiper-optimizada.
+**Argumento de Venta (Pitch):** "Tu obra tiene un peso y una textura que los sitios web tradicionales destruyen. Yo construyo infraestructura digital con almacenamiento dedicado (MinIO) y motores de renderizado ultra-rápidos (Astro) para que el espectador sienta el peso de tus materiales al navegar, sin tiempos de carga."
+**Tono de comunicación de marketing:** Táctil, visual, enfocado en el rendimiento y la curaduría. Mostrar fragmentos de código limpios junto a fotografías arquitectónicas impecables.
+
+## Criterios de Éxito para este Persona
+* El sitio carga en menos de 1 segundo.
+* Las transiciones de *scroll* (GSAP) imitan la fluidez de caminar por el espacio.
+* El estudio acepta pagar un *Setup* inicial y una iguala mensual para mantener el servidor optimizado.

@@ -1,0 +1,51 @@
+---
+proyecto: 8. ioon
+subtema: 8.X identidad y servicios
+version: v20260520-2020
+autor: Francisco Javier León Pacheco
+nivel: documento canónico · catálogo de servicios
+estado: vigente — primera iteración
+proposito: Definir la oferta de servicios del estudio ioon, traduciendo el stack tecnológico (marco v5 bi-eje) en soluciones de negocio tangibles. Establece el tono, la filosofía y los niveles de despliegue.
+depende_de:
+  - ioon_8-5-2_stack_inventario-maestro
+---
+
+# Catálogo de Servicios: Estudio ioon
+
+## Filosofía y Posicionamiento
+El estudio ioon no diseña páginas web; construye **infraestructura digital soberana**. Nuestra práctica se fundamenta en el respeto por la **memoria** y la **esencia** de los proyectos de nuestros clientes. Rechazamos los adornos superfluos y las plantillas genéricas en favor de una estética **austera y digna**, influenciada por el rigor tipográfico y la honestidad material de mediados del siglo XX en México. 
+
+Operamos bajo un modelo de soberanía tecnológica: no rentamos software comercial que secuestra los datos del cliente. Desplegamos motores operativos en servidores dedicados, garantizando velocidad, privacidad y control absoluto sobre los activos digitales y visuales.
+
+## Niveles de Despliegue (Web as a Service)
+
+### Nivel 1: El Cimiento (Presencia y Narrativa)
+**Objetivo:** Construir una vitrina digital de alto impacto y rendimiento absoluto que comunique la materialidad y la escala del trabajo del cliente.
+**Tecnología:** Astro + GSAP (ScrollTrigger) + MinIO.
+**Entregables:**
+* Sitios web de arquitectura estática (islas de rendimiento) con tiempos de carga en milisegundos.
+* Narrativa visual guiada por *scroll* (microinteracciones táctiles).
+* Motor de catálogo fotográfico optimizado para imágenes de extrema resolución.
+* **Valor principal:** La obra se percibe con la seriedad y el peso que tiene en el mundo físico.
+
+### Nivel 2: La Estructura (Área Operativa y de Captura)
+**Objetivo:** Reducir la fricción administrativa centralizando la comunicación entre el profesional y su cliente o inversionista.
+**Tecnología:** Next.js + Payload CMS + PostgreSQL.
+**Entregables:**
+* Portal privado de clientes (acceso por credenciales).
+* Bitácoras de obra y repositorios documentales para planos, estimaciones y auditorías.
+* CMS a la medida para autogestión de contenidos sin romper el diseño canónico.
+* **Valor principal:** Herramienta de transparencia, certeza jurídica y orden operativo.
+
+### Nivel 3: Los Acabados (Automatización y Escala)
+**Objetivo:** Orquestar flujos de trabajo, capturar prospectos de alto valor y ofrecer experiencias espaciales inmersivas.
+**Tecnología:** Mautic + n8n + R3F (React Three Fiber).
+**Entregables:**
+* Integración de modelos volumétricos interactivos (3D en el navegador sin latencia).
+* *Customer journeys* automatizados: embudos de nutrición para prospectos e inversionistas.
+* Dashboards de analítica conectados al CRM del estudio.
+* **Valor principal:** Aceleración de ventas (preventas inmobiliarias) y posicionamiento como firma de vanguardia tecnológica.
+
+## El Diferenciador Técnico (El "Foso" de ioon)
+1. **Gestión de Medios Pesados:** Capacidad de alojar e iterar miles de fotografías RAW y archivos masivos gracias a nuestra infraestructura self-hosted (MinIO) sin cobrar sobrecostos de almacenamiento.
+2. **Soberanía:** Infraestructura alojada en VPS dedicado (Hetzner, Nuremberg) bajo orquestación propia, asegurando que los datos no alimenten modelos de terceros sin consentimiento.

@@ -2,31 +2,72 @@
 
 > Capa de contexto del **estudio**. Tau lee este archivo además del SOUL.md y context/fjlp.md para entender qué es ioon, qué stack vive, qué clientes activos, qué patrones operacionales, qué restricciones.
 >
-> Fuente: este archivo en `0_ioon/hermes/context/ioon.md`. Se hereda conceptualmente de `ioon_8-0-1` (instrucciones del espacio) y `ioon_8-4-2` (marco de decisión técnica v5 bi-eje).
+> Fuente: este archivo en `0_ioon/hermes/context/ioon.md`. Se hereda conceptualmente de `ioon_8-0-1` (instrucciones del espacio), `ioon_8-4-2` (marco de decisión técnica v5 bi-eje) y `ioon_8-1-1` (matriz de identidad v2).
 
 ---
 
 ## 1. Qué es ioon
 
-**ioon** es el estudio creativo y técnico de Francisco Javier León Pacheco. Proyecto 8 del esquema `fjlp_1-2`. Posición de mercado: **Innovation Studio** (descriptor posicional · equivalente narrativo de "ioon", no entidad separada).
+**ioon** es el **estudio de autor digital** de Francisco Javier León Pacheco. Proyecto 8 del esquema `fjlp_1-2`.
+
+**Posicionamiento v2 (20-may-2026 · `ioon_8-1-1`):** ioon es un **constructor de infraestructura digital soberana** para proyectos con peso, materia e historia. No es una agencia de marketing ni un contenedor genérico de contenidos digitales. El estudio maduró desde la concepción v1 (binomio / marketing generalista) hacia este enfoque de ingeniería web + soberanía del dato.
+
+**Propuesta única de valor:** unir rigor tipográfico clásico con ingeniería web de vanguardia para que la obra digital se perciba con la misma dignidad que en el mundo físico. El **software y la infraestructura self-hosted son el núcleo**; dirección de arte, fotografía y narrativa visual son el **acabado premium** que corona la estructura técnica — no el producto base.
+
+**Arquetipo de marca:** Mago/Alquimista (transformación ágil vía Vibe Coding · soluciones que parecen mágicas por su fluidez) con núcleo profundo de Sabio (rigor analítico, documentación canónica, precisión estratégica). Perfil: **Artesano Tectónico / Ingeniero Humanista**.
+
+**Estructura operativa (v2):** soberanía y ejecución unificada — el estudio es **dirigido e implementado exclusivamente por Francisco**. Cierra el modelo de binomio / co-dirección de la etapa v1.
 
 **Áreas de trabajo:**
 
-- Dirección de arte para clientes (fotografía, diseño editorial, identidad visual, motion graphics).
-- Desarrollo de sitios web con storytelling visual fuerte.
+- Infraestructura web self-hosted de alto rendimiento (vitrinas, portales privados, automatización).
+- Dirección de arte y fotografía como **capa premium** — curaduría de alta resolución, preservación de textura material (RAW, concreto, madera) sin compresión que aplane la obra.
 - Apps de cliente con áreas privadas (dashboards, proofing, e-commerce ligero).
 - Productos internos reutilizables (Motor de presentaciones, Motor de catálogo, ioon-effects React, posible Motor de proofing como 4° producto).
 
 **Filosofía operativa:**
 
-- **OSS-first / self-hosted-first.** SaaS solo cuando alternativa OSS es claramente inferior o costo de mantenimiento supera el ahorro.
-- **Soberanía tecnológica.** Stack del estudio corre en infraestructura propia (Hetzner Cloud) con Coolify + Docker + Traefik.
+- **OSS-first / self-hosted-first.** SaaS solo cuando la alternativa OSS es claramente inferior o el costo de mantenimiento supera el ahorro.
+- **Soberanía tecnológica.** El stack corre en infraestructura propia (Hetzner Cloud) con Coolify + Docker + Traefik. Los datos no alimentan modelos de terceros sin consentimiento.
+- **Austeridad y honestidad material.** Rechazo de adornos superfluos, plantillas prefabricadas y "humo" tecnológico. El código respeta la materia original.
 - **Cristalizar > acumular.** Decisiones cerradas con descartes documentados, no opciones abiertas indefinidamente.
 - **Cliente primero.** Toda decisión técnica se evalúa por cómo afecta lo que el cliente final vive.
+- **Vibe Coding como metodología núcleo** — invocar arquitecturas de datos complejas en tiempos cortos mediante uso avanzado de LLMs, con revisión/ajuste del autor.
 
 ---
 
-## 2. Sistema de decisión técnica · Marco v5 bi-eje
+## 2. Oferta comercial · WaaS 3 niveles
+
+Modelo **Web-as-a-Service** en tres niveles de despliegue. Canónico en el catálogo de servicios (`ioon_8-1-2`). Mapea con los patrones de proyecto del §8.
+
+| Nivel | Nombre | Stack | Entrega central |
+|---|---|---|---|
+| **1** | El Cimiento (presencia y narrativa) | Astro + GSAP (ScrollTrigger) + MinIO | Vitrinas estáticas hiper-optimizadas · carga en milisegundos · motor de catálogo para imágenes de extrema resolución |
+| **2** | La Estructura (área operativa y captura) | Next.js + Payload CMS + PostgreSQL | Portales privados de cliente · bitácoras de obra · repositorios documentales · CMS a la medida |
+| **3** | Los Acabados (automatización y escala) | Mautic + n8n + R3F (React Three Fiber) | Embudos de nutrición automatizados · dashboards conectados al CRM · modelos 3D interactivos en navegador |
+
+**Modelo de cobro:** Setup inicial + iguala mensual (mantenimiento + hospedaje del servidor dedicado).
+
+**El "foso" técnico (diferenciador):**
+1. **Gestión de medios pesados** — alojar e iterar miles de fotografías RAW y archivos masivos vía MinIO self-hosted, sin sobrecostos de almacenamiento.
+2. **Soberanía** — infraestructura en VPS dedicado (Hetzner, Nuremberg) bajo orquestación propia.
+
+---
+
+## 3. Segmento objetivo · go-to-market arquitectura
+
+Foco comercial **inicial** = sector arquitectura. Es la primera vertical de adquisición, **no la totalidad de a quién sirve ioon**: clientes activos como Educativo Antequera (educación) y Serclin están fuera de este vertical. Tau no debe inferir que ioon es solo arquitectura.
+
+Dos buyer personas canónicas para esta vertical:
+
+- **Persona A · El Taller de Autor** (insp. LAMZ Arquitectura · `ioon_8-6-1`). Despacho boutique 3-8 personas, obra de autor con alta riqueza material. Dolor: las plataformas genéricas comprimen y "aplanan" la textura de sus materiales; sitios pesados que cargan lento. **Encaje:** Nivel 1. **Ruta comercial:** Vía A (socio fundador · setup subsidiado a cambio de feedback mensual + iguala · su portafolio se vuelve caso de éxito canónico del Nivel 1).
+- **Persona B · El Despacho Institucional** (insp. Taller Mauricio Rocha · `ioon_8-6-2`). Firma 15-50+ personas, obra pública / institucional de gran capital. Dolor: caos documental y auditorías, ansiedad del inversionista, falta de entorno seguro para planos confidenciales. **Encaje:** Nivel 2/3, producto **"Observatorio Digital de Obra"** (bóvedas privadas con roles Admin/Supervisor/Inversionista/Auditor). **Ruta comercial:** Vía B (reunión consultiva → prototipo de 15 min → programa piloto).
+
+Plan de despliegue táctico (guiones de acercamiento, prototipos) canónico en `ioon_8-6-3`.
+
+---
+
+## 4. Sistema de decisión técnica · Marco v5 bi-eje
 
 Documento canónico: `ioon_8-4-2_planeacion-tecnica_marco-decision-tecnica_v20260511-1948`.
 
@@ -43,7 +84,7 @@ Cuando Tau propone herramientas o evalúa opciones nuevas, **aplica este marco**
 
 ---
 
-## 3. Stack vigente (resumen operativo · detalle en `ioon_8-5-2` inventario maestro)
+## 5. Stack vigente (resumen operativo · detalle en `ioon_8-5-2` inventario maestro)
 
 ### Infraestructura
 
@@ -94,7 +135,7 @@ Cuando Tau propone herramientas o evalúa opciones nuevas, **aplica este marco**
 
 ---
 
-## 4. Cobertura del eje operativo
+## 6. Cobertura del eje operativo
 
 | Categoría | Cobertura |
 |---|---|
@@ -109,7 +150,7 @@ Cuando Tau propone herramientas o evalúa opciones nuevas, **aplica este marco**
 
 ---
 
-## 5. Clientes y prospectos (esquema fjlp_1-2 sub-categorías de proyecto 8)
+## 7. Clientes y prospectos (esquema fjlp_1-2 sub-categorías de proyecto 8)
 
 ### 8.14 Clientes activos
 
@@ -124,20 +165,20 @@ Tau verifica el inventario `ioon_8-4-7` y el CRM Twenty (cuando esté operaciona
 
 ---
 
-## 6. Patrones de proyecto (canónicos en `ioon_8-4-12` §4)
+## 8. Patrones de proyecto (canónicos en `ioon_8-4-12` §4)
 
-Cuando el autor pregunta "qué stack uso para X tipo de proyecto", aplica:
+Cuando el autor pregunta "qué stack uso para X tipo de proyecto", aplica. Los tipos mapean con los niveles WaaS del §2:
 
-| Tipo de proyecto | Stack |
-|---|---|
-| Portafolio / sitio editorial | Astro + Tailwind + shadcn/ui + GSAP/ScrollTrigger + Motion |
-| App con dashboard / auth / áreas privadas | Next.js + Payload (mismo deploy) + Tailwind + shadcn + Motion |
-| Mixto (marketing + app) | Monorepo · `apps/marketing` Astro + `apps/app` Next+Payload + `packages/ui` shadcn |
-| Microsite efímero / scroll-storytelling | Astro plano + GSAP/ScrollTrigger (caso Serclin) |
+| Tipo de proyecto | Stack | Nivel WaaS |
+|---|---|---|
+| Portafolio / sitio editorial | Astro + Tailwind + shadcn/ui + GSAP/ScrollTrigger + Motion | Nivel 1 |
+| App con dashboard / auth / áreas privadas | Next.js + Payload (mismo deploy) + Tailwind + shadcn + Motion | Nivel 2 |
+| Mixto (marketing + app) | Monorepo · `apps/marketing` Astro + `apps/app` Next+Payload + `packages/ui` shadcn | Nivel 2 (+ automatización Nivel 3) |
+| Microsite efímero / scroll-storytelling | Astro plano + GSAP/ScrollTrigger (caso Serclin) | Nivel 1 |
 
 ---
 
-## 7. Roadmap operativo inmediato (al 2026-05-14 · cambia · Tau verifica)
+## 9. Roadmap operativo inmediato (al 2026-05-14 · cambia · Tau verifica)
 
 - **P0-1 Migración a Hermes Agent · activación de Tau (yo)** — fase 1 arrancando con este SOUL.md.
 - **P0-2 Serclin** — ✅ CERRADO LIVE.
@@ -154,7 +195,7 @@ Tau consulta `ioon_8-4-7` para el inventario operativo al día.
 
 ---
 
-## 8. Restricciones que aplican a cualquier propuesta de Tau
+## 10. Restricciones que aplican a cualquier propuesta de Tau
 
 Heredadas del marco v5 §7:
 
@@ -169,17 +210,18 @@ Heredadas del marco v5 §7:
 
 ---
 
-## 9. Lo que Tau NO debe asumir sin verificar
+## 11. Lo que Tau NO debe asumir sin verificar
 
 - El estado de un proyecto cliente — verificar en Twenty CRM (cuando esté operacional) o preguntar al autor.
 - La versión vigente de una nota canónica — verificar timestamp del archivo en el repo o en filesystem MCP.
 - La decisión actual sobre un tema técnico — consultar la nota canónica del marco v5 o sub-decisión vigente.
 - Las prioridades del día — consultar `ioon_8-4-7` pendientes técnicos.
 - El stack que tiene un cliente — verificar `fjlp_1-4-1` referencias o preguntar al autor.
+- **Que ioon es solo arquitectura** — la vertical arquitectura (§3) es el foco comercial inicial, no el alcance total del estudio.
 
 ---
 
-## 10. Notas vivas del sistema (Tau las conoce y consulta)
+## 12. Notas vivas del sistema (Tau las conoce y consulta)
 
 Documentos canónicos que estructuran el sistema:
 
@@ -187,6 +229,8 @@ Documentos canónicos que estructuran el sistema:
 |---|---|
 | `ioon_8-0-1` | Chat maestro del estudio · instrucciones de espacio |
 | `ioon_8-0-2` | Glosario canónico de vocabulario |
+| `ioon_8-1-1_v20260520-2147` | Matriz de identidad v2 · manifiesto, PUV, arquetipo, posicionamiento |
+| `ioon_8-1-2_v20260520-2020` | Catálogo de servicios · oferta WaaS 3 niveles |
 | `ioon_8-4-2_v20260511-1948` | Marco de decisión técnica v5 bi-eje |
 | `ioon_8-4-3_v20260514-2055` | Modelo C híbrido fase C (captura) |
 | `ioon_8-4-7_v20260514-2315` | Inventario operativo de pendientes |
@@ -194,11 +238,15 @@ Documentos canónicos que estructuran el sistema:
 | `ioon_8-4-10_v20260514-2200` | Resumen ejecutivo (cabecera viva) |
 | `ioon_8-4-11_v20260511-1115` | Plan de implementación de Hermes Agent (canónico · adoptado bajo identidad Tau) |
 | `ioon_8-4-17_v20260514-1408` | Decisión de rol de Hermes (canónico · régimen 3 niveles vigente para Tau) |
-| `ioon_8-5-0_v20260514-1417` | Índice cestas de decisiones operativas |
-| `ioon_8-5-2_v20260514-2315` | Inventario maestro por bi-eje |
+| `ioon_8-4-18_v20260521-1000` | Plan de instalación detallado Hermes Agent fase 1 |
+| `ioon_8-5-0_v20260515-0800` | Índice maestro del stack |
+| `ioon_8-5-2_v20260515-0752` | Inventario maestro por bi-eje |
+| `ioon_8-6-1_v20260520-2040` | Buyer Persona A · El Taller de Autor (LAMZ) |
+| `ioon_8-6-2_v20260520-2040` | Buyer Persona B · El Despacho Institucional (Mauricio Rocha) |
+| `ioon_8-6-3_v20260520-2020` | Plan de despliegue comercial · sector arquitectura |
 
 Tau consulta estos archivos vía filesystem MCP cuando una conversación lo amerite.
 
 ---
 
-*context/ioon.md v20260514-2310 · segunda versión (rename Hermes → Tau en menciones del agente operativo · preserva Hermes Agent como referencia al producto base). Sustituye v20260514-2300. Próxima revisión: cuando se cierre P0-1.5 (cleanup post-migración a Hermes Agent) o cuando un cambio mayor del stack lo amerite.*
+*context/ioon.md v20260521-1545 · tercera versión (integra posicionamiento ioon v2: infraestructura digital soberana + oferta WaaS 3 niveles + segmento arquitectura; reposiciona dirección de arte/fotografía como acabado premium; añade subtema 8.6 comercial al mapa de notas vivas). Sustituye v20260514-2310. Próxima revisión: cuando se cierre P0-1.5 (cleanup post-migración a Hermes Agent), cuando se catalogen formalmente los docs 8-1-x / 8-6-x, o cuando un cambio mayor del stack lo amerite.*

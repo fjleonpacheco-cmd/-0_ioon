@@ -1,0 +1,38 @@
+---
+proyecto: 8. ioon
+subtema: 8.X marketing y ventas
+version: v20260520-2040
+autor: Francisco Javier León Pacheco
+nivel: documento canónico · buyer persona
+estado: vigente — primera iteración
+proposito: Definir el arquetipo de cliente "El Observatorio Institucional / Gran Escala", inspirado en el perfil del Taller Mauricio Rocha, para guiar el desarrollo de los Niveles 2 y 3 del stack ioon.
+depende_de:
+  - ioon_8-X-X_identidad_catalogo-servicios
+---
+
+# Buyer Persona B: El Despacho Institucional (El orquestador de capital)
+
+## Perfil General
+**Arquetipo:** El constructor de obra pública e institucional.
+**Inspiración directa:** Taller de Arquitectura Mauricio Rocha.
+**Ubicación:** CDMX (Roma, Condesa, Lomas) / Nivel Nacional.
+**Tamaño del estudio:** 15 a 50+ personas (incluyendo supervisores de obra, administradores, directores de proyecto).
+**Tipo de obra:** Infraestructura cultural, escuelas, hospitales, desarrollos inmobiliarios de gran inyección de capital, restauraciones patrimoniales.
+
+## La Psicología y Filosofía
+Para este perfil, la arquitectura no es solo diseño, es diplomacia, finanzas y logística monumental. Manejan presupuestos de cientos de millones de pesos y responden ante juntas de gobierno, *family offices* o contralorías estatales. Valoran la transparencia, el orden impecable, la certeza jurídica y la reducción del caos administrativo. Su prestigio ya está validado; ahora necesitan control operativo.
+
+## El Dolor Operativo (Puntos de Fricción)
+1. **Caos documental y auditorías:** Tienen terabytes de evidencia fotográfica (avances de obra, reportes de supervisión) repartidos en discos duros, WeTransfer y chats de WhatsApp. Cuando llega una auditoría o hay que cobrar una estimación, recopilar la información es una pesadilla logística.
+2. **Ansiedad del inversionista:** Los socios capitalistas o las autoridades piden reportes constantes de "cómo va la obra" cuando en el mundo real solo hay varilla y cimientos.
+3. **Falta de un entorno seguro:** No tienen un espacio privado y digno para compartir planos técnicos confidenciales o cortes financieros con sus clientes de alto valor.
+
+## La Solución ioon (El Encaje del Producto)
+**Producto a ofrecer:** Nivel 2 y 3 (Estructura y Acabados) — Portal privado Next.js + Payload CMS + automatización Mautic/n8n.
+**Argumento de Venta (Pitch):** "Para obras de esta magnitud, un portafolio público no basta. Construyo 'Observatorios Digitales de Obra': bóvedas privadas con bases de datos propias donde tus inversionistas y auditores entran con contraseña para descargar planos, ver el histórico fotográfico en RAW y revisar bitácoras. Orden total, sin intermediarios, con una estética sobria y oficial."
+**Tono de comunicación de marketing:** Ejecutivo, técnico, enfocado en la seguridad de los datos, la reducción de riesgos y la soberanía de la información. 
+
+## Criterios de Éxito para este Persona
+* Despliegue de bases de datos seguras (PostgreSQL) y repositorios de objetos (MinIO) que soporten cargas masivas de PDFs y fotografías de dron.
+* Implementación de roles de usuario (Admin, Supervisor, Inversionista, Auditor).
+* El estudio delega el hospedaje y mantenimiento de esta infraestructura bajo un contrato anual (WaaS premium).

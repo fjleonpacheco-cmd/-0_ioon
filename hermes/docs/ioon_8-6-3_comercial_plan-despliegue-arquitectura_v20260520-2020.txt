@@ -1,0 +1,51 @@
+---
+proyecto: 8. ioon
+subtema: 8.X comercial
+version: v20260520-2020
+autor: Francisco Javier León Pacheco
+nivel: documento canónico · plan de despliegue arquitectónico
+estado: vigente — primera iteración
+proposito: Trazar la hoja de ruta táctica y los guiones de acercamiento para dos perfiles clave de clientes en el sector de la arquitectura (LAMZ Arquitectura y Taller Mauricio Rocha), utilizando el modelo WaaS de ioon.
+depende_de:
+  - ioon_8-X-X_identidad_catalogo-servicios
+---
+
+# Plan de Despliegue: Sector Arquitectura
+
+## Resumen Ejecutivo
+La estrategia comercial para el sector arquitectónico se divide en dos vías paralelas. La **Vía A** busca validar el rendimiento visual y la fidelidad material (Nivel 1) mediante una sociedad táctica local. La **Vía B** busca posicionar a ioon como proveedor de infraestructura de transparencia para obra pública e institucional de gran escala (Nivel 2/3).
+
+---
+
+## Vía A: El Socio Fundador (LAMZ Arquitectura)
+
+**Perfil del Cliente:** Firma con obra de altísima calidad táctil y espacial. Su reto actual es que los contenedores digitales genéricos (galerías estándar) diluyen el peso de sus materiales (madera, concreto, integración al paisaje).
+**Objetivo Comercial:** Cerrar el primer contrato recurrente WaaS y utilizar su portafolio como caso de éxito canónico para el Nivel 1.
+
+**Plan de Ejecución:**
+1. **Construcción del Prototipo (Uso Interno):**
+   * Seleccionar 5-10 imágenes clave de una obra específica (ej. Santuario del Gusano de Seda).
+   * Maquetar un prototipo de una sola vista usando Astro + GSAP.
+   * Optimizar las transiciones para que el *scroll* transmita la densidad del material.
+2. **El Acercamiento:**
+   * Agendar reunión directa apelando a la confianza profesional.
+   * **Guion central:** *"Su obra tiene una memoria y una materialidad que se pierde en la web actual. Estoy levantando un stack tecnológico en un servidor dedicado para corregir esto. Quiero usar a LAMZ para calibrar este motor."*
+3. **La Propuesta WaaS:**
+   * Ofrecer un *Setup* subsidiado (costo de desarrollo) a cambio de retroalimentación mensual y el pago de la iguala por mantenimiento y hospedaje.
+
+---
+
+## Vía B: El Observatorio Digital (Taller Mauricio Rocha)
+
+**Perfil del Cliente:** Institución de la arquitectura mexicana. Ejecutan proyectos de obra pública, cultural e institucional de gran envergadura. Su mayor fricción es la gestión de la evidencia, las auditorías, las estimaciones y el manejo de grandes volúmenes de capital e información compartida.
+**Objetivo Comercial:** Utilizar la validación de un actor de este peso para abrir el mercado de desarrolladores inmobiliarios y contratistas en la Ciudad de México.
+
+**Plan de Ejecución:**
+1. **Construcción del Prototipo Conceptual:**
+   * Desarrollar una interfaz de "Observatorio Digital de Obra" (Nivel 2) basada en Next.js.
+   * Simular un portal de *login* para auditores/inversionistas, mostrando cómo se organizan PDFs de planos, bitácoras de estimaciones y galerías de avance semanal en alta resolución.
+2. **El Acercamiento:**
+   * Reunión consultiva y estratégica, no de ventas directas.
+   * **Guion central:** *"Mauricio, estoy desarrollando infraestructura digital para transparentar y gestionar grandes obras institucionales, dando certeza jurídica a través de registros visuales austeros y ordenados. Me gustaría mostrarte un prototipo de 15 minutos para escuchar, desde tu experiencia con auditorías y obra pública, si esto ataca el verdadero cuello de botella."*
+3. **El Siguiente Paso:**
+   * Si la herramienta se valida, proponer un programa piloto en un área delimitada de un proyecto en curso, o usar su retroalimentación para empaquetar el producto "Nivel 2" y salir a venderlo a *family offices* y desarrolladoras en CDMX.
